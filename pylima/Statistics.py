@@ -1,3 +1,3 @@
 # muy file of statistics 
-def funcion(x,y):
-    x**y
+def funcion(x, y):
+    return x**y

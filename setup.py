@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='pylima',
-      version='0.1',
+      version='0.2',
       description='A Python package for undergraduate math',
       url='http://github.com/YessiRocha/pylima',
       author='Yessica Rocha',

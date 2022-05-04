@@ -1,6 +1,6 @@
 import sympy as sp
 
-def potencias_matriz(matriz,n):
+def potencias_matriz(matriz, n):
     """Powers of a matrix 
        Args:
             parameter1 = matrix of sympy

@@ -6,3 +6,4 @@ Contributors
 * Verania Hernández <he378029@uaeh.edu.mx>
 * Karen Lechuga <le298174@uaeh.edu.mx> 
 * Diego Omaña <om384108@uaeh.edu.mx>
+* Yessica Rocha <ro316303@uaeh.edu.mx>

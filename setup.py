@@ -8,4 +8,5 @@ setup(name='pylima',
       author_email='yesi.bundo@gmail.com',
       license='MIT',
       packages=['pylima'],
+      install_requires=['sympy', 'numpy', 'matplotlib'],
       zip_safe=False)

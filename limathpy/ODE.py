@@ -18,7 +18,7 @@ def sistema(matriz):
 
 
 def sistema_lineal(matriz, cond_inic):
-    """Dado un sistema de ecuaciones diferenciales, regresa el sistema lineal en t=0."""
+    """Dado un sistema de ecuaciones diferenciales, regresa el sistema lineal en :math:`t=0`."""
     t = symbols('t')
     x, y = symbols('x y', cls=Function)
     sols = sistema(matriz)
@@ -29,7 +29,7 @@ def sistema_lineal(matriz, cond_inic):
 
 
 def sistema_ed(matriz, cond_inic):
-    """Dada una matriz y condiciones iniciales, regresa la solución del sistema de ed."""
+    """Dada una matriz y condiciones iniciales, regresa la solución del sistema de ecuaciones diferenciales."""
     t = symbols('t')
     x, y = symbols('x y', cls=Function)
     C1, C2 = symbols('C1 C2')

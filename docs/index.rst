@@ -1,9 +1,9 @@
-.. pylima documentation master file, created by
+.. limathpy documentation master file, created by
    sphinx-quickstart on Wed May  4 20:00:09 2022.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to pylima's documentation!
+Welcome to limathpy's documentation!
 ==================================
 
 This is a test
@@ -16,14 +16,22 @@ This is a test
 Submodules
 ----------
 
-EDO
-----
+ODE
+~~~
 
 Here we deal with differential equations
 
-.. automodule:: pylima.EDO
+.. automodule:: limathpy.EDO
    :members:
+   
+Calculus
+~~~~~~~~
 
+Here there are functions to solve calculus problems
+
+.. automodule:: limathpy.Calculus
+   :members:
+   
 Indices and tables
 ==================
 

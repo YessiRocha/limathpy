@@ -8,8 +8,8 @@ x = sp.symbols('x')
 def n_derivates(expr, n=1):
     """Function that returns a list with the n derivates of an expression, with n given
     Args: 
-        param1 = a sympy expression of a function
-        param2 = the number of derivatives required (this parameter is optional, by default returns one derivative)
+        expr (type) : function
+        n (int, optional) : the number of derivatives required. Defaults to none 
     Returns: 
         A list with the funtion and the indicated derivatives"""
     derivates = [expr]
@@ -18,14 +18,14 @@ def n_derivates(expr, n=1):
     return derivates
   
   
-def graph_fyd(expresion):
+def graph_fyd(expression):
     """Function that graphs an expression given as a string and its derivative in the same plane
-    Args:
-        param1 = expression of a function as a string
+    Args: 
+        expression (:object:`str`) : expression of a function
     Returns:
         The graph of the function and its derivative in the same plane """
     x = sp.symbols('x')
-    expr = sp.sympify(expresion)
+    expr = sp.sympify(expression)
     deriv = sp.diff(expr, x)
     f, f_prime = sp.lambdify(x, expr, 'numpy'), sp.lambdify(x, deriv, 'numpy')
     domain = np.linspace(-10, 10)

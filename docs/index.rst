@@ -31,6 +31,14 @@ Here there are functions to solve calculus problems
 
 .. automodule:: limathpy.Calculus
    :members:
+
+LinearAlgebra
+~~~~~~~~~~~~~
+
+Here there are functions to solve linear algebra problems
+
+.. automodule:: limathpy.LinearAlgebra
+   :members:
    
 Indices and tables
 ==================

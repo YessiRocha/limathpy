@@ -8,7 +8,7 @@ from sympy import symbols, Function, Eq, Derivative, dsolve, solve, plot_paramet
 #Resolución de sistemasde ecuaciones diferenciales ordinarias
 
 def sistema(matriz):
-    """Dada un lista de listas, regresa un sistema de ecuaciones diferenciales.
+    """Given a 2x2 Matrix it returns an ordinary differential equations system.
 
     Examples
     --------
@@ -26,7 +26,15 @@ def sistema(matriz):
 
 
 def sistema_lineal(matriz, cond_inic):
-    """Dado un sistema de ecuaciones diferenciales, regresa el sistema lineal en :math:`t=0`."""
+    """Given an ordinary differential equations system, it returns the linear system when :math:`t=0`.
+    
+    Examples
+    --------
+    >>> from limathpy import sistema_lineal
+    >>> sistema_lineal([[1,4], [1, 0]], [0,1])
+    (Eq(C1*(1 - sqrt(17))/2 + C2*(1 + sqrt(17))/2, 0), Eq(C1 + C2, 1))
+    
+    """
     t = symbols('t')
     x, y = symbols('x y', cls=Function)
     sols = sistema(matriz)
@@ -37,7 +45,15 @@ def sistema_lineal(matriz, cond_inic):
 
 
 def sistema_ed(matriz, cond_inic):
-    """Dada una matriz y condiciones iniciales, regresa la solución del sistema de ecuaciones diferenciales."""
+    """Given a 2x2 Matrix and some initial conditions, it returns the solution of the associated system of differential equations.
+    
+    Examples
+    --------
+    >>> from limathpy import sistema_ed
+    >>> sistema_ed([[1,-2], [1, 0]], [1,1])
+    (-3*sqrt(7)*exp(t/2)*sin(sqrt(7)*t/2)/7 + exp(t/2)*cos(sqrt(7)*t/2), sqrt(7)*exp(t/2)*sin(sqrt(7)*t/2)/7 + exp(t/2)*cos(sqrt(7)*t/2))
+    
+    """
     t = symbols('t')
     x, y = symbols('x y', cls=Function)
     C1, C2 = symbols('C1 C2')

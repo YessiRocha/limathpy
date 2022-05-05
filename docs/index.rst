@@ -4,7 +4,7 @@
    contain the root `toctree` directive.
 
 Welcome to limathpy's documentation!
-==================================
+====================================
 
 This is a test
 

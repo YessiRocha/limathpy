@@ -1,12 +1,24 @@
 import sympy as sp
 
-def potencias_matriz(matriz, n):
-    """Powers of a matrix 
-       Args:
-            parameter1 = matrix of sympy
-            parameter2 = n 
-       Returns:
-            The n powers of a given matrix in a list."""
+def matrix_n(matriz, n):
+    """Powers of a matrix.
+    
+    Args:
+        parameter1 = matrix of sympy
+        parameter2 = n (the power)
+        
+    Returns:
+        List of n powers of a given matrix.
+    Examples:
+        >>> import sympy as sp
+        >>> matrix_n(sp.Matrix([[1,2],[3,4]]),2)
+        [Matrix([
+        [1, 2],
+        [3, 4]]),
+        Matrix([
+        [ 7, 10],
+        [15, 22]])]
+    """
     pot_matriz = [matriz**i for i in range(1,n+1)]
     return pot_matriz
 

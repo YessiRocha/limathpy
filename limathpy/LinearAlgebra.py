@@ -9,6 +9,7 @@ def matrix_n(matriz, n):
         
     Returns:
         List of n powers of a given matrix.
+        
     Examples:
         >>> import sympy as sp
         >>> matrix_n(sp.Matrix([[1,2],[3,4]]),2)

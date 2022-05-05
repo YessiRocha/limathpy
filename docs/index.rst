@@ -21,7 +21,7 @@ ODE
 
 Here we deal with differential equations
 
-.. automodule:: limathpy.EDO
+.. automodule:: limathpy.ODE
    :members:
    
 Calculus

@@ -17,7 +17,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'pylima'
+project = 'limathpy'
 copyright = '2022, Rosa Granados, Verania Hernández, Karen Lechuga, Diego Omaña, Yessica Rocha'
 author = 'Rosa Granados, Verania Hernández, Karen Lechuga, Diego Omaña, Yessica Rocha'
 
@@ -52,7 +52,7 @@ html_theme = 'alabaster'
 html_static_path = ['_static']
 
 latex_documents = [
-    ('index', 'pylima.tex', 'pylima',
+    ('index', 'limathpy.tex', 'limathpy',
      author.replace(', ', '\\and ').replace(' and ', '\\and and '),
      'manual'),
 ]

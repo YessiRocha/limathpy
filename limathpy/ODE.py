@@ -8,7 +8,15 @@ from sympy import symbols, Function, Eq, Derivative, dsolve, solve, plot_paramet
 #Resolución de sistemasde ecuaciones diferenciales ordinarias
 
 def sistema(matriz):
-    """Dada un lista de listas, regresa un sistema de ecuaciones diferenciales."""
+    """Dada un lista de listas, regresa un sistema de ecuaciones diferenciales.
+
+    Examples
+    --------
+    >>> from limathpy import sistema
+    >>> sistema([[1, -1], [1, 0]])
+    ((C1/2 - sqrt(3)*C2/2)*exp(t/2)*cos(sqrt(3)*t/2) - (sqrt(3)*C1/2 + C2/2)*exp(t/2)*sin(sqrt(3)*t/2), C1*exp(t/2)*cos(sqrt(3)*t/2) - C2*exp(t/2)*sin(sqrt(3)*t/2))
+
+    """
     t = symbols('t')
     x, y = symbols('x y', cls=Function)
     eq1 = Eq(Derivative(x(t), t), matriz[0][0]*x(t) + matriz[0][1]*y(t))

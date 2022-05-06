@@ -6,29 +6,40 @@ import matplotlib.pyplot as plt
 x = sp.symbols('x')
 
 def n_derivates(expr, n=1):
-    """Function that returns a list with the n derivates of an expression, with n given
+    """Function that returns a list with the n derivates of an expression, with n given.
 
     Args: 
-        expr (type) : function
-        n (int, optional) : the number of derivatives required. Defaults to none
+        expr: Any sympy function
+        n (int, optional): The number of derivatives required. Defaults to one.
 
-    Returns: 
-        A list with the funtion and the indicated derivatives"""
+    Returns:
+        list: the funtion and the indicated derivatives.
+
+    Example:
+        >>> from limathpy import n_derivates
+        >>> from sympy import symbols
+        >>> x = symbols('x')
+        >>> n_derivates(x**4, 4)
+        [x**4, 4*x**3, 12*x**2, 24*x, 24]"""
     derivates = [expr]
     for i in range(n):
         derivates.append(sp.Derivative(derivates[-1], x).doit())
     return derivates
 
-n_derivates(sp.sin(x), 4)
 
 def graph_fyd(expression):
-    """Function that graphs an expression given as a string and its derivative in the same plane
+    """Function that graphs an expression given as a string and its derivative in the same plane.
 
     Args: 
-        expression (:object:`str`) : expression of a function
+        expression (str) : Expression of a function.
 
     Returns:
-        The graph of the function and its derivative in the same plane """
+        graph: The function and its derivative in the same plane.
+
+    Example:
+        >>> from limathpy import graph_fyd
+        >>> import matplotlib.pyplot as plt
+        >>> graph_fyd("x**2")"""
     x = sp.symbols('x')
     expr = sp.sympify(expression)
     deriv = sp.diff(expr, x)
@@ -45,5 +56,11 @@ def graph_fyd(expression):
     ax.plot(domain, f_eval)
     ax.plot(domain, f_prime_eval)
     ax.set_xlabel("$x$")
+    ax.spines['right'].set_color('none')
+    ax.spines['top'].set_color('none')
+    ax.xaxis.set_ticks_position('bottom')
+    ax.spines['bottom'].set_position('center')
+    ax.yaxis.set_ticks_position('left')
+    ax.spines['left'].set_position('center')
     plt.show()
 

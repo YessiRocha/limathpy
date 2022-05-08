@@ -24,11 +24,23 @@ def matrix_n(matriz, n):
     return pot_matriz
 
 
-def val_ent_list(lista):
-    """Función que regresa True si la lista tiene todos sus valores enteros y False si no"""
-    flotantes = [float(num) for num in lista]
-    lista1 = [flotante.is_integer() for flotante in flotantes]
-    return all(lista1)
+def integers_list(lista):
+    """Integers in a list.
+    
+    Args:
+        param1 = list
+    
+    Returns:
+        'True' if all values in the given list are integers or 
+        'False' in other case.
+    
+    Examples:
+        >>> integers_list([1,3,0.5])
+        False
+    """
+    floats = [float(num) for num in lista]
+    list1 = [flotante.is_integer() for flotante in floats]
+    return all(list1)
 
 
 def matrices_eigenvalores_ent(n):

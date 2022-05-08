@@ -43,29 +43,52 @@ def integers_list(lista):
     return all(list1)
 
 
-def matrices_eigenvalores_ent(n):
-    """Función que regresa los valores n para los cuales la matriz [[1,n],[1,1]] tiene eigenvalores enteros"""
+def int_eigvals_n(n):
+    """Values of n for which [[1,n],[1,1]] has integer eigenvalues.
+    
+    Args:
+        param1 = integer, the element (1,2) of the matrix
+    
+    Returns:
+        A list with the values between 0 and n for which [[1,n],[1,1]] has 
+        positive eigenvalues.
+    
+    Examples: 
+        >>> import sympy as sp
+        >>> integers_list([1,3,0.5])
+        [0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
+    """
     enes=[]
     for i in range(0,n+1):
-        matriz = Matrix([[1,i],[1,1]])
+        matriz = sp.Matrix([[1,i],[1,1]])
         eigenvalores = list(matriz.eigenvals())
         if val_ent_list(eigenvalores) == True:
-            enes.append(i)      
+            enes.append(i)           
     return enes
 
 
-def mat_eigen_ent(matriz):
+def int_eigenvalues(matriz):
     """Integer eigenvalues
+    
     Args:
-        param1=square sympy Matrix
+        param1 = square sympy Matrix
+        
     Returns:
-        'Matrix tiene todos sus valores propios enteros or 
-        Matrix no tiene todos sus valores propios enteros' """
+        'The matriz has all its eigenvalues positive' or 
+        'The matrix has not all its eigenvalues positive.'
+        
+    Examples:
+        >>> import sympy as sp
+        >>> int_eigenvalues(sp.Matrix([[1,2],[1,3]]))
+        The Matrix([[1, 2], [1, 3]]) has not all its eigenvalues positive
+        
+    """
     eigenvalues=list(matriz.eigenvals())
     if val_ent_list(eigenvalues) == True:
-        print(f"{matriz} tiene todos sus valores propios enteros")
+        print(f"The {matriz} has all its eigenvalues positive")
     else:
-        print(f"{matriz} no tiene todos sus valores propios enteros")
+        print(f"The {matriz} has not all its eigenvalues positive")
+
 
         
 def camb_base(matriz):

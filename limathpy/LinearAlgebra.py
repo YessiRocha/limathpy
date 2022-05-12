@@ -75,7 +75,7 @@ def int_eigenvalues(matriz):
         
     Returns:
         string:
-        'The matriz has all its eigenvalues positive' or 
+        'The matrix has all its eigenvalues positive' or 
         'The matrix has not all its eigenvalues positive.'
         
     Examples:

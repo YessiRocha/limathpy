@@ -1,5 +1,6 @@
 #File to Numerical analysis 
 from sympy import plot, symbols, Function, Eq, Derivative, dsolve, solve
+import numpy as np
 
 def sistema(matriz):
     """Dada un lista de listas, regresa un sistema de ecuaciones diferenciales."""
@@ -30,5 +31,31 @@ def sistema_ed(matriz, cond_inic):
     dict_sols = solve(sis_lin)
     expr1 = sis_ed[0].subs(dict_sols)
     expr2 = sis_ed[1].subs(dict_sols)
+    return expr1, expr2
     
+
+
+from matplotlib import pyplot as plt
+from celluloid import Camera
+from IPython.display import HTML
+
+def diagrama(par, x0, it):
+    def f(x):
+        return par*x*(1-x)
+    fig, ax = plt.subplots()
+    camera = Camera(fig)
+    x = [x0]
+    y = [x0]
+    s = np.arange(0, 1, 0.01)
+
+    for i in range(it):
+        ax.plot(s, f(s), color='blue')
+        ax.plot(s, s, color='black')
+        x.append(x[2*i])
+        x.append(f(x[2*i]))
+        y.append(f(y[2*i]))
+        y.append(f(y[2*i]))
+        ax.plot(x, y, color='red')
+        camera.snap()
+    return camera.animate()    
 

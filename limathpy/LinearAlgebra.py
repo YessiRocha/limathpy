@@ -1,8 +1,9 @@
 import sympy as sp
 
+
 def matrix_n(matriz, n):
     """Powers of a matrix.
-    
+
     Args:
         parameter1 = matrix of sympy
         parameter2 = n (the power)
@@ -62,7 +63,7 @@ def int_eigvals_n(n):
     for i in range(0,n+1):
         matriz = sp.Matrix([[1,i],[1,1]])
         eigenvalores = list(matriz.eigenvals())
-        if val_ent_list(eigenvalores) == True:
+        if integers_list(eigenvalores) == True:
             enes.append(i)           
     return enes
 
@@ -85,7 +86,7 @@ def int_eigenvalues(matriz):
         
     """
     eigenvalues=list(matriz.eigenvals())
-    if val_ent_list(eigenvalues) == True:
+    if integers_list(eigenvalues) == True:
         print(f"The {matriz} has all its eigenvalues positive")
     else:
         print(f"The {matriz} has not all its eigenvalues positive")

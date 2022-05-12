@@ -8,7 +8,7 @@ def matrix_n(matriz, n):
         parameter2 = n (the power)
         
     Returns:
-        List of n powers of a given matrix.
+        list: List of n powers of a given matrix.
         
     Examples:
         >>> import sympy as sp
@@ -31,7 +31,7 @@ def integers_list(lista):
         param1 = list
     
     Returns:
-        'True' if all values in the given list are integers or 
+        string: 'True' if all values in the given list are integers or 
         'False' in other case.
     
     Examples:
@@ -50,7 +50,7 @@ def int_eigvals_n(n):
         param1 = integer, the element (1,2) of the matrix
     
     Returns:
-        A list with the values between 0 and n for which [[1,n],[1,1]] has 
+        list: A list with the values between 0 and n for which [[1,n],[1,1]] has 
         positive eigenvalues.
     
     Examples: 
@@ -74,6 +74,7 @@ def int_eigenvalues(matriz):
         param1 = square sympy Matrix
         
     Returns:
+        string:
         'The matriz has all its eigenvalues positive' or 
         'The matrix has not all its eigenvalues positive.'
         
@@ -89,12 +90,7 @@ def int_eigenvalues(matriz):
     else:
         print(f"The {matriz} has not all its eigenvalues positive")
 
-
         
-def camb_base(matriz):
-    pass
-
-
 def inner_product(vector1,vector2):
     """Documentation"""
     return list(vector1.T*vector2)[0]

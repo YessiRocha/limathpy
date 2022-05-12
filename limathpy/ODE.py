@@ -65,7 +65,7 @@ def sistema_ed(matriz, cond_inic):
     return expr1, expr2
 
 def phase_portrait(matriz, ci = [2, a]):
-"""Given a 2x2 Matrix and some initial conditions, it returns the phase portrait of the associated system of differential equations.
+    """Given a 2x2 Matrix and some initial conditions, it returns the phase portrait of the associated system of differential equations.
     
     Examples
     --------

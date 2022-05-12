@@ -39,6 +39,15 @@ Here there are functions to solve linear algebra problems
 
 .. automodule:: limathpy.LinearAlgebra
    :members:
+
+MathematicalModels
+~~~~~~~~~~~~~~~~~~
+
+Here there are functions to solve mathematical models problems
+
+.. automodule:: limathpy.MathematicalModels
+
+   :members: 
    
 Indices and tables
 ==================

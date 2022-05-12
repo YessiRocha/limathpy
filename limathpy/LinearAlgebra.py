@@ -94,3 +94,7 @@ def int_eigenvalues(matriz):
 def inner_product(vector1,vector2):
     """Documentation"""
     return list(vector1.T*vector2)[0]
+
+def change_basis(base1,base2):
+    eb2=base2.inv()*base1
+    return eb2

@@ -6,7 +6,7 @@
 Welcome to limathpy's documentation!
 ====================================
 
-This is a test
+This is a module of students of LiMA for students of LiMA of the Autonomous University of the state of Hidalgo
 
 .. toctree::
    :maxdepth: 2

@@ -1,0 +1,281 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>limathpy documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="welcome-to-limathpy-s-documentation">
+<h1>Welcome to limathpy’s documentation!<a class="headerlink" href="#welcome-to-limathpy-s-documentation" title="Permalink to this headline">¶</a></h1>
+<p>This is a module of students of LiMA for students of LiMA of the Autonomous University of the state of Hidalgo</p>
+<div class="toctree-wrapper compound">
+</div>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+<section id="ode">
+<h3>ODE<a class="headerlink" href="#ode" title="Permalink to this headline">¶</a></h3>
+<p>Here we deal with differential equations</p>
+<span class="target" id="module-limathpy.ODE"></span><dl class="py function">
+<dt class="sig sig-object py" id="limathpy.ODE.sistema">
+<span class="sig-prename descclassname"><span class="pre">limathpy.ODE.</span></span><span class="sig-name descname"><span class="pre">sistema</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matriz</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#limathpy.ODE.sistema" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a 2x2 Matrix it returns an ordinary differential equations system.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">limathpy</span> <span class="kn">import</span> <span class="n">sistema</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sistema</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
+<span class="go">((C1/2 - sqrt(3)*C2/2)*exp(t/2)*cos(sqrt(3)*t/2) - (sqrt(3)*C1/2 + C2/2)*exp(t/2)*sin(sqrt(3)*t/2), C1*exp(t/2)*cos(sqrt(3)*t/2) - C2*exp(t/2)*sin(sqrt(3)*t/2))</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="limathpy.ODE.sistema_ed">
+<span class="sig-prename descclassname"><span class="pre">limathpy.ODE.</span></span><span class="sig-name descname"><span class="pre">sistema_ed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matriz</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cond_inic</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#limathpy.ODE.sistema_ed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a 2x2 Matrix and some initial conditions, it returns the solution of the associated system of differential equations.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">limathpy</span> <span class="kn">import</span> <span class="n">sistema_ed</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sistema_ed</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="go">(-3*sqrt(7)*exp(t/2)*sin(sqrt(7)*t/2)/7 + exp(t/2)*cos(sqrt(7)*t/2), sqrt(7)*exp(t/2)*sin(sqrt(7)*t/2)/7 + exp(t/2)*cos(sqrt(7)*t/2))</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="limathpy.ODE.sistema_lineal">
+<span class="sig-prename descclassname"><span class="pre">limathpy.ODE.</span></span><span class="sig-name descname"><span class="pre">sistema_lineal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matriz</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cond_inic</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#limathpy.ODE.sistema_lineal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given an ordinary differential equations system, it returns the linear system when <span class="math notranslate nohighlight">\(t=0\)</span>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">limathpy</span> <span class="kn">import</span> <span class="n">sistema_lineal</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sistema_lineal</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="go">(Eq(C1*(1 - sqrt(17))/2 + C2*(1 + sqrt(17))/2, 0), Eq(C1 + C2, 1))</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+<section id="calculus">
+<h3>Calculus<a class="headerlink" href="#calculus" title="Permalink to this headline">¶</a></h3>
+<p>Here there are functions to solve calculus problems</p>
+<span class="target" id="module-limathpy.Calculus"></span><dl class="py function">
+<dt class="sig sig-object py" id="limathpy.Calculus.graph_fyd">
+<span class="sig-prename descclassname"><span class="pre">limathpy.Calculus.</span></span><span class="sig-name descname"><span class="pre">graph_fyd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expression</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#limathpy.Calculus.graph_fyd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function that graphs an expression given as a string and its derivative in the same plane.</p>
+<dl>
+<dt>Args: </dt><dd><p>expression (str) : Expression of a function.</p>
+</dd>
+<dt>Returns:</dt><dd><p>graph: The function and its derivative in the same plane.</p>
+</dd>
+<dt>Example:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">limathpy</span> <span class="kn">import</span> <span class="n">graph_fyd</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">graph_fyd</span><span class="p">(</span><span class="s2">&quot;x**2&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="limathpy.Calculus.n_derivates">
+<span class="sig-prename descclassname"><span class="pre">limathpy.Calculus.</span></span><span class="sig-name descname"><span class="pre">n_derivates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#limathpy.Calculus.n_derivates" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function that returns a list with the n derivates of an expression, with n given.</p>
+<dl>
+<dt>Args: </dt><dd><p>expr: Any sympy function
+n (int, optional): The number of derivatives required. Defaults to one.</p>
+</dd>
+<dt>Returns:</dt><dd><p>list: the funtion and the indicated derivatives.</p>
+</dd>
+<dt>Example:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">limathpy</span> <span class="kn">import</span> <span class="n">n_derivates</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="n">symbols</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">n_derivates</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="go">[x**4, 4*x**3, 12*x**2, 24*x, 24]</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="linearalgebra">
+<h3>LinearAlgebra<a class="headerlink" href="#linearalgebra" title="Permalink to this headline">¶</a></h3>
+<p>Here there are functions to solve linear algebra problems</p>
+<span class="target" id="module-limathpy.LinearAlgebra"></span><dl class="py function">
+<dt class="sig sig-object py" id="limathpy.LinearAlgebra.inner_product">
+<span class="sig-prename descclassname"><span class="pre">limathpy.LinearAlgebra.</span></span><span class="sig-name descname"><span class="pre">inner_product</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vector1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vector2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#limathpy.LinearAlgebra.inner_product" title="Permalink to this definition">¶</a></dt>
+<dd><p>Documentation</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="limathpy.LinearAlgebra.int_eigenvalues">
+<span class="sig-prename descclassname"><span class="pre">limathpy.LinearAlgebra.</span></span><span class="sig-name descname"><span class="pre">int_eigenvalues</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matriz</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#limathpy.LinearAlgebra.int_eigenvalues" title="Permalink to this definition">¶</a></dt>
+<dd><p>Integer eigenvalues</p>
+<dl>
+<dt>Args:</dt><dd><p>param1 = square sympy Matrix</p>
+</dd>
+<dt>Returns:</dt><dd><p>string:
+‘The matrix has all its eigenvalues positive’ or 
+‘The matrix has not all its eigenvalues positive.’</p>
+</dd>
+<dt>Examples:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">int_eigenvalues</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">]]))</span>
+<span class="go">The Matrix([[1, 2], [1, 3]]) has not all its eigenvalues positive</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="limathpy.LinearAlgebra.int_eigvals_n">
+<span class="sig-prename descclassname"><span class="pre">limathpy.LinearAlgebra.</span></span><span class="sig-name descname"><span class="pre">int_eigvals_n</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#limathpy.LinearAlgebra.int_eigvals_n" title="Permalink to this definition">¶</a></dt>
+<dd><p>Values of n for which [[1,n],[1,1]] has integer eigenvalues.</p>
+<dl>
+<dt>Args:</dt><dd><p>param1 = integer, the element (1,2) of the matrix</p>
+</dd>
+<dt>Returns:</dt><dd><p>list: A list with the values between 0 and n for which [[1,n],[1,1]] has 
+positive eigenvalues.</p>
+</dd>
+<dt>Examples: </dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">int_eigvals_n</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="go">[0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100]</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="limathpy.LinearAlgebra.integers_list">
+<span class="sig-prename descclassname"><span class="pre">limathpy.LinearAlgebra.</span></span><span class="sig-name descname"><span class="pre">integers_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lista</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#limathpy.LinearAlgebra.integers_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Integers in a list.</p>
+<dl>
+<dt>Args:</dt><dd><p>param1 = list</p>
+</dd>
+<dt>Returns:</dt><dd><p>string: ‘True’ if all values in the given list are integers or 
+‘False’ in other case.</p>
+</dd>
+<dt>Examples:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">integers_list</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mf">0.5</span><span class="p">])</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="limathpy.LinearAlgebra.matrix_n">
+<span class="sig-prename descclassname"><span class="pre">limathpy.LinearAlgebra.</span></span><span class="sig-name descname"><span class="pre">matrix_n</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matriz</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#limathpy.LinearAlgebra.matrix_n" title="Permalink to this definition">¶</a></dt>
+<dd><p>Powers of a matrix.</p>
+<dl>
+<dt>Args:</dt><dd><p>parameter1 = matrix of sympy
+parameter2 = n (the power)</p>
+</dd>
+<dt>Returns:</dt><dd><p>list: List of n powers of a given matrix.</p>
+</dd>
+<dt>Examples:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">matrix_n</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]]),</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">[Matrix([</span>
+<span class="go">[1, 2],</span>
+<span class="go">[3, 4]]), Matrix([</span>
+<span class="go">[ 7, 10],</span>
+<span class="go">[15, 22]])]</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="mathematicalmodels">
+<h3>MathematicalModels<a class="headerlink" href="#mathematicalmodels" title="Permalink to this headline">¶</a></h3>
+<p>Here there are functions to solve mathematical models problems</p>
+<span class="target" id="module-limathpy.MathematicalModels"></span><dl class="field-list simple">
+<dt class="field-odd">members</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</section>
+</section>
+</section>
+<section id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="#">limathpy</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Rosa Granados, Verania Hernández, Karen Lechuga, Diego Omaña, Yessica Rocha.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.5.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

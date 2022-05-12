@@ -62,5 +62,5 @@ def graph_fyd(expression):
     ax.spines['bottom'].set_position('center')
     ax.yaxis.set_ticks_position('left')
     ax.spines['left'].set_position('center')
-    plt.show()
+    plt.draw_if_interactive()
 

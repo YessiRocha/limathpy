@@ -56,7 +56,7 @@ def int_eigvals_n(n):
     
     Examples: 
         >>> import sympy as sp
-        >>> int_eigvals_n([1,3,0.5])
+        >>> int_eigvals_n(100)
         [0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
     """
     enes=[]

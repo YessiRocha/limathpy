@@ -63,3 +63,25 @@ def sistema_ed(matriz, cond_inic):
     expr1 = sis_ed[0].subs(dict_sols)
     expr2 = sis_ed[1].subs(dict_sols)
     return expr1, expr2
+
+def phase_portrait(matriz, ci = [2, a]):
+"""Given a 2x2 Matrix and some initial conditions, it returns the phase portrait of the associated system of differential equations.
+    
+    Examples
+    --------
+    >>> from limathpy import phase_portrait
+    >>> phase_portrait([[1.5, 5], [-1, 0]], ci = [2, a])
+    aquí va una imagen del retrato de fase 
+    
+    """
+    t, a = symbols('t a')
+    sol = resuelve_sistema_edo(matriz, ci) 
+    lista_de_soluciones0 = [sol[0].rhs.subs({a:i}) for i in range(-10, 16)]
+    lista_de_soluciones1 = [sol[1].rhs.subs({a:i}) for i in range(-10, 16)]
+    p1 = plot_parametric(sol[0].rhs.subs({a:1}), sol[1].rhs.subs({a:1}), (t, 0, 10), show = False)
+    lista_de_gráficas = [plot_parametric(lista_de_soluciones0[k], lista_de_soluciones1[k], (t, 0, 10), show = False) 
+                     for k in range(26)]
+    for gráfica in lista_de_gráficas:
+        p1.append(gráfica[0])
+
+    return p1.show()

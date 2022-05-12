@@ -75,7 +75,7 @@ def phase_portrait(matriz, ci = [2, 1]):
     
     """
     t, a = symbols('t a')
-    sol = sistema_eo(matriz, ci) 
+    sol = sistema_ed(matriz, ci) 
     lista_de_soluciones0 = [sol[0].rhs.subs({a:i}) for i in range(-10, 16)]
     lista_de_soluciones1 = [sol[1].rhs.subs({a:i}) for i in range(-10, 16)]
     p1 = plot_parametric(sol[0].rhs.subs({a:1}), sol[1].rhs.subs({a:1}), (t, 0, 10), show = False)

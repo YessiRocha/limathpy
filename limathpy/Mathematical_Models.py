@@ -30,11 +30,5 @@ def sistema_ed(matriz, cond_inic):
     dict_sols = solve(sis_lin)
     expr1 = sis_ed[0].subs(dict_sols)
     expr2 = sis_ed[1].subs(dict_sols)
-    return expr1, expr2
     
-sols = sistema_ed(([[0, 1], [-1, 0]]), [1, -2])
-sols
 
-
-x = symbols('x')
-p1 = plot(x*x)

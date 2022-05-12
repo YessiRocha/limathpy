@@ -8,5 +8,5 @@ setup(name='limathpy',
       author_email='yesi.bundo@gmail.com',
       license='MIT',
       packages=['limathpy'],
-      install_requires=['sympy', 'numpy', 'matplotlib'],
+      install_requires=['sympy', 'numpy', 'matplotlib', 'celluloid', 'IPython'],
       zip_safe=False)

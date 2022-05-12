@@ -16,8 +16,7 @@ def matrix_n(matriz, n):
         >>> matrix_n(sp.Matrix([[1,2],[3,4]]),2)
         [Matrix([
         [1, 2],
-        [3, 4]]),
-        Matrix([
+        [3, 4]]), Matrix([
         [ 7, 10],
         [15, 22]])]
     """

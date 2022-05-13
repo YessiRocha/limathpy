@@ -36,7 +36,7 @@ def graph_fyd(expression):
         >>> import matplotlib.pyplot as plt
         >>> graph_fyd("x**2")
         .. image:: graph_fyd.png
-            :align: center"""
+          :align: center"""
     x = sp.symbols('x')
     expr = sp.sympify(expression)
     deriv = sp.diff(expr, x)

@@ -32,13 +32,11 @@ def graph_fyd(expression):
     Args: 
         expression (str) : Expression of a function.
 
-    Returns:
-        graph: The function and its derivative in the same plane.
-
     Example:
-        >>> from limathpy import graph_fyd
         >>> import matplotlib.pyplot as plt
-        >>> graph_fyd("x**2")"""
+        >>> graph_fyd("x**2")
+        .. image:: grafica.png
+            :align: center"""
     x = sp.symbols('x')
     expr = sp.sympify(expression)
     deriv = sp.diff(expr, x)

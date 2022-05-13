@@ -35,7 +35,7 @@ def graph_fyd(expression):
     Example:
         >>> import matplotlib.pyplot as plt
         >>> graph_fyd("x**2")
-        .. image:: grafica.png
+        .. image:: graph_fyd.png
             :align: center"""
     x = sp.symbols('x')
     expr = sp.sympify(expression)
@@ -50,7 +50,11 @@ def graph_fyd(expression):
 
     fig, ax = plt.subplots()
     ax.set_title("Function and derivative")
-    ax.plot(domain, f_eval)
-    ax.plot(domain, f_prime_eval)
+    ax.plot(domain, f_eval, label=expression)
+    ax.plot(domain, f_prime_eval, label="Derivative")
     ax.set_xlabel("$x$")
+    ax.legend(loc='center',
+              bbox_to_anchor=(0.78, -0.13),
+              shadow=True,
+              ncol=2)
     plt.draw_if_interactive()

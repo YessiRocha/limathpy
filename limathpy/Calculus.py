@@ -30,7 +30,7 @@ def graph_fyd(expression):
     """Function that graphs an expression given as a string and its derivative in the same plane.
 
     Args: 
-        expression (str) : Expression of a function.
+        expression (str): Expression of a function.
 
     Example:
         >>> import matplotlib.pyplot as plt
@@ -58,3 +58,25 @@ def graph_fyd(expression):
               shadow=True,
               ncol=2)
     plt.draw_if_interactive()
+
+
+def tangent_line(expression, x_0):
+    """Function that gives the equation of a tangent line to a function about a given point.
+
+    Args:
+        expression (str): Expression of a function.
+        x_0: Value of the x coordinate for the point of tangency of the line.
+
+    Returns:
+        A sympy equation of the tangent line to the function through the given point.
+
+    Example:
+        >>> tangent_line("x**2", 1)
+        Eq(y, 2*x - 1)"""
+    x, y = sp.symbols('x y')
+    expr = sp.sympify(expression)
+    y_0 = expr.subs({x: x_0})
+    deriv = sp.diff(expr, x)
+    slope = deriv.subs({x: x_0})
+    line = sp.Eq(y, slope * (x - x_0) + y_0)
+    return line

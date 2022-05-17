@@ -3,9 +3,8 @@ import sympy as sp
 import numpy as np
 import matplotlib.pyplot as plt
 
-x = sp.symbols('x')
 
-def n_derivates(expr, n=1):
+def n_derivatives(expr, n=1):
     """Function that returns a list with the n derivates of an expression, with n given.
 
     Args: 
@@ -16,15 +15,15 @@ def n_derivates(expr, n=1):
         list: the funtion and the indicated derivatives.
 
     Example:
-        >>> from limathpy import n_derivates
         >>> from sympy import symbols
         >>> x = symbols('x')
-        >>> n_derivates(x**4, 4)
+        >>> n_derivatives(x**4, 4)
         [x**4, 4*x**3, 12*x**2, 24*x, 24]"""
-    derivates = [expr]
+    derivatives = [expr]
+    x = sp.symbols('x')
     for i in range(n):
-        derivates.append(sp.Derivative(derivates[-1], x).doit())
-    return derivates
+        derivatives.append(sp.Derivative(derivatives[-1], x).doit())
+    return derivatives
 
 
 def graph_fyd(expression):
@@ -63,4 +62,3 @@ def graph_fyd(expression):
     ax.yaxis.set_ticks_position('left')
     ax.spines['left'].set_position('center')
     plt.draw_if_interactive()
-

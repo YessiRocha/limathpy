@@ -3,10 +3,9 @@ import sympy as sp
 import numpy as np
 import matplotlib.pyplot as plt
 
-x = sp.symbols('x')
 
-def n_derivates(expr, n=1):
-    """Function that returns a list with the n derivates of an expression, with n given.
+def n_derivatives(expr, n=1):
+    """Function that returns a list with the n derivatives of an expression, with n given.
 
     Args: 
         expr: Any sympy function
@@ -16,30 +15,28 @@ def n_derivates(expr, n=1):
         list: the funtion and the indicated derivatives.
 
     Example:
-        >>> from limathpy import n_derivates
         >>> from sympy import symbols
         >>> x = symbols('x')
-        >>> n_derivates(x**4, 4)
+        >>> n_derivatives(x**4, 4)
         [x**4, 4*x**3, 12*x**2, 24*x, 24]"""
-    derivates = [expr]
+    derivatives = [expr]
+    x = sp.symbols('x')
     for i in range(n):
-        derivates.append(sp.Derivative(derivates[-1], x).doit())
-    return derivates
+        derivatives.append(sp.Derivative(derivatives[-1], x).doit())
+    return derivatives
 
 
 def graph_fyd(expression):
     """Function that graphs an expression given as a string and its derivative in the same plane.
 
     Args: 
-        expression (str) : Expression of a function.
-
-    Returns:
-        graph: The function and its derivative in the same plane.
+        expression (str): Expression of a function.
 
     Example:
-        >>> from limathpy import graph_fyd
         >>> import matplotlib.pyplot as plt
-        >>> graph_fyd("x**2")"""
+        >>> graph_fyd("x**2")
+        .. image:: graph_fyd.png
+          :align: center"""
     x = sp.symbols('x')
     expr = sp.sympify(expression)
     deriv = sp.diff(expr, x)
@@ -53,14 +50,33 @@ def graph_fyd(expression):
 
     fig, ax = plt.subplots()
     ax.set_title("Function and derivative")
-    ax.plot(domain, f_eval)
-    ax.plot(domain, f_prime_eval)
+    ax.plot(domain, f_eval, label=expression)
+    ax.plot(domain, f_prime_eval, label="Derivative")
     ax.set_xlabel("$x$")
-    ax.spines['right'].set_color('none')
-    ax.spines['top'].set_color('none')
-    ax.xaxis.set_ticks_position('bottom')
-    ax.spines['bottom'].set_position('center')
-    ax.yaxis.set_ticks_position('left')
-    ax.spines['left'].set_position('center')
+    ax.legend(loc='center',
+              bbox_to_anchor=(0.78, -0.13),
+              shadow=True,
+              ncol=2)
     plt.draw_if_interactive()
 
+
+def tangent_line(expression, x_0):
+    """Function that gives the equation of a tangent line to a function about a given point.
+
+    Args:
+        expression (str): Expression of a function.
+        x_0: Value of the x coordinate for the point of tangency of the line.
+
+    Returns:
+        A sympy equation of the tangent line to the function through the given point.
+
+    Example:
+        >>> tangent_line("x**2", 1)
+        Eq(y, 2*x - 1)"""
+    x, y = sp.symbols('x y')
+    expr = sp.sympify(expression)
+    y_0 = expr.subs({x: x_0})
+    deriv = sp.diff(expr, x)
+    slope = deriv.subs({x: x_0})
+    line = sp.Eq(y, slope * (x - x_0) + y_0)
+    return line

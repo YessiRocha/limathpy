@@ -30,15 +30,13 @@ def graph_fyd(expression):
     """Function that graphs an expression given as a string and its derivative in the same plane.
 
     Args: 
-        expression (str) : Expression of a function.
-
-    Returns:
-        graph: The function and its derivative in the same plane.
+        expression (str): Expression of a function.
 
     Example:
-        >>> from limathpy import graph_fyd
         >>> import matplotlib.pyplot as plt
-        >>> graph_fyd("x**2")"""
+        >>> graph_fyd("x**2")
+        .. image:: graph_fyd.png
+          :align: center"""
     x = sp.symbols('x')
     expr = sp.sympify(expression)
     deriv = sp.diff(expr, x)
@@ -52,13 +50,11 @@ def graph_fyd(expression):
 
     fig, ax = plt.subplots()
     ax.set_title("Function and derivative")
-    ax.plot(domain, f_eval)
-    ax.plot(domain, f_prime_eval)
+    ax.plot(domain, f_eval, label=expression)
+    ax.plot(domain, f_prime_eval, label='Derivative')
     ax.set_xlabel("$x$")
-    ax.spines['right'].set_color('none')
-    ax.spines['top'].set_color('none')
-    ax.xaxis.set_ticks_position('bottom')
-    ax.spines['bottom'].set_position('center')
-    ax.yaxis.set_ticks_position('left')
-    ax.spines['left'].set_position('center')
+    ax.legend(loc='center',
+              bbox_to_anchor=(0.78, -0.13),
+              shadow=True,
+              ncol=2)
     plt.draw_if_interactive()

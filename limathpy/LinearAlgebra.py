@@ -5,8 +5,8 @@ def matrix_n(matriz, n):
     """Powers of a matrix.
 
     Args:
-        parameter1 = matrix of sympy
-        parameter2 = n (the power)
+        matriz: matrix of sympy
+        n (int): the power.
         
     Returns:
         list: List of n powers of a given matrix.
@@ -28,7 +28,7 @@ def integers_list(lista):
     """Integers in a list.
     
     Args:
-        param1 = list
+        lista (list): any list
     
     Returns:
         string: 'True' if all values in the given list are integers or 
@@ -47,7 +47,7 @@ def int_eigvals_n(n):
     """Values of n for which [[1,n],[1,1]] has integer eigenvalues.
     
     Args:
-        param1 = integer, the element (1,2) of the matrix
+        n (int): the element (1,2) of the matrix.
     
     Returns:
         list: A list with the values between 0 and n for which [[1,n],[1,1]] has 
@@ -68,27 +68,27 @@ def int_eigvals_n(n):
 
 
 def int_eigenvalues(matriz):
-    """Integer eigenvalues
+    """Examine if the eigenvalues are integers
     
     Args:
-        param1 = square sympy Matrix
+        matriz (matrix) = square sympy Matrix.
         
     Returns:
         string:
-        'The matrix has all its eigenvalues positive' or 
-        'The matrix has not all its eigenvalues positive.'
+        'The matrix has all its integer eigenvalues' or 
+        'The matrix has not all its integer eigenvalues.'
         
     Examples:
         >>> import sympy as sp
         >>> int_eigenvalues(sp.Matrix([[1,2],[1,3]]))
-        The Matrix([[1, 2], [1, 3]]) has not all its eigenvalues positive
+        The Matrix([[1, 2], [1, 3]]) has not all its integer eigenvalues
         
     """
     eigenvalues=list(matriz.eigenvals())
     if integers_list(eigenvalues) == True:
-        print(f"The {matriz} has all its eigenvalues positive")
+        print(f"The {matriz} has all its integer eigenvalues")
     else:
-        print(f"The {matriz} has not all its eigenvalues positive")
+        print(f"The {matriz} has not all its integer eigenvalues")
 
         
 def inner_product(vector1,vector2):

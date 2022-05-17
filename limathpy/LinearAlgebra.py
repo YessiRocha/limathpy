@@ -90,11 +90,55 @@ def int_eigenvalues(matriz):
     else:
         print(f"The {matriz} has not all its integer eigenvalues")
 
-        
+
 def inner_product(vector1,vector2):
-    """Documentation"""
-    return list(vector1.T*vector2)[0]
+    """Inner product. 
+
+    Args:
+        vector1 (matrix): Sympy matrix 2x1
+        vector1 (matrix): Sympy matrix 2x1.
+
+    Returns:
+        (float): usual inner product in :math:`\mathbb{R}^n`
+    
+    Example:
+        >>> import sympy as sp
+        >>> v1=sp.Matrix([0,1])
+        >>> v2=sp.Matrix([1,2])
+        >>> inner_product(v1,v2)
+        2.0
+    """
+    return float(list(vector1.T*vector2)[0])
+
 
 def change_basis(base1,base2):
+    """Change of basis matrix, a matrix that translates vector
+    representations from one basis, such as the standard coordinate 
+    system, to another basis.
+    
+    Args:
+        base1 (matriz): Sympy matrix as a representation of a base
+        base2 (matriz): Sympy matrix as a representation of a base.
+
+    Returns:
+        matrix: Change of basis matrix from base1 to base2
+    
+    Example:
+        >>> # If we want the base change matrix from B1={(3,1),(2,-1)} to B2={(2,4),(-5,3)}
+        >>> # we use the matrix representations of each base as in this example 
+        >>> import sympy as sp
+        >>> B1=sp.Matrix([[3,2],[1,-1]])
+        >>> B2=sp.Matrix([[2,-5],[4,3]])
+        >>> B1, B2, change_basis(B1,B2)
+        (Matrix([
+        [3,  2],
+        [1, -1]]),
+        Matrix([
+        [2, -5],
+        [4,  3]]),
+        Matrix([
+        [ 7/13,  1/26],
+        [-5/13, -5/13]])) 
+    """
     eb2=base2.inv()*base1
     return eb2

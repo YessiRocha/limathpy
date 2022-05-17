@@ -81,3 +81,22 @@ def tangent_line(expression, x_0):
     slope = deriv.subs({x: x_0})
     line = sp.Eq(y, slope * (x - x_0) + y_0)
     return line
+
+
+def root_f(expression, number=0):
+    """Function that returns if an expression evaluated to a given number n, is zero.
+
+    Args:
+        expression (str): Expression of a function.
+        number (optional): The real number at which the function is evaluated.
+            Defaults to zero.
+
+    Returns:
+        bool: True if the given number is the root of the function, False otherwise.
+
+    Example:
+        >>> root_f("x**2", 0)
+        True"""
+    x = sp.symbols('x')
+    expr = sp.sympify(expression)
+    return expr.subs({x: number}) == 0

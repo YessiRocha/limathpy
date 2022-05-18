@@ -140,7 +140,7 @@ def solve_system_ode(matrix, init_cond = [[1, 1], [0, 1]]):
     Example:
     >>> from limathpy import solve_system_ode
     >>> solve_system_ode([[1, -1], [0, 1]], [[0, 1], [1, 1]])
-    (-t*exp(t)/exp(1) + exp(t), exp(t)/exp(1))"""
+    (-t*exp(-1)*exp(t) + exp(t), exp(-1)*exp(t)""" 
     t = symbols('t')
     x, y = symbols('x y', cls=Function)
     C1, C2 = symbols('C1 C2')
@@ -163,14 +163,14 @@ def phase_portrait(matrix, lim_init_cond = 2):
         lim_init_cond (int): a number that will be the limit for the initial confitions.                        
     Example:
     >>> from limathpy import phase_portrait
-    >>> phase_portrait([[0,1], [-1, 0]], 4)
+    >>> phase_portrait([[0, 1], [-1, 0]], 4)
     .. image:: phase_portrait.png
       :align: center"""
     system = system_ode(matrix)
     p = plot_parametric((0, 0), (t, 0, 0), show = False, title = 'Phase portrait')
     for i in range(0, lim_init_cond):
         for j in range(0, lim_init_cond):
-            const = lin_system(matrix, [i, j])
+            const = lin_system(matrix, [[j, i], [i, j]])
             expr1 = system[0].subs({C1: const[1].rhs, C2: const[0].rhs})#los pone al revés al c1 y c2 el sis de arriba 
             expr2 = system[1].subs(({C1: const[1].rhs, C2: const[0].rhs}))
             p1 = plot_parametric((expr1, expr2), (t, 0, 10), show = False)

@@ -74,7 +74,7 @@ def solve_2nd_edo(vector, init_cond = [[1, 2], [0, 1]]): #y(1)=0, y(0)=1 vector=
         Eq: the general solution of the equation, C1 and C2 are constants which depend on some initial conditions.
     Example: 
         >>> from limathpy import solve_2nd_edo
-        >>> solve_2nd_edo([t**2, 2*t, 0, 1], cond_inic=[[1, 0], [2, 0]])
+        >>> solve_2nd_edo([t**2, 2*t, 0, 1], [[1, 0], [2, 0]])
         Eq(y(t), log(t) - 2*log(2) + 2*log(2)/t)"""
     equation = second_ode_const(vector).rhs
     evalu1 = equation.subs({t: init_cond[0][0]})

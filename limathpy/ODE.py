@@ -140,7 +140,7 @@ def solve_system_ode(matrix, init_cond = [[1, 1], [0, 1]]):
     Example:
     >>> from limathpy import solve_system_ode
     >>> solve_system_ode([[1, -1], [0, 1]], [[0, 1], [1, 1]])
-    (-t*exp(-1)*exp(t) + exp(t), exp(-1)*exp(t)""" 
+    (-t*exp(-1)*exp(t) + exp(t), exp(-1)*exp(t))""" 
     t = symbols('t')
     x, y = symbols('x y', cls=Function)
     C1, C2 = symbols('C1 C2')

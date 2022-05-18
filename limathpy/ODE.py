@@ -1,22 +1,51 @@
-from sympy import symbols, Function, Eq, Derivative, dsolve, solve, plot_parametric
+from sympy import symbols, Function, Eq, Derivative, dsolve, solve, init_printing, exp, sin, cos, tan, plot_parametric
+t = symbols('t')
+y = Function('y')
+x = Function('x')
+C1 = symbols('C1')
+C2 = symbols('C2')
 
-#Resolución de ecuaciones diferenciales ordinarias
+#Resolución de ecuaciones diferenciales ordinarias.
+
+def first_ode(vector): #vector=(función que acompaña a la y'(t), función que acompaña a la y(t), función que depende de t)
+    """Dado un vector, regresa solución general de una ecuación diferencial lineal ordinaria de primer orden."""
+    eq = Eq(vector[0]*Derivative(y(t), t) + vector[1]*y(t), vector[2])
+    sol = dsolve(eq, y(t))
+    return sol
 
 
+def solve_first_ode(vector, cond_inic=[1,0]): #cond_inic es y(t=1)=0 ; vector=(función que acompaña a la y'(t), función que acompaña a la y(t), función que depende de t)
+    equation = first_ode(vector).rhs
+    evalu = equation.subs({t: cond_inic[0]})
+    lin = Eq(evalu, 0)
+    solu = solve(lin, C1)
+    final = equation.subs({C1: solu[0]})
+    return Eq(y(t), final)
+
+#Para resolver EDO de segundo orden de la forma y'' + p(t)y' + q(t)y + g(t)=0.
+
+def second_ode_const(vector): #vector=(función que acompaña a la y''(t),función que acompaña a la y'(t), función que acompaña a la y(t), función que depende de t)
+    """Dado un vector, resuelve una ecuación diferencial ordinaria de segundo orden con constantes C1 y C2."""
+    eq = Eq(vector[0]*Derivative(y(t), t, 2) + vector[1]*Derivative(y(t), t) + vector[2]*y(t), vector[3])
+    sol = dsolve(eq, y(t))
+    return sol
 
 
-#Resolución de sistemasde ecuaciones diferenciales ordinarias
+def solve_2nd_edo(vector, cond_inic=[[1, 0], [0, 1]]): #y(1)=0, y(0)=1 vector=(y'', y', y, g(t)
+    """Dado un vector y condiciones iniciales resuelve una ecuación diferencial ordinaria de segundo orden con constantes."""
+    equation = second_ode_const(vector).rhs
+    evalu1 = equation.subs({t: cond_inic[0][0]})
+    evalu2 = equation.subs({t: cond_inic[1][0]})
+    eq1 = Eq(evalu1, cond_inic[0][1])
+    eq2 = Eq(evalu2, cond_inic[1][1])
+    const = solve((eq1, eq2))
+    final = equation.subs(const)
+    return Eq(y(t), final)
+
+#Para resolver sistemas de ecuaciones diferenciales ordinarias.
 
 def sistema(matriz):
-    """Given a 2x2 Matrix it returns an ordinary differential equations system.
-
-    Examples
-    --------
-    >>> from limathpy import sistema
-    >>> sistema([[1, -1], [1, 0]])
-    ((C1/2 - sqrt(3)*C2/2)*exp(t/2)*cos(sqrt(3)*t/2) - (sqrt(3)*C1/2 + C2/2)*exp(t/2)*sin(sqrt(3)*t/2), C1*exp(t/2)*cos(sqrt(3)*t/2) - C2*exp(t/2)*sin(sqrt(3)*t/2))
-
-    """
+    """Dada un lista de listas, regresa un sistema de ecuaciones diferenciales."""
     t = symbols('t')
     x, y = symbols('x y', cls=Function)
     eq1 = Eq(Derivative(x(t), t), matriz[0][0]*x(t) + matriz[0][1]*y(t))
@@ -25,35 +54,18 @@ def sistema(matriz):
     return sols[0].rhs, sols[1].rhs
 
 
-def sistema_lineal(matriz, cond_inic):
-    """Given an ordinary differential equations system, it returns the linear system when :math:`t=0`.
-    
-    Examples
-    --------
-    >>> from limathpy import sistema_lineal
-    >>> sistema_lineal([[1,4], [1, 0]], [0,1])
-    (Eq(C1*(1 - sqrt(17))/2 + C2*(1 + sqrt(17))/2, 0), Eq(C1 + C2, 1))
-    
-    """
+def sistema_lineal(matriz, cond_inic=[[1, 2], [3, 4]]): #x(1)=3, y(2)=4 vector=(y'', y', y, g(t)
+    """Dado un sistema de ecuaciones diferenciales, regresa el sistema lineal en t=0."""
     t = symbols('t')
     x, y = symbols('x y', cls=Function)
     sols = sistema(matriz)
-
-    lineal1 = Eq(sols[0].subs({t:0}), cond_inic[0])
-    lineal2 = Eq(sols[1].subs({t:0}), cond_inic[1])
+    lineal1 = Eq(sols[0].subs({t:cond_inic[0][0]}), cond_inic[1][0])
+    lineal2 = Eq(sols[1].subs({t:cond_inic[0][1]}), cond_inic[1][1])
     return lineal1, lineal2
 
 
 def sistema_ed(matriz, cond_inic):
-    """Given a 2x2 Matrix and some initial conditions, it returns the solution of the associated system of differential equations.
-    
-    Examples
-    --------
-    >>> from limathpy import sistema_ed
-    >>> sistema_ed([[1,-2], [1, 0]], [1,1])
-    (-3*sqrt(7)*exp(t/2)*sin(sqrt(7)*t/2)/7 + exp(t/2)*cos(sqrt(7)*t/2), sqrt(7)*exp(t/2)*sin(sqrt(7)*t/2)/7 + exp(t/2)*cos(sqrt(7)*t/2))
-    
-    """
+    """Dada una matriz y condiciones iniciales, regresa la solución del sistema de ed."""
     t = symbols('t')
     x, y = symbols('x y', cls=Function)
     C1, C2 = symbols('C1 C2')
@@ -64,24 +76,16 @@ def sistema_ed(matriz, cond_inic):
     expr2 = sis_ed[1].subs(dict_sols)
     return expr1, expr2
 
-#def phase_portrait(matriz, ci = [2, 1]):
- #   """Given a 2x2 Matrix and some initial conditions, it returns the phase portrait of the associated system of differential equations.
-    
-  #  Examples
-   # --------
-    #>>> from limathpy import phase_portrait
-    #>>> phase_portrait([[1.5, 5], [-1, 0]], ci = [2, 1])
-    #aquí va una imagen del retrato de fase 
-    
-    #"""
-    #t, a = symbols('t a')
-    #sol = sistema_ed(matriz, ci) 
-    #lista_de_soluciones0 = [sol[0].rhs.subs({a:i}) for i in range(-10, 16)]
-    #lista_de_soluciones1 = [sol[1].rhs.subs({a:i}) for i in range(-10, 16)]
-    #p1 = plot_parametric(sol[0].rhs.subs({a:1}), sol[1].rhs.subs({a:1}), (t, 0, 10), show = False)
-    #lista_de_gráficas = [plot_parametric(lista_de_soluciones0[k], lista_de_soluciones1[k], (t, 0, 10), show = False) 
-     #                for k in range(26)]
-    #for gráfica in lista_de_gráficas:
-     #   p1.append(gráfica[0])
+#Retrato de fase.
 
-    #return p1.show()
+def phase_portrait(matriz, lim_initialconditions=2):
+    system = sistema(matriz)
+    p = plot_parametric((0,0), (t, 0, 0), show=False, title = 'Phase portrait')
+    for i in range(0, lim_initialconditions):
+        for j in range(0, lim_initialconditions):
+            const = sistema_lineal(matriz, [i, j])
+            expr1 = system[0].subs({C1: const[1].rhs, C2: const[0].rhs})#los pone al revés al c1 y c2 el sis de arriba 
+            expr2 = system[1].subs(({C1: const[1].rhs, C2: const[0].rhs}))
+            p1 = plot_parametric((expr1, expr2), (t, 0, 10), show = False)
+            p.append(p1[0])
+    return p.show()

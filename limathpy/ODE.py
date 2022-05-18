@@ -139,8 +139,8 @@ def solve_system_ode(matrix, init_cond = [[1, 1], [0, 1]]):
         tuple: a tuple of the form (x(t), y(t)), with x(t) and y(t) the general solutions of the system. C1 and C2 are constants that depend on some initial conditions.
     Example:
     >>> from limathpy import solve_system_ode
-    >>> solve_system_ode([[1, 1], [0, -3]], [[0, 0], [0, 1]])
-    (exp(t)/4 - exp(-3*t)/4, exp(-3*t))    
+    >>> solve_system_ode([[1, 1], [0, -3]], [[1, 1], [1, 1]])
+    (5*exp(t)/(4*exp(1)) - exp(3)*exp(-3*t)/4, exp(3)*exp(-3*t))    
     """
     t = symbols('t')
     x, y = symbols('x y', cls=Function)
@@ -162,11 +162,7 @@ def phase_portrait(matrix, lim_init_cond = 2):
         matrix (list of two lists): a list of two lists of the form [[t1, t2], [t3, t3]], 
                                     where you obtain the following system x'(t) = t1*x(t) + t2*y(t); y'(t) = t3*x(t) + t4*y(t). 
         lim_init_cond (int): a number that will be the limit for the initial confitions.                        
-    Example:
-    >>> from limathpy import phase_portrait
-    >>> phase_portrait([[0,1], [-1, 0]], 4)
-    .. image:: phase_portrait.png
-      :align: center   
+     
     """
     system = system_ode(matrix)
     p = plot_parametric((0, 0), (t, 0, 0), show = False, title = 'Phase portrait')

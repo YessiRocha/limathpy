@@ -1,6 +1,7 @@
 import sympy as sp
 import numpy as np
 import matplotlib.pyplot as plt 
+from scipy import linalg
 
 
 def matrix_n(matriz, n):
@@ -93,7 +94,7 @@ def int_eigenvalues(matriz):
         print(f"The {matriz} has not all its integer eigenvalues")
 
 
-def inner_product(vector1,vector2):
+def inner_product(vector1, vector2):
     """Inner product. 
 
     Args:
@@ -113,7 +114,7 @@ def inner_product(vector1,vector2):
     return float(list(vector1.T*vector2)[0])
 
 
-def change_basis(base1,base2):
+def change_basis(base1, base2):
     """Change of basis matrix, a matrix that translates vector
     representations from one basis, such as the standard coordinate 
     system, to another basis.

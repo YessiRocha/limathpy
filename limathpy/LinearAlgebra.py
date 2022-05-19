@@ -130,18 +130,16 @@ def change_basis(base1, base2):
         >>> # If we want the base change matrix from B1={(3,1),(2,-1)} to B2={(2,4),(-5,3)}
         >>> # we use the matrix representations of each base as in this example 
         >>> import sympy as sp
-        >>> B1=sp.Matrix([[3,2],[1,-1]])
-        >>> B2=sp.Matrix([[2,-5],[4,3]])
-        >>> B1, B2, change_basis(B1,B2)
+        >>> B1=sp.Matrix([[3, 2], [1, -1]])
+        >>> B2=sp.Matrix([[2, -5], [4, 3]])
+        >>> B1, B2, change_basis(B1, B2)
         (Matrix([
         [3,  2],
-        [1, -1]]),
-        Matrix([
+        [1, -1]]), Matrix([
         [2, -5],
-        [4,  3]]),
-        Matrix([
+        [4,  3]]), Matrix([
         [ 7/13,  1/26],
-        [-5/13, -5/13]])) 
+        [-5/13, -5/13]]))
     """
     eb2=base2.inv()*base1
     return eb2
@@ -149,6 +147,11 @@ def change_basis(base1, base2):
 
 def graph_solution(expr1, expr2):
     """ Graphical Solution to a 2 x 2 System of Equations.
+
+    This function produces images such as:
+    
+    .. image:: graph_solution.png
+      :align: center
     
     Args: 
         expr1 (expression): equation expressed in terms of :math:`x`
@@ -158,12 +161,10 @@ def graph_solution(expr1, expr2):
         >>> import sympy as sp
         >>> import numpy as np
         >>> import matplotlib.pyplot as plt 
+        >>> x, y = sp.symbols('x y')
         >>> expr1 = x - 2
         >>> expr2 = 2*x  +3
         >>> graph_solution(expr1,expr2)
-        .. image:: graph_solution.png
-          :align: center
-
     """
     x, y = sp.symbols('x y')
     a=sp.solve([y-expr1,y-expr2], [x, y])

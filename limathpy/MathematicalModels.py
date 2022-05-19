@@ -1,5 +1,8 @@
 #File to Numerical analysis 
 from sympy import plot, symbols, Function, Eq, Derivative, dsolve, solve
+from matplotlib import pyplot as plt
+from celluloid import Camera
+from IPython.display import HTML
 import numpy as np
 
 def sistema(matriz):
@@ -33,12 +36,6 @@ def sistema_ed(matriz, cond_inic):
     expr2 = sis_ed[1].subs(dict_sols)
     return expr1, expr2
     
-
-
-from matplotlib import pyplot as plt
-from celluloid import Camera
-from IPython.display import HTML
-
 def diagrama(par, x0, it):
     def f(x):
         return par*x*(1-x)
@@ -59,3 +56,15 @@ def diagrama(par, x0, it):
         camera.snap()
     return camera.animate()    
 
+def f(x):
+    return 3.8*x*(1-x)
+vals=[0.3]
+iteraciones=50
+for i in range(iteraciones):
+    new = vals[-1]
+    vals.append(f(new))
+vals
+
+fig, ax = plt.subplots(figsize=(10, 5))
+x = range(len(vals))
+ax.bar(x, vals)

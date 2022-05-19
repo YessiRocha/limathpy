@@ -1,4 +1,6 @@
 import sympy as sp
+import numpy as np
+import matplotlib.pyplot as plt 
 
 
 def matrix_n(matriz, n):
@@ -142,3 +144,52 @@ def change_basis(base1,base2):
     """
     eb2=base2.inv()*base1
     return eb2
+
+
+def graph_solution(expr1, expr2):
+    """ Graphical Solution to a 2 x 2 System of Equations.
+    
+    Args: 
+        expr1 (expression): equation expressed in terms of :math:`x`
+        expr2 (expression): equation expressed in terms of :math:`x`.
+    
+    Example:
+        >>> import sympy as sp
+        >>> import numpy as np
+        >>> import matplotlib.pyplot as plt 
+        >>> expr1 = x - 2
+        >>> expr2 = 2*x  +3
+        >>> graph_solution(expr1,expr2)
+        .. image:: graph_solution.png
+          :align: center
+
+    """
+    x, y = sp.symbols('x y')
+    a=sp.solve([y-expr1,y-expr2], [x, y])
+    rect1 = sp.sympify(expr1)
+    rect2 = sp.sympify(expr2, x)
+    f1, f2 = sp.lambdify(x, rect1, 'numpy'), sp.lambdify(x, rect2, 'numpy')
+    if a == [0]:
+        domain = np.linspace(-5, 5)
+        image = np.linspace(-5, 5)
+    else:
+        domain = np.linspace(-5+float(a[x]), 5+float(a[x]))
+        image = np.linspace(-5+float(a[y]), 5+float(a[y]))
+    inter = [a[x],a[y]]
+    F_eval = f1(domain)
+    G_eval = f2(domain)
+    if type(G_eval) == float or type(G_eval) == int:
+        for j in range(len(domain) - 1):
+            G_eval = np.append(G_eval, [f2(domain)])
+    fig, ax = plt.subplots()
+    ax.set_title("Graphic solution")
+    ax.plot(domain, image)
+    ax.plot(domain, F_eval, color='blue', label=expr1)
+    ax.plot(domain, G_eval, color='green', label=expr2)
+    ax.plot(a[x], a[y], '.', color='black', linewidth = 0.25)
+    plt.axhline(a[y], color='gray', linewidth = 0.5, linestyle='dashed')
+    plt.axvline(a[x], color='gray', linewidth = 0.5, linestyle='dashed')
+    plt.annotate((a[x],a[y]), (a[x],a[y]), fontsize=12, color='black')
+    ax.set_xlabel("$x$")
+    ax.set_ylabel("$y$")
+    plt.draw_if_interactive()

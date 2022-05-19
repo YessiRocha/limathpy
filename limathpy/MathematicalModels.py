@@ -6,7 +6,7 @@ from IPython.display import HTML
 import numpy as np
 
 def sistema(matriz):
-    """Dada un lista de listas, regresa un sistema de ecuaciones diferenciales."""
+    """Given a list of lists, a system of differential equations returns."""
     t = symbols('t')
     x, y = symbols('x y', cls=Function)
     eq1 = Eq(Derivative(x(t), t), matriz[0][0]*x(t) + matriz[0][1]*y(t))
@@ -15,7 +15,7 @@ def sistema(matriz):
     return sols[0].rhs, sols[1].rhs
 
 def sistema_lineal(matriz, cond_inic):
-    """Dado un sistema de ecuaciones diferenciales, regresa el sistema lineal en t=0."""
+    """Given a system of differential equations, the linear system returns to t=0."""
     t = symbols('t')
     x, y = symbols('x y', cls=Function)
     sols = sistema(matriz)
@@ -25,7 +25,7 @@ def sistema_lineal(matriz, cond_inic):
     return lineal1, lineal2
 
 def sistema_ed(matriz, cond_inic):
-    """Dada una matriz y condiciones iniciales, regresa la solución del sistema de ed."""
+    """Given a matrix and initial conditions, the solution of the differential equation system returns."""
     t = symbols('t')
     x, y = symbols('x y', cls=Function)
     C1, C2 = symbols('C1 C2')

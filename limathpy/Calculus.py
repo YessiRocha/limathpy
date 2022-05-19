@@ -27,16 +27,19 @@ def n_derivatives(expr, n=1):
 
 
 def graph_fyd(expression):
-    """Function that graphs an expression given as a string and its derivative in the same plane.
+    """Function that graphs an expression given as a string and its derivative on the same plane.
+
+    This function produces images such as:
+
+    .. image:: graph_fyd.png
+      :align: center
 
     Args: 
         expression (str): Expression of a function.
 
     Example:
         >>> import matplotlib.pyplot as plt
-        >>> graph_fyd("x**2")
-        .. image:: graph_fyd.png
-          :align: center"""
+        >>> graph_fyd("x**2")"""
     x = sp.symbols('x')
     expr = sp.sympify(expression)
     deriv = sp.diff(expr, x)
@@ -89,7 +92,7 @@ def root_f(expression, number=0):
     Args:
         expression (str): Expression of a function.
         number (optional): The real number at which the function is evaluated.
-            Defaults to zero.
+        Defaults to zero.
 
     Returns:
         bool: True if the given number is the root of the function, False otherwise.

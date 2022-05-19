@@ -5,7 +5,7 @@ from celluloid import Camera
 from IPython.display import HTML
 import numpy as np
 
-def sistema(matriz):
+def sistem(matriz):
     """Given a list of lists, a system of differential equations returns."""
     t = symbols('t')
     x, y = symbols('x y', cls=Function)
@@ -14,11 +14,11 @@ def sistema(matriz):
     sols = dsolve((eq1, eq2))
     return sols[0].rhs, sols[1].rhs
 
-def sistema_lineal(matriz, cond_inic):
+def linear_system(matriz, cond_inic):
     """Given a system of differential equations, the linear system returns to t=0."""
     t = symbols('t')
     x, y = symbols('x y', cls=Function)
-    sols = sistema(matriz)
+    sols = sistem(matriz)
 
     lineal1 = Eq(sols[0].subs({t:0}), cond_inic[0])
     lineal2 = Eq(sols[1].subs({t:0}), cond_inic[1])
@@ -29,14 +29,14 @@ def sistema_ed(matriz, cond_inic):
     t = symbols('t')
     x, y = symbols('x y', cls=Function)
     C1, C2 = symbols('C1 C2')
-    sis_ed = sistema(matriz)
-    sis_lin = sistema_lineal(matriz, cond_inic)
+    sis_ed = sistem(matriz)
+    sis_lin = linear_system(matriz, cond_inic)
     dict_sols = solve(sis_lin)
     expr1 = sis_ed[0].subs(dict_sols)
     expr2 = sis_ed[1].subs(dict_sols)
     return expr1, expr2
     
-def diagrama(par, x0, it):
+def diagram(par, x0, it):
     def f(x):
         return par*x*(1-x)
     fig, ax = plt.subplots()
@@ -59,8 +59,8 @@ def diagrama(par, x0, it):
 def f(x):
     return 3.8*x*(1-x)
 vals=[0.3]
-iteraciones=50
-for i in range(iteraciones):
+iterations=50
+for i in range(iterations):
     new = vals[-1]
     vals.append(f(new))
 vals

@@ -37,10 +37,10 @@ def sistema_ed(matriz, cond_inic):
     return expr1, expr2
     
 def diagram(par, x0, it):
-    Args:
+    """Args:
         par: is a simple structured text parser project
         x0: initial condition
-        it:
+        it:"""
     def f(x):
         return par*x*(1-x)
     fig, ax = plt.subplots()

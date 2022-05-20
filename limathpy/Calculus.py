@@ -5,11 +5,13 @@ import matplotlib.pyplot as plt
 
 
 def n_derivatives(expr, n=1):
-    """Function that returns a list with the n derivates of an expression, with n given.
+    """Function that returns a list with the n derivates of an expression,
+    with n given.
 
     Args: 
         expr: Any sympy function
-        n (int, optional): The number of derivatives required. Defaults to one.
+        n (int, optional): The number of derivatives required.
+          Defaults to one.
 
     Returns:
         list: the funtion and the indicated derivatives.
@@ -27,7 +29,8 @@ def n_derivatives(expr, n=1):
 
 
 def graph_fyd(expression):
-    """Function that graphs an expression given as a string and its derivative on the same plane.
+    """Function that graphs an expression given as a string and its derivative
+    on the same plane.
 
     Args: 
         expression (str): Expression of a function.
@@ -62,14 +65,16 @@ def graph_fyd(expression):
 
 
 def tangent_line(expression, x_0):
-    """Function that gives the equation of a tangent line to a function about a given point.
+    """Function that gives the equation of a tangent line to a function about
+    a given point.
 
     Args:
         expression (str): Expression of a function.
         x_0: Value of the x coordinate for the point of tangency of the line.
 
     Returns:
-        A sympy equation of the tangent line to the function through the given point.
+        A sympy equation of the tangent line to the function through
+        the given point.
 
     Example:
         >>> from sympy import diff, symbols, Eq, sympify
@@ -85,15 +90,17 @@ def tangent_line(expression, x_0):
 
 
 def root_f(expression, number=0):
-    """Function that returns if an expression evaluated to a given number n, is zero.
+    """Function that returns if an expression evaluated to a given number n,
+    is zero.
 
     Args:
         expression (str): Expression of a function.
         number (optional): The real number at which the function is evaluated.
-        Defaults to zero.
+          Defaults to zero.
 
     Returns:
-        bool: True if the given number is the root of the function, False otherwise.
+        bool: True if the given number is the root of the function,
+        False otherwise.
 
     Example:
         >>> root_f("x**2", 0)

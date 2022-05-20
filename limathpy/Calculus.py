@@ -108,3 +108,29 @@ def root_f(expression, number=0):
     x = sp.symbols('x')
     expr = sp.sympify(expression)
     return expr.subs({x: number}) == 0
+
+
+def revolution_area(expression, lower_bound, upper_bound):
+    """Function that calculates the area, over an interval, of a surface of
+    revolution whose axis of rotation is the x or y-axis.
+
+    Args:
+        expression: A sympy function that generate the surface of revolution.
+        lower_bound: The lower bound of the interval over which the surface
+          of revolution is defined.
+        upper_bound: The upper bound of the interval over which the surface
+          of revolution is defined.
+
+    Returns:
+        A numerical sympy expression of the area of the surface of revolution
+        on the given interval.
+
+    Example:
+    >>> import sympy as sp
+    >>> x = sp.symbols('x')
+    >>> revolution_area(x**2, 0, 2)
+    """
+    x = sp.symbols('x')
+    expr = expression * sp.sqrt(1 + (expression.diff(x)) ** 2)
+    surface_area = 2*sp.pi*sp.integrate(expr, (x, lower_bound, upper_bound))
+    return sp.simplify(surface_area)

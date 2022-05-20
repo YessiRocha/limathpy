@@ -29,17 +29,15 @@ def n_derivatives(expr, n=1):
 def graph_fyd(expression):
     """Function that graphs an expression given as a string and its derivative on the same plane.
 
-    This function produces images such as:
-
-    .. image:: graph_fyd.png
-      :align: center
-
     Args: 
         expression (str): Expression of a function.
 
     Example:
         >>> import matplotlib.pyplot as plt
-        >>> graph_fyd("x**2")"""
+        >>> graph_fyd("x**2")
+
+    .. image:: graph_fyd.png
+      :align: center"""
     x = sp.symbols('x')
     expr = sp.sympify(expression)
     deriv = sp.diff(expr, x)

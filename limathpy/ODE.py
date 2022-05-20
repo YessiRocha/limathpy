@@ -5,18 +5,21 @@ x = Function('x')
 C1 = symbols('C1')
 C2 = symbols('C2')
 
-#Solving ordinary differential equations.
+# Solving ordinary differential equations.
 
 
-#Solving first order ordinary differential equations of the form p(t)y'(t) + q(t)y(t) = g(t).
+# Solving first order ordinary differential equations of the form p(t)y'(t) + q(t)y(t) = g(t).
 
 def first_ode(vector): 
-    """A function that returns the general solution of a first order differential equation of the form p(t)y'(t) + q(t)y(t) = g(t);
-       p, q and g are functions which depend on t.
+    """A function that returns the general solution of a first order differential equation of the form
+    p(t)y'(t) + q(t)y(t) = g(t); p, q and g are functions which depend on t.
+
     Args: 
         vector (list): a list of the form [p(t), q(t), g(t)].
+
     Returns:
         Eq: the general solution of the equation, C1 is a constant which depends on some initial condition.
+
     Example: 
         >>> from limathpy import first_ode
         >>> first_ode([t, 2, 2 + t])
@@ -26,14 +29,17 @@ def first_ode(vector):
     return sol
 
 
-def solve_first_ode(vector, init_cond = [1, 0]): 
-    """A function that returns the solution of a first order differential equation of the form p(t)y'(t) + q(t)y(t) = g(t) 
-       for some given initial conditions; p, q and g are functions which depend on t.
+def solve_first_ode(vector, init_cond=[1, 0]):
+    """A function that returns the solution of a first order differential equation of the form
+    p(t)y'(t) + q(t)y(t) = g(t) for some given initial conditions; p, q and g are functions which depend on t.
+
     Args: 
         vector (list): a list of the form [p(t), q(t), g(t)].
         init_cond (list): a list of the form [t1, y(t1)], for some t1. Defaults to y(t1 = 1) = 0.
+
     Returns:
         Eq: the solution of the equation depending on the initial condition.
+
     Example: 
         >>> from limathpy import solve_first_ode
         >>> solve_first_ode([t, 2, 2 + t], [1, 1])
@@ -46,15 +52,18 @@ def solve_first_ode(vector, init_cond = [1, 0]):
     return Eq(y(t), final)
 
 
-#Solving first order ordinary differential equations of the form r(t)y''(t) + p(t)y'(t) + q(t)y(t) = g(t).
+# Solving first order ordinary differential equations of the form r(t)y''(t) + p(t)y'(t) + q(t)y(t) = g(t).
 
 def second_ode_const(vector): 
-    """A function that returns the solution of a second order differential equation of the form r(t)y''(t) + p(t)y'(t) + q(t)y(t) = g(t); 
-       r, p, q and g are functions which depend on t.
+    """A function that returns the solution of a second order differential equation of the form
+    r(t)y''(t) + p(t)y'(t) + q(t)y(t) = g(t); r, p, q and g are functions which depend on t.
+
     Args: 
         vector (list): a list of the form [r(t), p(t), q(t), g(t)].
+
     Returns:
         Eq: the general solution of the equation, C1 and C2 are constants which depend on some initial conditions.
+
     Example: 
         >>> from limathpy import second_ode_const
         >>> second_ode_const([t**2, 2*t, 0, 1])
@@ -64,14 +73,19 @@ def second_ode_const(vector):
     return sol
 
 
-def solve_2nd_ode(vector, init_cond = [[1, 2], [0, 1]]): #y(1)=0, y(0)=1 vector=(y'', y', y, g(t)
-    """A function that returns the solution of a second order differential equation of the form r(t)y''(t) + p(t)y'(t) + q(t)y(t) = g(t) 
-       for some given initial conditions; r, p, q and g are functions which depend on t.
+def solve_2nd_ode(vector, init_cond=[[1, 2], [0, 1]]): #y(1)=0, y(0)=1 vector=(y'', y', y, g(t)
+    """A function that returns the solution of a second order differential equation of the form
+    r(t)y''(t) + p(t)y'(t) + q(t)y(t) = g(t) for some given initial conditions; r, p, q and g are functions
+    which depend on t.
+
     Args: 
         vector (list): a list of the form [r(t), p(t), q(t), g(t)].
-        init_cond (list of two lists): a matrix of the form [[t1, t2], [y(t1), y(t2)]], for some t1, t2. Defaults to y(t1 = 1) = 0 and y(t2 = 2) = 1.
+        init_cond (list of two lists): a matrix of the form [[t1, t2], [y(t1), y(t2)]], for some t1, t2. Defaults to
+        y(t1 = 1) = 0 and y(t2 = 2) = 1.
+
     Returns:
         Eq: the general solution of the equation, C1 and C2 are constants which depend on some initial conditions.
+
     Example: 
         >>> from limathpy import solve_2nd_ode
         >>> solve_2nd_ode([t**2, 2*t, 0, 1], [[1, 0], [2, 0]])
@@ -86,36 +100,46 @@ def solve_2nd_ode(vector, init_cond = [[1, 2], [0, 1]]): #y(1)=0, y(0)=1 vector=
     return Eq(y(t), final)
 
 
-#Solving ordinary differential equations systems.
+# Solving ordinary differential equations systems.
 
 def system_ode(matrix):
-    """A function that, given a 2x2 matrix (list of two lists), returns the general sotutions of the associated ordinary differential equations system.
+    """A function that, given a 2x2 matrix (list of two lists), returns the general sotutions of the associated ordinary
+    differential equations system.
+
     Args: 
         matrix (list of two lists): a list of two lists of the form [[t1, t2], [t3, t3]], 
-                                    where you obtain the following system x'(t) = t1*x(t) + t2*y(t); y'(t) = t3*x(t) + t4*y(t). 
+                                    where you obtain the following system x'(t) = t1*x(t) + t2*y(t); y'(t) = t3*x(t) + t4*y(t).
+
     Returns:
-        tuple: a tuple of the form (x(t), y(t)), with x(t) and y(t) the general solutions of the system. C1 and C2 are constants that depend on some initial conditions.
+        tuple: a tuple of the form (x(t), y(t)), with x(t) and y(t) the general solutions of the system.
+        C1 and C2 are constants that depend on some initial conditions.
+
     Example:
     >>> from limathpy import system_ode
     >>> system_ode([[1, 0], [0, -3]])
     (C1*exp(t), C2*exp(-3*t))
     """
     t = symbols('t')
-    x, y = symbols('x y', cls = Function)
+    x, y = symbols('x y', cls=Function)
     eq1 = Eq(Derivative(x(t), t), matrix[0][0]*x(t) + matrix[0][1]*y(t))
     eq2 = Eq(Derivative(y(t), t), matrix[1][0]*x(t) + matrix[1][1]*y(t))
     sols = dsolve((eq1, eq2))
     return sols[0].rhs, sols[1].rhs
 
 
-def lin_system(matrix, init_cond = [[1, 1], [0, 1]]): 
-    """A function that, given an ordinary differential equations system, returns the linear system for some given initial conditions. 
+def lin_system(matrix, init_cond=[[1, 1], [0, 1]]):
+    """A function that, given an ordinary differential equations system, returns the linear system for some given
+    initial conditions.
+
     Args: 
         matrix (list of two lists): a list of two lists of the form [[t1, t2], [t3, t3]], 
                                     where you obtain the following system x'(t) = t1*x(t) + t2*y(t); y'(t) = t3*x(t) + t4*y(t). 
         init_cond (list of two lists): a matrix of the form [[t1, t2], [x(t1), y(t2)]], for some t1, t2. Defaults to x(t1 = 1) = 0 and x(t2 = 1) = 1.
+
     Returns:
-        tuple: a tuple of the form (Eq_1, Eq_2), with Eq_1 and Eq_2 equations (Eq) with C1 and C2 as variables that are to be found using the initial conditions. 
+        tuple: a tuple of the form (Eq_1, Eq_2), with Eq_1 and Eq_2 equations (Eq) with C1 and C2 as variables that are
+        to be found using the initial conditions.
+
     Example:
     >>> from limathpy import lin_system
     >>> lin_system([[1, 1], [0, -3]], [[0, 0], [0, 1]])
@@ -128,15 +152,18 @@ def lin_system(matrix, init_cond = [[1, 1], [0, 1]]):
     return lin1, lin2
 
 
-def solve_system_ode(matrix, init_cond = [[1, 1], [0, 1]]):
-    """A function that, given a 2x2 matrix (list of two lists), returns the sotutions of the associated ordinary differential equations system 
-    for some given initial conditions.
+def solve_system_ode(matrix, init_cond=[[1, 1], [0, 1]]):
+    """A function that, given a 2x2 matrix (list of two lists), returns the sotutions of the associated ordinary
+    differential equations system for some given initial conditions.
+
     Args: 
         matrix (list of two lists): a list of two lists of the form [[t1, t2], [t3, t3]], 
                                     where you obtain the following system x'(t) = t1*x(t) + t2*y(t); y'(t) = t3*x(t) + t4*y(t). 
-        init_cond (list of two lists): a matrix of the form [[t1, t2], [y(t1), y(t2)]], for some t1, t2. Defaults to y(t1 = 1) = 0 and y(t2 = 2) = 1.                         
+        init_cond (list of two lists): a matrix of the form [[t1, t2], [y(t1), y(t2)]], for some t1, t2. Defaults to y(t1 = 1) = 0 and y(t2 = 2) = 1.
+
     Returns:
         tuple: a tuple of the form (x(t), y(t)), with x(t) and y(t) the general solutions of the system. C1 and C2 are constants that depend on some initial conditions.
+
     Example:
     >>> from limathpy import solve_system_ode
     >>> solve_system_ode([[1, -1], [0, 1]], [[0, 1], [1, 1]])
@@ -154,25 +181,28 @@ def solve_system_ode(matrix, init_cond = [[1, 1], [0, 1]]):
 
 #Making a phase portrait.
 
-def phase_portrait(matrix, lim_init_cond = 2):
-    """A function that, given a 2x2 matrix (list of two lists), returns the phase_portrait of the associated ordinary differential equations system 
-    for some given initial conditions between 0 and the given limit initial condition.
+def phase_portrait(matrix, lim_init_cond=2):
+    """A function that, given a 2x2 matrix (list of two lists), returns the phase_portrait of the associated ordinary
+    differential equations system for some given initial conditions between 0 and the given limit initial condition.
+
     Args: 
         matrix (list of two lists): a list of two lists of the form [[t1, t2], [t3, t3]], 
                                     where you obtain the following system x'(t) = t1*x(t) + t2*y(t); y'(t) = t3*x(t) + t4*y(t). 
-        lim_init_cond (int): a number that will be the limit for the initial confitions.                        
+        lim_init_cond (int): a number that will be the limit for the initial confitions.
+
     Example:
     >>> from limathpy import phase_portrait
     >>> phase_portrait([[0, 1], [-1, 0]], 4)
+
     .. image:: phase_portrait.png
       :align: center"""
     system = system_ode(matrix)
-    p = plot_parametric((0, 0), (t, 0, 0), show = False, title = 'Phase portrait')
+    p = plot_parametric((0, 0), (t, 0, 0), show=False, title='Phase portrait')
     for i in range(0, lim_init_cond):
         for j in range(0, lim_init_cond):
             const = lin_system(matrix, [[j, i], [i, j]])
             expr1 = system[0].subs({C1: const[1].rhs, C2: const[0].rhs})#los pone al revés al c1 y c2 el sis de arriba 
             expr2 = system[1].subs(({C1: const[1].rhs, C2: const[0].rhs}))
-            p1 = plot_parametric((expr1, expr2), (t, 0, 10), show = False)
+            p1 = plot_parametric((expr1, expr2), (t, 0, 10), show=False)
             p.append(p1[0])
     return p.show()

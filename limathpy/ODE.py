@@ -27,6 +27,9 @@ def first_ode(vector):
         >>> from limathpy import first_ode
         >>> first_ode([t, 2, 2 + t])
         Eq(y(t), C1/t**2 + t/3 + 1)"""
+    t = symbols('t')
+    y = Function('y')
+    C1 = symbols('C1')
     eq = Eq(vector[0]*Derivative(y(t), t) + vector[1]*y(t), vector[2])
     sol = dsolve(eq, y(t))
     return sol
@@ -47,6 +50,9 @@ def solve_first_ode(vector, init_cond=[1, 0]):
         >>> from limathpy import solve_first_ode
         >>> solve_first_ode([t, 2, 2 + t], [1, 1])
         Eq(y(t), t/3 + 1 - 4/(3*t**2))"""
+    t = symbols('t')
+    y = Function('y')
+    C1 = symbols('C1')
     equation = first_ode(vector).rhs
     evalu = equation.subs({t: init_cond[0]})
     lin = Eq(evalu, 0)
@@ -71,6 +77,10 @@ def second_ode_const(vector):
         >>> from limathpy import second_ode_const
         >>> second_ode_const([t**2, 2*t, 0, 1])
         Eq(y(t), C1 + C2/t + log(t))"""
+    t = symbols('t')
+    y = Function('y')
+    C1 = symbols('C1')
+    C2 = symbols('C2')
     eq = Eq(vector[0]*Derivative(y(t), t, 2) + vector[1]*Derivative(y(t), t) + vector[2]*y(t), vector[3])
     sol = dsolve(eq, y(t))
     return sol
@@ -93,6 +103,10 @@ def solve_2nd_ode(vector, init_cond=[[1, 2], [0, 1]]): #y(1)=0, y(0)=1 vector=(y
         >>> from limathpy import solve_2nd_ode
         >>> solve_2nd_ode([t**2, 2*t, 0, 1], [[1, 0], [2, 0]])
         Eq(y(t), log(t) - 2*log(2) + 2*log(2)/t)"""
+    t = symbols('t')
+    y = Function('y')
+    C1 = symbols('C1')
+    C2 = symbols('C2')
     equation = second_ode_const(vector).rhs
     evalu1 = equation.subs({t: init_cond[0][0]})
     evalu2 = equation.subs({t: init_cond[1][0]})
@@ -124,6 +138,8 @@ def system_ode(matrix):
     """
     t = symbols('t')
     x, y = symbols('x y', cls=Function)
+    C1 = symbols('C1')
+    C2 = symbols('C2')
     eq1 = Eq(Derivative(x(t), t), matrix[0][0]*x(t) + matrix[0][1]*y(t))
     eq2 = Eq(Derivative(y(t), t), matrix[1][0]*x(t) + matrix[1][1]*y(t))
     sols = dsolve((eq1, eq2))
@@ -149,6 +165,8 @@ def lin_system(matrix, init_cond=[[1, 1], [0, 1]]):
     (Eq(-C1/4 + C2, 0), Eq(C1, 1))"""
     t = symbols('t')
     x, y = symbols('x y', cls=Function)
+    C1 = symbols('C1')
+    C2 = symbols('C2')
     sols = system_ode(matrix)
     lin1 = Eq(sols[0].subs({t: init_cond[0][0]}), init_cond[1][0])
     lin2 = Eq(sols[1].subs({t: init_cond[0][1]}), init_cond[1][1])
@@ -185,7 +203,7 @@ def solve_system_ode(matrix, init_cond=[[1, 1], [0, 1]]):
 #Making a phase portrait.
 
 def phase_portrait(matrix, lim_init_cond=2):
-    """A function that, given a 2x2 matrix (list of two lists), returns the phase_portrait of the associated ordinary
+    """A function that, given a 2x2 matrix (list of two lists), returns the phase portrait of the associated ordinary
     differential equations system for some given initial conditions between 0 and the given limit initial condition.
 
     Args: 
@@ -199,14 +217,19 @@ def phase_portrait(matrix, lim_init_cond=2):
 
     .. image:: phase_portrait.png
       :align: center"""
+    t = symbols('t')
+    y = Function('y')
+    x = Function('x')
+    C1 = symbols('C1')
+    C2 = symbols('C2')
     system = system_ode(matrix)
-    p = plot_parametric((0, 0), (t, 0, 0), show=False, title='Phase portrait')
+    p = plot_parametric((0, 0), (t, 0, 0), show=False, title = 'Phase portrait')
     for i in range(0, lim_init_cond):
         for j in range(0, lim_init_cond):
             const = lin_system(matrix, [[j, i], [i, j]])
-            expr1 = system[0].subs({C1: const[1].rhs, C2: const[0].rhs})#los pone al revés al c1 y c2 el sis de arriba 
+            expr1 = system[0].subs({C1: const[1].rhs, C2: const[0].rhs})
             expr2 = system[1].subs(({C1: const[1].rhs, C2: const[0].rhs}))
-            p1 = plot_parametric((expr1, expr2), (t, 0, 10), show=False)
+            p1 = plot_parametric((expr1, expr2), (t, 0, 10), show = False)
             p.append(p1[0])
     return p.show()
 
@@ -240,6 +263,6 @@ def slope_field(function, N = 10, xi = -10, xf = 10):
     V = f(X, Y)
     U2 = 1/np.sqrt(U**2 + V**2)
     V2 = V/np.sqrt(U**2 + V**2) 
-    ax.quiver(X, Y, U2, V2, color = 'b')
+    ax.quiver(X, Y, U2, V2, color = 'b',  title = 'Phase portrait')
     ax.set_aspect('equal')
     return plt.grid(True)

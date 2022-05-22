@@ -1,8 +1,9 @@
 import matplotlib.pyplot as plt
 import numpy as np
+import sympy as sp
 from sympy import symbols, Function, Eq, Derivative, dsolve, solve, init_printing, exp, log, sin, cos, tan, plot_parametric, sympify, lambdify
 
-t = symbols('t')
+t = sp.symbols('t')
 
 # Solving ordinary differential equations.
 
@@ -23,11 +24,11 @@ def first_ode(vector):
         >>> from limathpy import first_ode
         >>> first_ode([t, 2, 2 + t])
         Eq(y(t), C1/t**2 + t/3 + 1)"""
-    t = symbols('t')
-    y = Function('y')
-    C1 = symbols('C1')
-    eq = Eq(vector[0]*Derivative(y(t), t) + vector[1]*y(t), vector[2])
-    sol = dsolve(eq, y(t))
+    t = sp.symbols('t')
+    y = sp.Function('y')
+    C1 = sp.symbols('C1')
+    eq = sp.Eq(vector[0]*sp.Derivative(y(t), t) + vector[1]*y(t), vector[2])
+    sol = sp.dsolve(eq, y(t))
     return sol
 
 
@@ -46,15 +47,15 @@ def solve_first_ode(vector, init_cond=[1, 0]):
         >>> from limathpy import solve_first_ode
         >>> solve_first_ode([t, 2, 2 + t], [1, 1])
         Eq(y(t), t/3 + 1 - 4/(3*t**2))"""
-    t = symbols('t')
-    y = Function('y')
-    C1 = symbols('C1')
+    t = sp.symbols('t')
+    y = sp.Function('y')
+    C1 = sp.symbols('C1')
     equation = first_ode(vector).rhs
     evalu = equation.subs({t: init_cond[0]})
-    lin = Eq(evalu, 0)
-    solu = solve(lin, C1)
+    lin = sp.Eq(evalu, 0)
+    solu = sp.solve(lin, C1)
     final = equation.subs({C1: solu[0]})
-    return Eq(y(t), final)
+    return sp.Eq(y(t), final)
 
 
 # Solving first order ordinary differential equations of the form r(t)y''(t) + p(t)y'(t) + q(t)y(t) = g(t).
@@ -73,12 +74,12 @@ def second_ode_const(vector):
         >>> from limathpy import second_ode_const
         >>> second_ode_const([t**2, 2*t, 0, 1])
         Eq(y(t), C1 + C2/t + log(t))"""
-    t = symbols('t')
-    y = Function('y')
-    C1 = symbols('C1')
-    C2 = symbols('C2')
-    eq = Eq(vector[0]*Derivative(y(t), t, 2) + vector[1]*Derivative(y(t), t) + vector[2]*y(t), vector[3])
-    sol = dsolve(eq, y(t))
+    t = sp.symbols('t')
+    y = sp.Function('y')
+    C1 = sp.symbols('C1')
+    C2 = sp.symbols('C2')
+    eq = sp.Eq(vector[0]*sp.Derivative(y(t), t, 2) + vector[1]*sp.Derivative(y(t), t) + vector[2]*y(t), vector[3])
+    sol = sp.dsolve(eq, y(t))
     return sol
 
 
@@ -99,18 +100,18 @@ def solve_2nd_ode(vector, init_cond=[[1, 2], [0, 1]]): #y(1)=0, y(0)=1 vector=(y
         >>> from limathpy import solve_2nd_ode
         >>> solve_2nd_ode([t**2, 2*t, 0, 1], [[1, 0], [2, 0]])
         Eq(y(t), log(t) - 2*log(2) + 2*log(2)/t)"""
-    t = symbols('t')
-    y = Function('y')
-    C1 = symbols('C1')
-    C2 = symbols('C2')
+    t = sp.symbols('t')
+    y = sp.Function('y')
+    C1 = sp.symbols('C1')
+    C2 = sp.symbols('C2')
     equation = second_ode_const(vector).rhs
     evalu1 = equation.subs({t: init_cond[0][0]})
     evalu2 = equation.subs({t: init_cond[1][0]})
-    eq1 = Eq(evalu1, init_cond[0][1])
-    eq2 = Eq(evalu2, init_cond[1][1])
-    const = solve((eq1, eq2))
+    eq1 = sp.Eq(evalu1, init_cond[0][1])
+    eq2 = sp.Eq(evalu2, init_cond[1][1])
+    const = sp.solve((eq1, eq2))
     final = equation.subs(const)
-    return Eq(y(t), final)
+    return sp.Eq(y(t), final)
 
 
 # Solving ordinary differential equations systems.
@@ -132,13 +133,13 @@ def system_ode(matrix):
     >>> system_ode([[1, 0], [0, -3]])
     (C1*exp(t), C2*exp(-3*t))
     """
-    t = symbols('t')
-    x, y = symbols('x y', cls=Function)
-    C1 = symbols('C1')
-    C2 = symbols('C2')
-    eq1 = Eq(Derivative(x(t), t), matrix[0][0]*x(t) + matrix[0][1]*y(t))
-    eq2 = Eq(Derivative(y(t), t), matrix[1][0]*x(t) + matrix[1][1]*y(t))
-    sols = dsolve((eq1, eq2))
+    t = sp.symbols('t')
+    x, y = sp.symbols('x y', cls = sp.Function)
+    C1 = sp.symbols('C1')
+    C2 = sp.symbols('C2')
+    eq1 = sp.Eq(Derivative(x(t), t), matrix[0][0]*x(t) + matrix[0][1]*y(t))
+    eq2 = sp.Eq(Derivative(y(t), t), matrix[1][0]*x(t) + matrix[1][1]*y(t))
+    sols = sp.dsolve((eq1, eq2))
     return sols[0].rhs, sols[1].rhs
 
 
@@ -159,13 +160,13 @@ def lin_system(matrix, init_cond=[[1, 1], [0, 1]]):
     >>> from limathpy import lin_system
     >>> lin_system([[1, 1], [0, -3]], [[0, 0], [0, 1]])
     (Eq(-C1/4 + C2, 0), Eq(C1, 1))"""
-    t = symbols('t')
-    x, y = symbols('x y', cls=Function)
-    C1 = symbols('C1')
-    C2 = symbols('C2')
+    t = sp.symbols('t')
+    x, y = sp.symbols('x y', cls = sp.Function)
+    C1 = sp.symbols('C1')
+    C2 = sp.symbols('C2')
     sols = system_ode(matrix)
-    lin1 = Eq(sols[0].subs({t: init_cond[0][0]}), init_cond[1][0])
-    lin2 = Eq(sols[1].subs({t: init_cond[0][1]}), init_cond[1][1])
+    lin1 = sp.Eq(sols[0].subs({t: init_cond[0][0]}), init_cond[1][0])
+    lin2 = sp.Eq(sols[1].subs({t: init_cond[0][1]}), init_cond[1][1])
     return lin1, lin2
 
 
@@ -185,12 +186,12 @@ def solve_system_ode(matrix, init_cond=[[1, 1], [0, 1]]):
     >>> from limathpy import solve_system_ode
     >>> solve_system_ode([[1, -1], [0, 1]], [[0, 1], [1, 1]])
     (-t*exp(-1)*exp(t) + exp(t), exp(-1)*exp(t))""" 
-    t = symbols('t')
-    x, y = symbols('x y', cls=Function)
-    C1, C2 = symbols('C1 C2')
+    t = sp.symbols('t')
+    x, y = sp.symbols('x y', cls = sp.Function)
+    C1, C2 = sp.symbols('C1 C2')
     sys_ed = system_ode(matrix)
     sys_lin = lin_system(matrix, init_cond)
-    dict_sols = solve(sys_lin)
+    dict_sols = sp.solve(sys_lin)
     expr1 = sys_ed[0].subs(dict_sols)
     expr2 = sys_ed[1].subs(dict_sols)
     return expr1, expr2
@@ -213,13 +214,13 @@ def phase_portrait(matrix, lim_init_cond=2):
 
     .. image:: phase_portrait.png
       :align: center"""
-    t = symbols('t')
-    y = Function('y')
-    x = Function('x')
-    C1 = symbols('C1')
-    C2 = symbols('C2')
+    t = sp.symbols('t')
+    y = sp.Function('y')
+    x = sp.Function('x')
+    C1 = sp.symbols('C1')
+    C2 = sp.symbols('C2')
     system = system_ode(matrix)
-    p = plot_parametric((0, 0), (t, 0, 0), show=False, title = 'Phase portrait')
+    p = plot_parametric((0, 0), (t, 0, 0), show = False, title = 'Phase portrait')
     for i in range(0, lim_init_cond):
         for j in range(0, lim_init_cond):
             const = lin_system(matrix, [[j, i], [i, j]])
@@ -249,9 +250,9 @@ def slope_field(function, N = 10, xi = -10, xf = 10):
     .. image:: slope_field.png
       :align: center"""
     fig, ax = plt.subplots()
-    x, y = symbols('x y')
-    temp = sympify(function)
-    f = lambdify((x, y), temp, 'numpy')
+    x, y = sp.symbols('x y')
+    temp = sp.sympify(function)
+    f = sp.lambdify((x, y), temp, 'numpy')
     x = np.linspace(xi, xf, N)
     y = np.linspace(xi, xf, N)
     X, Y = np.meshgrid(x, y)

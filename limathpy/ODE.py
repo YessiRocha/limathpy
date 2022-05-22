@@ -2,6 +2,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 from sympy import symbols, Function, Eq, Derivative, dsolve, solve, init_printing, exp, log, sin, cos, tan, plot_parametric, sympify, lambdify
 
+t = symbols('t')
+
 # Solving ordinary differential equations.
 
 

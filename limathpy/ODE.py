@@ -1,4 +1,7 @@
-from sympy import symbols, Function, Eq, Derivative, dsolve, solve, init_printing, exp, sin, cos, tan, plot_parametric
+import matplotlib.pyplot as plt
+import numpy as np
+from sympy import symbols, Function, Eq, Derivative, dsolve, solve, init_printing, exp, log, sin, cos, tan, plot_parametric, sympify, lambdify
+
 t = symbols('t')
 y = Function('y')
 x = Function('x')
@@ -206,3 +209,37 @@ def phase_portrait(matrix, lim_init_cond=2):
             p1 = plot_parametric((expr1, expr2), (t, 0, 10), show=False)
             p.append(p1[0])
     return p.show()
+
+
+#Making a slope field.
+
+def slope_field(function, N = 10, xi = -10, xf = 10):
+    """A function that, given a string, turns it into a function f and returns the slope field of the associated solutions
+    of the differential equation dy/dx = f(x,y).
+
+    Args: 
+        function (string): a string that represents a function f, such as dy/dx = f(x,y).                                  
+        N (int): number of slopes to graph.
+        xi = left and lower limit in the axis.
+        xf = right and upper limit in the axis.
+
+    Example:
+    >>> from limathpy import slope_field
+    >>> slope_field('2*y/x', 20, -10, 10)
+
+    .. image:: slope_field.png
+      :align: center"""
+    fig, ax = plt.subplots()
+    x, y = symbols('x y')
+    temp = sympify(function)
+    f = lambdify((x, y), temp, 'numpy')
+    x = np.linspace(xi, xf, N)
+    y = np.linspace(xi, xf, N)
+    X, Y = np.meshgrid(x, y)
+    U = 1 
+    V = f(X, Y)
+    U2 = 1/np.sqrt(U**2 + V**2)
+    V2 = V/np.sqrt(U**2 + V**2) 
+    ax.quiver(X, Y, U2, V2, color = 'b')
+    ax.set_aspect('equal')
+    return plt.grid(True)

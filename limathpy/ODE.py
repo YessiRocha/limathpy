@@ -263,6 +263,6 @@ def slope_field(function, N = 10, xi = -10, xf = 10):
     V = f(X, Y)
     U2 = 1/np.sqrt(U**2 + V**2)
     V2 = V/np.sqrt(U**2 + V**2) 
-    ax.quiver(X, Y, U2, V2, color = 'b',  title = 'Phase portrait')
+    ax.quiver(X, Y, U2, V2, color = 'b')
     ax.set_aspect('equal')
     return plt.grid(True)

@@ -69,6 +69,6 @@ for i in range(iterations):
     vals.append(f(new))
 vals
 
-fig, ax = plt.subplots(figsize=(10, 5))
-x = range(len(vals))
-ax.bar(x, vals)
+#fig, ax = plt.subplots(figsize=(10, 5))
+#x = range(len(vals))
+#ax.bar(x, vals)

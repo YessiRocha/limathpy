@@ -1,9 +1,11 @@
-#File to Numerical analysis 
+#File to MathematicalModels
 from sympy import plot, symbols, Function, Eq, Derivative, dsolve, solve
 from matplotlib import pyplot as plt
 from celluloid import Camera
 from IPython.display import HTML
 import numpy as np
+import scipy.integrate as spi
+import pylab as pl
 
 def sistem(matriz):
     """Given a list of lists, a system of differential equations returns."""
@@ -37,10 +39,15 @@ def sistema_ed(matriz, cond_inic):
     return expr1, expr2
     
 def diagram(par, x0, it):
-    """Args:
+    """ A function that, returns a spiderweb diagram of some function.
+    Args:
         par: is a simple structured text parser project
         x0: initial condition
-        it:"""
+        it:
+
+    Example:
+    >>>import sympy as diagram
+    >>>diagrama(f, 0.1, 100)"""
     def f(x):
         return par*x*(1-x)
     fig, ax = plt.subplots()
@@ -72,3 +79,55 @@ vals
 #fig, ax = plt.subplots(figsize=(10, 5))
 #x = range(len(vals))
 #ax.bar(x, vals)
+
+
+def fibonacci(n):
+    """A function that, returns the n-th Fibonacci number
+    Args:
+        n (int): the integer number 
+    Example:
+        >>>import sympy as fibonacci
+        >>> m[fibonacci(n) for n in range(1, 20)]
+        [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584]"""
+    if n == 1:
+        return 0
+    elif n == 2:
+        return 1
+    else:
+        return fibonacci(n-1) + fibonacci(n-2)
+
+
+
+"""population size"""
+N=1
+beta=1.4247
+gamma=0.14286
+"""time step"""
+TS=1.0 
+ND=70.0
+S0=1-1e-6
+I0=1e-6
+INPUT = (S0, I0, 0.0)
+
+
+def diff_eqs(INP,t):  
+    Y=np.zeros((3))
+    V = INP
+    """Diferential equations""
+    Y[0] = - beta * V[0] * V[1]
+    Y[1] = beta * V[0] * V[1] - gamma * V[1]
+    Y[2] = gamma * V[1]
+    return Y   # For odeint
+
+t_start = 0.0; t_end = ND; t_inc = TS
+t_range = np.arange(t_start, t_end+t_inc, t_inc)
+RES = spi.odeint(diff_eqs,INPUT,t_range)
+
+#Grafic
+#pl.plot(RES[:,0]*N, '-g', label='Susceptible')
+#pl.plot(RES[:,2]*N, '-k', label='Rerecovered')
+#pl.plot(RES[:,1]*N, '-r', label='Infected')
+#pl.legend(loc=0)
+#pl.title('Basic Model SIR')
+#pl.xlabel('Time')
+#pl.savefig('sirpy')

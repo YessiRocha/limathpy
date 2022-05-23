@@ -248,3 +248,37 @@ def descomposition_AyS(matrix):
     A = 1/2*(C - C.T)
     print(f"The matrix {matrix} is the sum of the following symmetric and antisymmetric matrices:")
     return S, A
+
+
+
+class NoInvertible(Exception):
+    """Exception to raise when argument funtion is not a invertible square Sympy Matrix."""
+    pass
+
+
+def orthogonal(matrix):
+    """Orthogonality of a square matrix, by definition it should be invertible
+    
+    Args:
+        matrix (Matrix): A square Sympy matrix.
+    
+    Returns: 
+        string: '{matrix} is a orthogonal matrix' or '{matrix} is not a orthogonal matrix'
+        according to the case.
+        
+    Raises:
+        KeyError: singular matrix.
+        
+    Example:
+        >>> import sympy as sp
+        >>> orthogonal(sp.Matrix([[0,1],[-1,0]]))
+        Matrix([[0, 1], [-1, 0]]) is a orthogonal matrix
+        
+    """
+    if matrix.det() == 0:
+        return NoInvertible
+    else:
+        if P.is_Identity:
+            print(f"{matrix} is a orthogonal matrix")
+        else:
+            print(f"{matrix} is not a orthogonal matrix")

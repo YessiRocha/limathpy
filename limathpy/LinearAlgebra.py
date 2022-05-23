@@ -237,16 +237,17 @@ def descomposition_AyS(matrix):
     Example:
         >>> import sympy as sp
         >>> descomposition_AyS(sp.Matrix([[1, 5], [-3, 2]]))
-        The matrix Matrix([[1, 5], [-3, 2]]) is the sum of the following symmetric and antisymmetric matrices:
+        The matrix Matrix([[1, 5], [-3, 2]]) is the sum of the following 
+        symmetric and antisymmetric matrices:
         (Matrix([
-         [1.0, 1.0],
-         [1.0, 2.0]]), Matrix([
-         [   0, 4.0],
-         [-4.0,   0]]))
+        [1.0, 1.0],
+        [1.0, 2.0]]), Matrix([
+        [   0, 4.0],
+        [-4.0,   0]]))
     """
     S = 1/2*(matrix + matrix.T)
     A = 1/2*(matrix - matrix.T)
-    print(f"The matrix {matrix} is the sum of the following symmetric and antisymmetric matrices:")
+    print(f"The matrix {matrix} is the sum of the following \nsymmetric and antisymmetric matrices:")
     return S, A
 
 

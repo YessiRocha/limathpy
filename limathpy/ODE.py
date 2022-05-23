@@ -23,8 +23,8 @@ def first_ode(vector):
 
     Example: 
         >>> from sympy import symbols
-        >>> t = symbols('t')
         >>> from limathpy import first_ode
+        >>> t = symbols('t')
         >>> first_ode([t, 2, 2 + t])
         Eq(y(t), C1/t**2 + t/3 + 1)"""
     t = sp.symbols('t')
@@ -82,6 +82,8 @@ def second_ode_const(vector):
 
     Example: 
         >>> from limathpy import second_ode_const
+        >>> from sympy import symbols
+        >>> t = symbols('t')
         >>> second_ode_const([t**2, 2*t, 0, 1])
         Eq(y(t), C1 + C2/t + log(t))"""
     t = sp.symbols('t')
@@ -111,6 +113,8 @@ def solve_2nd_ode(vector, init_cond=[[1, 2], [0, 1]]):
 
     Example: 
         >>> from limathpy import solve_2nd_ode
+        >>> from sympy import symbols
+        >>> t = symbols('t')
         >>> solve_2nd_ode([t**2, 2*t, 0, 1], [[1, 0], [2, 0]])
         Eq(y(t), log(t) - 2*log(2) + 2*log(2)/t)"""
     t = sp.symbols('t')

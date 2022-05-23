@@ -216,6 +216,7 @@ def plane_3points(p1, p2, p3):
         >>> plane_3points(p1, p2, p3)  
         Eq(18*x - 6*y - 3*z - 15, 0)
     """
+    x, y, z = sp.symbols('x y z')
     v = sp.Matrix([[x, y, z]])
     o1 = sp.Matrix([p1])
     o2 = sp.Matrix([p2])
@@ -237,7 +238,6 @@ def descomposition_AyS(matrix):
         >>> import sympy as sp
         >>> descomposition_AyS(sp.Matrix([[1, 5], [-3, 2]]))
         The matrix Matrix([[1, 5], [-3, 2]]) is the sum of the following symmetric and antisymmetric matrices:
-
         (Matrix([
          [1.0, 1.0],
          [1.0, 2.0]]), Matrix([
@@ -278,6 +278,7 @@ def orthogonal(matrix):
     if matrix.det() == 0:
         return NoInvertible
     else:
+        P = matrix*matrix.T
         if P.is_Identity:
             print(f"{matrix} is a orthogonal matrix")
         else:

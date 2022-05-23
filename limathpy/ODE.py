@@ -1,24 +1,28 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import sympy as sp
-from sympy import symbols, Function, Eq, Derivative, dsolve, solve, init_printing, exp, log, sin, cos, tan, plot_parametric, sympify, lambdify
+from sympy import symbols, Function, Eq, Derivative, dsolve, solve, 
+init_printing, exp, log, sin, cos, tan, plot_parametric, sympify, lambdify
 
 t = sp.symbols('t')
 
 # Solving ordinary differential equations.
 
 
-# Solving first order ordinary differential equations of the form p(t)y'(t) + q(t)y(t) = g(t).
+# Solving first order ordinary differential equations of the form 
+# p(t)y'(t) + q(t)y(t) = g(t).
 
 def first_ode(vector): 
-    """A function that returns the general solution of a first order differential equation of the form
-    p(t)y'(t) + q(t)y(t) = g(t); p, q and g are functions which depend on t.
+    """A function that returns the general solution of a first order 
+    differential equation of the form p(t)y'(t) + q(t)y(t) = g(t); 
+    p, q and g are functions which depend on t.
 
     Args: 
         vector (list): a list of the form [p(t), q(t), g(t)].
 
     Returns:
-        Eq: the general solution of the equation, C1 is a constant which depends on some initial condition.
+        Eq: the general solution of the equation, C1 is a constant 
+        which depends on some initial condition.
 
     Example: 
         >>> from limathpy import first_ode
@@ -33,12 +37,14 @@ def first_ode(vector):
 
 
 def solve_first_ode(vector, init_cond=[1, 0]):
-    """A function that returns the solution of a first order differential equation of the form
-    p(t)y'(t) + q(t)y(t) = g(t) for some given initial conditions; p, q and g are functions which depend on t.
+    """A function that returns the solution of a first order differential 
+    equation of the form p(t)y'(t) + q(t)y(t) = g(t) for some given initial 
+    conditions; p, q and g are functions which depend on t.
 
     Args: 
         vector (list): a list of the form [p(t), q(t), g(t)].
-        init_cond (list): a list of the form [t1, y(t1)], for some t1. Defaults to y(t1 = 1) = 0.
+        init_cond (list): a list of the form [t1, y(t1)], for some t1.
+        Defaults to y(t1 = 1) = 0.
 
     Returns:
         Eq: the solution of the equation depending on the initial condition.
@@ -58,17 +64,20 @@ def solve_first_ode(vector, init_cond=[1, 0]):
     return sp.Eq(y(t), final)
 
 
-# Solving first order ordinary differential equations of the form r(t)y''(t) + p(t)y'(t) + q(t)y(t) = g(t).
+# Solving first order ordinary differential equations of the form 
+# r(t)y''(t) + p(t)y'(t) + q(t)y(t) = g(t).
 
 def second_ode_const(vector): 
-    """A function that returns the solution of a second order differential equation of the form
-    r(t)y''(t) + p(t)y'(t) + q(t)y(t) = g(t); r, p, q and g are functions which depend on t.
+    """A function that returns the solution of a second order differential
+    equation of the form r(t)y''(t) + p(t)y'(t) + q(t)y(t) = g(t); r, p, q and g are functions
+    which depend on t.
 
     Args: 
         vector (list): a list of the form [r(t), p(t), q(t), g(t)].
 
     Returns:
-        Eq: the general solution of the equation, C1 and C2 are constants which depend on some initial conditions.
+        Eq: the general solution of the equation, C1 and C2 are constants which depend on some
+        initial conditions.
 
     Example: 
         >>> from limathpy import second_ode_const

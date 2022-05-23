@@ -244,8 +244,8 @@ def descomposition_AyS(matrix):
          [   0, 4.0],
          [-4.0,   0]]))
     """
-    S = 1/2*(C + C.T)
-    A = 1/2*(C - C.T)
+    S = 1/2*(matrix + matrix.T)
+    A = 1/2*(matrix - matrix.T)
     print(f"The matrix {matrix} is the sum of the following symmetric and antisymmetric matrices:")
     return S, A
 

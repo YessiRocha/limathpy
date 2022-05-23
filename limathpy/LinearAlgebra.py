@@ -222,3 +222,29 @@ def plane_3points(p1, p2, p3):
     o3 = sp.Matrix([p3])
     A = sp.Matrix([v-o1, o2-o1, o3-o1])
     return sp.Eq(A.det(), 0)
+
+
+def descomposition_AyS(matrix):
+    """Decomposition of a matrix as the sum of a symmetric matrix and an antisymmetric matrix.
+    
+    Args:
+        matrix (Matriz): square sympy Matrix.
+    
+    Returns:
+        tuple: two sympy matrices such that when added they result in the given matrix.
+
+    Example:
+        >>> import sympy as sp
+        >>> descomposition_AyS(sp.Matrix([[1, 5], [-3, 2]]))
+        The matrix Matrix([[1, 5], [-3, 2]]) is the sum of the following symmetric and antisymmetric matrices:
+
+        (Matrix([
+         [1.0, 1.0],
+         [1.0, 2.0]]), Matrix([
+         [   0, 4.0],
+         [-4.0,   0]]))
+    """
+    S = 1/2*(C + C.T)
+    A = 1/2*(C - C.T)
+    print(f"The matrix {matrix} is the sum of the following symmetric and antisymmetric matrices:")
+    return S, A

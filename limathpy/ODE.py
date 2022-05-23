@@ -24,6 +24,8 @@ def first_ode(vector):
         which depends on some initial condition.
 
     Example: 
+        >>> from sympy import symbols
+        >>> t = symbols('t')
         >>> from limathpy import first_ode
         >>> first_ode([t, 2, 2 + t])
         Eq(y(t), C1/t**2 + t/3 + 1)"""
@@ -50,6 +52,8 @@ def solve_first_ode(vector, init_cond=[1, 0]):
 
     Example: 
         >>> from limathpy import solve_first_ode
+        >>> from sympy import symbols
+        >>> t = symbols('t')
         >>> solve_first_ode([t, 2, 2 + t], [1, 1])
         Eq(y(t), t/3 + 1 - 4/(3*t**2))"""
     t = sp.symbols('t')

@@ -77,7 +77,6 @@ def tangent_line(expression, x_0):
         the given point.
 
     Example:
-        >>> from sympy import diff, symbols, Eq, sympify
         >>> tangent_line("x**2", 1)
         Eq(y, 2*x - 1)"""
     x, y = sp.symbols('x y')
@@ -126,8 +125,8 @@ def revolution_area(expression, lower_bound, upper_bound):
         on the given interval.
 
     Example:
-    >>> import sympy as sp
-    >>> x = sp.symbols('x')
+    >>> from sympy import symbols
+    >>> x = symbols('x')
     >>> revolution_area(x**2, 0, 2)
     """
     x = sp.symbols('x')

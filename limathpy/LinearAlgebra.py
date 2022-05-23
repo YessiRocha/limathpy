@@ -1,3 +1,6 @@
+"""This is the Linear Algebra module. He we have several useful functions."""
+
+
 import sympy as sp
 import numpy as np
 import matplotlib.pyplot as plt 

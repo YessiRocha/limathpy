@@ -195,3 +195,30 @@ def graph_solution(expr1, expr2):
     ax.set_xlabel("$x$")
     ax.set_ylabel("$y$")
     plt.draw_if_interactive()
+
+
+def plane_3points(p1, p2, p3):
+    """Equation of a plane passing through 3 points.
+    
+    Args:
+        p1 (list): point in form a list
+        p2 (list): point in form a list.
+        p3 (list): point in form a list.
+    
+    Returns:
+        A sympy equation of the plane passing through its 3 points.
+        
+    Example:
+        >>> import sympy as sp
+        >>> p1 = [1, 2, -3]
+        >>> p2 = [2, 3, 1]
+        >>> p3 = [0,-2, -1]
+        >>> plane_3points(p1, p2, p3)  
+        Eq(18*x - 6*y - 3*z - 15, 0)
+    """
+    v = sp.Matrix([[x, y, z]])
+    o1 = sp.Matrix([p1])
+    o2 = sp.Matrix([p2])
+    o3 = sp.Matrix([p3])
+    A = sp.Matrix([v-o1, o2-o1, o3-o1])
+    return sp.Eq(A.det(), 0)

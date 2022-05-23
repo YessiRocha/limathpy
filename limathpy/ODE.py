@@ -1,8 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import sympy as sp
-from sympy import symbols, Function, Eq, Derivative, dsolve, solve, 
-init_printing, exp, log, sin, cos, tan, plot_parametric, sympify, lambdify
+from sympy import symbols, Function, Eq, Derivative, dsolve, solve, init_printing, exp, log, sin, cos, tan, plot_parametric, sympify, lambdify
 
 t = sp.symbols('t')
 

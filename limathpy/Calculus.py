@@ -154,3 +154,42 @@ def reverse_func(expression):
     x, y = sp.symbols('x y')
     rev = sp.solve(sp.Eq(y, expression), x)
     return rev
+
+
+class TestLimitDiverges(Exception):
+    def __init__(self, message="The quotient limit for this test does "
+                               "not converge."):
+        super().__init__(message)
+
+
+def seq_converg(expression):
+    """Function that determines whether a sequence converges to zero or diverges
+    using the quotient limit test.
+
+    The limit of a_{n+1}/a_{n} is considered, for a sequence {a_n} of
+    positive real numbers.
+
+    Args:
+        expression: A sympy function in terms of n.
+
+    Returns:
+        Message: Indicates if the sequence converges to zero, diverges
+        or nothing can be said about it.
+
+    Example:
+    >>> from sympy import symbols
+    >>> n = symbols('n')
+    >>> seq_converg(1/2**n)
+    'The sequence 2**(-n) converges to zero.' """
+    n = sp.symbols('n')
+    expr_2 = expression.subs({n: n + 1})
+    r = sp.limit_seq(expr_2 / expression, n)
+    if 0 < r < 1:
+        return f"The sequence {expression} converges to zero."
+    elif r > 1:
+        return f"The sequence {expression} diverges."
+    elif r == 1:
+        return f"Nothing can be said about the sequence {expression}, " \
+               f"try another method."
+    else:
+        raise TestLimitDiverges

@@ -128,7 +128,7 @@ def revolution_area(expression, lower_bound, upper_bound):
     >>> from sympy import symbols
     >>> x = symbols('x')
     >>> revolution_area(x**2, 0, 2)
-    """
+    pi*(-asinh(4) + 132*sqrt(17))/32"""
     x = sp.symbols('x')
     expr = expression * sp.sqrt(1 + (expression.diff(x)) ** 2)
     surface_area = 2*sp.pi*sp.integrate(expr, (x, lower_bound, upper_bound))
@@ -180,7 +180,7 @@ def seq_converg(expression):
     >>> from sympy import symbols
     >>> n = symbols('n')
     >>> seq_converg(1/2**n)
-    'The sequence 2**(-n) converges to zero.' """
+    'The sequence 2**(-n) converges to zero.'"""
     n = sp.symbols('n')
     expr_2 = expression.subs({n: n + 1})
     r = sp.limit_seq(expr_2 / expression, n)

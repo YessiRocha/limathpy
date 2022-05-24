@@ -218,13 +218,13 @@ def seri_converg(expression):
     expr_2 = expression.subs({n: n + 1})
     r = sp.limit_seq(expr_2 / expression, n)
     if 0 < r < 1:
-        return f"The series from 1 to infinity of the sequence {expression} " \
+        return f"The infinite series of the sequence {expression} " \
                f"converges."
     elif r > 1:
-        return f"The series from 1 to infinity of the sequence {expression} " \
+        return f"The infinite series of the sequence {expression} " \
                f"diverges."
     elif r == 1:
-        return f"Nothing can be said about the series from 1 to infinity " \
+        return f"Nothing can be said about the infinite series " \
                f"{expression}, try another method."
     else:
         raise TestLimitDiverges

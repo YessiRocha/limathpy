@@ -193,3 +193,38 @@ def seq_converg(expression):
                f"try another method."
     else:
         raise TestLimitDiverges
+
+
+def seri_converg(expression):
+    """Function that determines whether a serie from 1 to infinity converges
+    or diverges using the quotient limit test.
+
+    The limit of :math:`a_{n+1}/a_n` is considered, for a sequence
+    :math:`(a_n)_{n \in \mathbb{N}}`.
+
+    Args:
+        expression: A sympy function in terms of n.
+
+    Returns:
+        Message: Indicates if the serie from 1 to infinity converges,
+        diverges or nothing can be said about it.
+
+    Example:
+    >>> from sympy import symbols
+    >>> n = symbols('n')
+    >>> seri_converg(1/2**n)
+    """
+    n = sp.symbols('n')
+    expr_2 = expression.subs({n: n + 1})
+    r = sp.limit_seq(expr_2 / expression, n)
+    if 0 < r < 1:
+        return f"The series from 1 to infinity of the sequence {expression} " \
+               f"converges."
+    elif r > 1:
+        return f"The series from 1 to infinity of the sequence {expression} " \
+               f"diverges."
+    elif r == 1:
+        return f"Nothing can be said about the series from 1 to infinity " \
+               f"{expression}, try another method."
+    else:
+        raise TestLimitDiverges

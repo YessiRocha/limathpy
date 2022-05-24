@@ -166,8 +166,8 @@ def seq_converg(expression):
     """Function that determines whether a sequence converges to zero or diverges
     using the quotient limit test.
 
-    The limit of a_{n+1}/a_{n} is considered, for a sequence {a_n} of
-    positive real numbers.
+    The limit of :math: `$\fracc{a_{n+1}}{a_{n}}$` is considered, for a sequence
+    :math: `$(a_n)_{n \in \mathbb{N}}$` of positive real numbers.
 
     Args:
         expression: A sympy function in terms of n.

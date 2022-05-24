@@ -19,14 +19,14 @@ def matrix_n(matriz, n):
         
     Examples:
         >>> import sympy as sp
-        >>> matrix_n(sp.Matrix([[1,2],[3,4]]),2)
+        >>> matrix_n(sp.Matrix([[1, 2], [3, 4]]), 2)
         [Matrix([
         [1, 2],
         [3, 4]]), Matrix([
         [ 7, 10],
         [15, 22]])]
     """
-    pot_matriz = [matriz**i for i in range(1,n+1)]
+    pot_matriz = [matriz**i for i in range(1, n+1)]
     return pot_matriz
 
 
@@ -41,7 +41,7 @@ def integers_list(lista):
         'False' in other case.
     
     Examples:
-        >>> integers_list([1,3,0.5])
+        >>> integers_list([1, 3, 0.5])
         False
     """
     floats = [float(num) for num in lista]
@@ -50,13 +50,13 @@ def integers_list(lista):
 
 
 def int_eigvals_n(n):
-    """Values of n for which [[1,n],[1,1]] has integer eigenvalues.
+    """Values of n for which [[1, n], [1, 1]] has integer eigenvalues.
     
     Args:
         n (int): the element (1,2) of the matrix.
     
     Returns:
-        list: A list with the values between 0 and n for which [[1,n],[1,1]] has 
+        list: A list with the values between 0 and n for which [[1, n], [1, 1]] has 
         positive eigenvalues.
     
     Examples: 
@@ -66,7 +66,7 @@ def int_eigvals_n(n):
     """
     enes=[]
     for i in range(0,n+1):
-        matriz = sp.Matrix([[1,i],[1,1]])
+        matriz = sp.Matrix([[1, i], [1, 1]])
         eigenvalores = list(matriz.eigenvals())
         if integers_list(eigenvalores) == True:
             enes.append(i)           
@@ -86,7 +86,7 @@ def int_eigenvalues(matriz):
         
     Examples:
         >>> import sympy as sp
-        >>> int_eigenvalues(sp.Matrix([[1,2],[1,3]]))
+        >>> int_eigenvalues(sp.Matrix([[1, 2], [1, 3]]))
         The Matrix([[1, 2], [1, 3]]) has not all its integer eigenvalues
         
     """
@@ -109,9 +109,9 @@ def inner_product(vector1, vector2):
     
     Example:
         >>> import sympy as sp
-        >>> v1=sp.Matrix([0,1])
-        >>> v2=sp.Matrix([1,2])
-        >>> inner_product(v1,v2)
+        >>> v1=sp.Matrix([0, 1])
+        >>> v2=sp.Matrix([1, 2])
+        >>> inner_product(v1, v2)
         2.0
     """
     return float(list(vector1.T*vector2)[0])
@@ -130,7 +130,7 @@ def change_basis(base1, base2):
         matrix: Change of basis matrix from base1 to base2
     
     Example:
-        >>> # If we want the base change matrix from B1={(3,1),(2,-1)} to B2={(2,4),(-5,3)}
+        >>> # If we want the base change matrix from B1={(3, 1), (2, -1)} to B2={(2, 4), (-5, 3)}
         >>> # we use the matrix representations of each base as in this example 
         >>> import sympy as sp
         >>> B1=sp.Matrix([[3, 2], [1, -1]])
@@ -167,10 +167,10 @@ def graph_solution(expr1, expr2):
         >>> x, y = sp.symbols('x y')
         >>> expr1 = x - 2
         >>> expr2 = 2*x  +3
-        >>> graph_solution(expr1,expr2)
+        >>> graph_solution(expr1, expr2)
     """
     x, y = sp.symbols('x y')
-    a=sp.solve([y-expr1,y-expr2], [x, y])
+    a=sp.solve([y-expr1, y-expr2], [x, y])
     rect1 = sp.sympify(expr1)
     rect2 = sp.sympify(expr2, x)
     f1, f2 = sp.lambdify(x, rect1, 'numpy'), sp.lambdify(x, rect2, 'numpy')
@@ -275,7 +275,7 @@ def orthogonal(matrix):
         
     Example:
         >>> import sympy as sp
-        >>> orthogonal(sp.Matrix([[0,1],[-1,0]]))
+        >>> orthogonal(sp.Matrix([[0, 1], [-1, 0]]))
         Matrix([[0, 1], [-1, 0]]) is a orthogonal matrix
         
     """

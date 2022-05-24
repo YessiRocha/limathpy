@@ -11,7 +11,7 @@ def n_derivatives(expr, n=1):
     Args: 
         expr: Any sympy function
         n (int, optional): The number of derivatives required.
-          Defaults to one.
+        Defaults to one.
 
     Returns:
         list: the funtion and the indicated derivatives.
@@ -95,7 +95,7 @@ def root_f(expression, number=0):
     Args:
         expression (str): Expression of a function.
         number (optional): The real number at which the function is evaluated.
-          Defaults to zero.
+        Defaults to zero.
 
     Returns:
         bool: True if the given number is the root of the function,
@@ -116,9 +116,9 @@ def revolution_area(expression, lower_bound, upper_bound):
     Args:
         expression: A sympy function that generate the surface of revolution.
         lower_bound: The lower bound of the interval over which the surface
-          of revolution is defined.
+        of revolution is defined.
         upper_bound: The upper bound of the interval over which the surface
-          of revolution is defined.
+        of revolution is defined.
 
     Returns:
         A numerical sympy expression of the area of the surface of revolution
@@ -166,8 +166,8 @@ def seq_converg(expression):
     """Function that determines whether a sequence converges to zero or diverges
     using the quotient limit test.
 
-    The limit of :math: `$\fracc{a_{n+1}}{a_{n}}$` is considered, for a sequence
-    :math: `$(a_n)_{n \in \mathbb{N}}$` of positive real numbers.
+    The limit of :math:`a_{n+1}/a_n` is considered, for a sequence
+    :math:`(a_n)_{n \in \mathbb{N}}` of positive real numbers.
 
     Args:
         expression: A sympy function in terms of n.

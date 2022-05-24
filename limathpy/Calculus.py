@@ -133,3 +133,24 @@ def revolution_area(expression, lower_bound, upper_bound):
     expr = expression * sp.sqrt(1 + (expression.diff(x)) ** 2)
     surface_area = 2*sp.pi*sp.integrate(expr, (x, lower_bound, upper_bound))
     return sp.simplify(surface_area)
+
+
+def reverse_func(expression):
+    """Function that returns the inverse of a given expression.
+
+    Args:
+        expression: A sympy function.
+
+    Returns:
+        list: with the reverse of the function.
+        it can have length greater than 1 due to the domain in which the
+        function is injective.
+
+    Example:
+    >>> from sympy import symbols
+    >>> x = symbols('x')
+    >>> reverse_func(x**2)
+    [-sqrt(y), sqrt(y)]"""
+    x, y = sp.symbols('x y')
+    rev = sp.solve(sp.Eq(y, expression), x)
+    return rev

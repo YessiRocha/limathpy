@@ -149,7 +149,7 @@ def change_basis(base1, base2):
     return eb2
 
 
-def graph_solution(expr1, expr2):
+def graph_solution(expr1, expr2, color1 = 'blue' , color2 = 'green'):
     """ Graphical Solution to a 2 x 2 System of Equations.
 
     This function produces images such as:
@@ -159,7 +159,11 @@ def graph_solution(expr1, expr2):
     
     Args: 
         expr1 (expression): equation expressed in terms of :math:`x`
-        expr2 (expression): equation expressed in terms of :math:`x`.
+        expr2 (expression): equation expressed in terms of :math:`x`
+        color1 (string): The color of the line that represents the first equation
+        The default value is 'blue'
+        color2 (string): The color of the line that represents the second equation
+        The default value is 'green'.
     
     Example:
         >>> import sympy as sp
@@ -190,8 +194,8 @@ def graph_solution(expr1, expr2):
     fig, ax = plt.subplots()
     ax.set_title("Graphic solution")
     ax.plot(domain, image)
-    ax.plot(domain, F_eval, color='blue', label=expr1)
-    ax.plot(domain, G_eval, color='green', label=expr2)
+    ax.plot(domain, F_eval, color = color1, label=expr1)
+    ax.plot(domain, G_eval, color = color2, label=expr2)
     ax.plot(a[x], a[y], '.', color='black', linewidth = 0.25)
     plt.axhline(a[y], color='gray', linewidth = 0.5, linestyle='dashed')
     plt.axvline(a[x], color='gray', linewidth = 0.5, linestyle='dashed')

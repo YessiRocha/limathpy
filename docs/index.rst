@@ -46,7 +46,6 @@ MathematicalModels
 Here there are functions to solve mathematical models problems
 
 .. automodule:: limathpy.MathematicalModels
-
    :members: 
    
 CalculusOfSeveralVariables

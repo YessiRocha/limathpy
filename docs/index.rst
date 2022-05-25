@@ -49,8 +49,8 @@ Here there are functions to solve mathematical models problems
 
    :members: 
    
-Calculus
-~~~~~~~~
+CalculusOfSeveralVariables
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Here there are functions to solve calculus of several variables problems
 

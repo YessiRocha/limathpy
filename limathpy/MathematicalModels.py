@@ -8,7 +8,15 @@ import scipy.integrate as spi
 import pylab as pl
 
 def sistem(matriz):
-    """Given a list of lists, a system of differential equations returns."""
+    """Given a list of lists, a system of differential equations returns.
+    Args:
+        matriz: is a simple structured text parser project
+
+    Example:
+    >>> from matplotlib import pyplot as plt
+    >>> import numpy as np
+    >>> from limathpy import diagram
+    >>> diagrama(f, 0.1, 100)""""""
     t = symbols('t')
     x, y = symbols('x y', cls=Function)
     eq1 = Eq(Derivative(x(t), t), matriz[0][0]*x(t) + matriz[0][1]*y(t))
@@ -38,6 +46,7 @@ def sistema_ed(matriz, cond_inic):
     expr2 = sis_ed[1].subs(dict_sols)
     return expr1, expr2
     
+    
 def diagram(par, x0, it):
     """ A function that, returns a spiderweb diagram of some function.
     Args:
@@ -46,7 +55,9 @@ def diagram(par, x0, it):
         it: number of steps
 
     Example:
-    >>> import sympy as diagram
+    >>> from matplotlib import pyplot as plt
+    >>> import numpy as np
+    >>> from limathpy import diagram
     >>> diagrama(f, 0.1, 100)"""
     def f(x):
         return par*x*(1-x)
@@ -73,8 +84,8 @@ def fibonacci(n):
     Args:
         n (int): the integer number 
     Example:
-        >>> import sympy as fibonacci
-        >>> m[fibonacci(n) for n in range(1, 20)]
+        >>> from limathpy import fibonacci
+        >>> [fibonacci(n) for n in range(1, 20)]
         [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584]"""
     if n == 1:
         return 0

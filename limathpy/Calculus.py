@@ -1,4 +1,4 @@
-# my file of calculus in one variable
+# This file contains functions to solve some problems of calculus in one variable.
 import sympy as sp
 import numpy as np
 import matplotlib.pyplot as plt

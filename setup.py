@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='limathpy',
-      version='0.2',
+      version='1.0',
       description='A Python package for undergraduate math',
       url='http://github.com/YessiRocha/limathpy',
       author='Yessica Rocha',

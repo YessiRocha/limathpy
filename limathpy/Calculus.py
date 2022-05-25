@@ -1,4 +1,5 @@
-# This file contains functions to solve some problems of calculus in one variable.
+"""This module contains functions to solve some calclus problems in one variable. """
+
 import sympy as sp
 import numpy as np
 import matplotlib.pyplot as plt

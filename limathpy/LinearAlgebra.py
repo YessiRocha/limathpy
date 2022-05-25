@@ -53,7 +53,7 @@ def int_eigvals_n(n):
     """Values of n for which [[1, n], [1, 1]] has integer eigenvalues.
     
     Args:
-        n (int): the element (1,2) of the matrix.
+        n (int): the element (1, 2) of the matrix.
     
     Returns:
         list: A list with the values between 0 and n for which [[1, n], [1, 1]] has 
@@ -65,7 +65,7 @@ def int_eigvals_n(n):
         [0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
     """
     enes=[]
-    for i in range(0,n+1):
+    for i in range(0, n+1):
         matriz = sp.Matrix([[1, i], [1, 1]])
         eigenvalores = list(matriz.eigenvals())
         if integers_list(eigenvalores) == True:
@@ -130,11 +130,12 @@ def change_basis(base1, base2):
         matrix: Change of basis matrix from base1 to base2
     
     Example:
-        >>> # If we want the base change matrix from B1={(3, 1), (2, -1)} to B2={(2, 4), (-5, 3)}
-        >>> # we use the matrix representations of each base as in this example 
+        >>> # If we want the base change matrix from B1={(3, 1), (2, -1)} 
+        >>> # to B2={(2, 4), (-5, 3)} we use the matrix representations  
+        >>> # of each base as in this example
         >>> import sympy as sp
-        >>> B1=sp.Matrix([[3, 2], [1, -1]])
-        >>> B2=sp.Matrix([[2, -5], [4, 3]])
+        >>> B1 = sp.Matrix([[3, 2], [1, -1]])
+        >>> B2 = sp.Matrix([[2, -5], [4, 3]])
         >>> B1, B2, change_basis(B1, B2)
         (Matrix([
         [3,  2],
@@ -144,7 +145,7 @@ def change_basis(base1, base2):
         [ 7/13,  1/26],
         [-5/13, -5/13]]))
     """
-    eb2=base2.inv()*base1
+    eb2 = base2.inv()*base1
     return eb2
 
 
@@ -178,8 +179,8 @@ def graph_solution(expr1, expr2):
         domain = np.linspace(-5, 5)
         image = np.linspace(-5, 5)
     else:
-        domain = np.linspace(-5+float(a[x]), 5+float(a[x]))
-        image = np.linspace(-5+float(a[y]), 5+float(a[y]))
+        domain = np.linspace(-5 + float(a[x]), 5 + float(a[x]))
+        image = np.linspace(-5 + float(a[y]), 5 + float(a[y]))
     inter = [a[x],a[y]]
     F_eval = f1(domain)
     G_eval = f2(domain)
@@ -194,7 +195,7 @@ def graph_solution(expr1, expr2):
     ax.plot(a[x], a[y], '.', color='black', linewidth = 0.25)
     plt.axhline(a[y], color='gray', linewidth = 0.5, linestyle='dashed')
     plt.axvline(a[x], color='gray', linewidth = 0.5, linestyle='dashed')
-    plt.annotate((a[x],a[y]), (a[x],a[y]), fontsize=12, color='black')
+    plt.annotate((a[x], a[y]), (a[x], a[y]), fontsize=12, color='black')
     ax.set_xlabel("$x$")
     ax.set_ylabel("$y$")
     plt.draw_if_interactive()

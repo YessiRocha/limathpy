@@ -43,11 +43,11 @@ def diagram(par, x0, it):
     Args:
         par: is a simple structured text parser project
         x0: initial condition
-        it:
+        it: number of steps
 
     Example:
-    >>>import sympy as diagram
-    >>>diagrama(f, 0.1, 100)"""
+    >>> import sympy as diagram
+    >>> diagrama(f, 0.1, 100)"""
     def f(x):
         return par*x*(1-x)
     fig, ax = plt.subplots()
@@ -67,26 +67,13 @@ def diagram(par, x0, it):
         camera.snap()
     return camera.animate()    
 
-#def f(x):
-#    return 3.8*x*(1-x)
-#vals=[0.3]
-#iterations=50
-#for i in range(iterations):
-#    new = vals[-1]
-#    vals.append(f(new))
-#vals
-
-#fig, ax = plt.subplots(figsize=(10, 5))
-#x = range(len(vals))
-#ax.bar(x, vals)
-
 
 def fibonacci(n):
     """A function that, returns the n-th Fibonacci number
     Args:
         n (int): the integer number 
     Example:
-        >>>import sympy as fibonacci
+        >>> import sympy as fibonacci
         >>> m[fibonacci(n) for n in range(1, 20)]
         [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584]"""
     if n == 1:

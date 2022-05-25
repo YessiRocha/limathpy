@@ -53,3 +53,37 @@ def gradient(expr, var):
     for i in range(len(var)):
         gradient.append(sp.diff(gradient [0], var[i]))
     return gradient
+
+
+def jacobian(function , var):
+    """Function that returns a matrix that represents the Jacobian
+       matrix of the given coordinate functions.
+       
+    Args:
+        function: Any list of sympy functions.
+        var: List of variables in order.
+        
+    Returns:
+        list: with the reverse of the function.
+        
+    Example:
+        >>> from sympy import symbols
+        >>> x = symbols('x')
+        >>> y = symbols('y')
+        >>> z = symbols('z')
+        >>> jacobian([x*y*z, x**2 + y**2, sp.sin(x*y*z)], [x, y, z])
+        Matrix([
+        [y*x, x*z, x*y],
+        [2*x, 2*y, 0],
+        [y*z*cos(x*y*z), x*z*cos(x*y*z), x*y*cos(x*y*z)]])
+    """
+    x = sp.symbols('x')
+    y = sp.symbols('y')
+    z = sp.symbols('z')
+    m = len(function)
+    n = len(var)
+    mat = sp.zeros(m, n)
+    for i in range(m):
+        for j in range(n):
+            mat[i, j] = sp.diff(function[i], var[j])
+    return mat

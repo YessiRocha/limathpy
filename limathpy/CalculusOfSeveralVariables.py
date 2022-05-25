@@ -43,7 +43,7 @@ def gradient(expr, var):
         >>> x = symbols('x')
         >>> y = symbols('y')
         >>> z = symbols('z')
-        >>> partial_derivate(x*sp.cos(3*z)**2 + sp.sin(y), [x, y, z])
+        >>> gradient(x*sp.cos(3*z)**2 + sp.sin(y), [x, y, z])
         [x*cos(3*z)**2 + sin(y), cos(3*z)**2, cos(y),
         -6*x*sin(3*z)*cos(3*z)]"""
     x = sp.symbols('x')

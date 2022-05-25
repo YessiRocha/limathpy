@@ -6,7 +6,9 @@
 Welcome to limathpy's documentation!
 ====================================
 
-This is a module of students of LiMA for students of LiMA of the Autonomous University of the state of Hidalgo
+This is a LiMA student package for LiMA students of the Autonomous University of the 
+State of Hidalgo, with the purpose of providing a computational solution to the 
+calculation of problems in different areas of interest for undergraduate students.
 
 .. toctree::
    :maxdepth: 2
@@ -27,7 +29,7 @@ Here we deal with differential equations
 Calculus
 ~~~~~~~~
 
-Here there are functions to solve calculus problems
+Here there are functions to solve calculus problems in one variable
 
 .. automodule:: limathpy.Calculus
    :members:

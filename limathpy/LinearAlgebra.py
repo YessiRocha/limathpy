@@ -1,4 +1,4 @@
-"""This is the Linear Algebra module. He we have several useful functions."""
+"""This is the Linear Algebra module. He we have some useful functions."""
 
 
 import sympy as sp

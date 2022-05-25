@@ -213,7 +213,7 @@ def seri_converg(expression):
     >>> from sympy import symbols
     >>> n = symbols('n')
     >>> seri_converg(1/2**n)
-    'The series from 1 to infinity of the sequence 2**(-n) converges.'"""
+    'The infinite series of the sequence 2**(-n) converges.'"""
     n = sp.symbols('n')
     expr_2 = expression.subs({n: n + 1})
     r = sp.limit_seq(expr_2 / expression, n)

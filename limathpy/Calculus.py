@@ -37,7 +37,6 @@ def graph_fyd(expression):
         expression (str): Expression of a function.
 
     Example:
-        >>> import matplotlib.pyplot as plt
         >>> graph_fyd("x**2")
 
     .. image:: graph_fyd.png

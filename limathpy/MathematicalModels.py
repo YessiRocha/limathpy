@@ -21,9 +21,10 @@ def rungekutta2_fg(f, g, t0, x0, y0, h, samples):
     >>> import numpy as np
     >>> from limathpy import rungekutta2_fg
     >>> print(' [ ti, xi, yi]')
-    >>> print(table)"""
+    >>> print table
+    [ ti, xi, yi]"""
     size = samples + 1
-    table = np.zeros(shape=(size,3), dtype=float)
+    table = np.zeros(shape=(size, 3), dtype=float)
     table[0] = [t0, x0, y0]
     ti = t0
     xi = x0
@@ -43,17 +44,17 @@ def rungekutta2_fg(f, g, t0, x0, y0, h, samples):
         b = 0.7
         c = 0.35
         d = 0.35
-        f = lambda t, x, y : a*x - b*x*y
-        g = lambda t, x, y : - c*y + d*x*y
+        f = lambda t, x, y: a*x - b*x*y
+        g = lambda t, x, y: - c*y + d*x*y
         t0 = 0
         x0 = 2
         y0 = 1
         h = 0.5
         samples = 101
         table = rungekutta2_fg(f, g, t0, x0, y0, h, samples)
-        ti = table[:,0]
-        xi = table[:,1]
-        yi = table[:,2]
+        ti = table[:, 0]
+        xi = table[:, 1]
+        yi = table[:, 2]
     np.set_printoptions(precision=6)
     return table
     

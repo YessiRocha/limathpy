@@ -122,3 +122,31 @@ def hessian(funcion, var):
             jacb = sp.diff(funcion[i], var[j])
             mat[i, j] = sp.diff(jacb, var[j])
     return mat
+
+
+def divergence(expr, var):
+    """Function that returns the Divergence of a given vector field.
+    
+    Args:
+        expr: Any list of sympy functions.
+        var: List of variables in order.
+        
+    Returns:
+        list: with the reverse of the function.
+        
+    Example:
+        >>> from sympy import symbols
+        >>> x = symbols('x')
+        >>> y = symbols('y')
+        >>> divergence([sp.cos(x*2) + y, x + 2*y**4], [x, y])
+        8*y**3 - 2*sin(2*x)"""
+    x = sp.symbols('x')
+    y = sp.symbols('y')
+    z = sp.symbols('z')
+    n = len(expr)
+    partials = [0]*n
+    divergence = 0
+    for i in range(n):
+        partials[i] = sp.diff(expr[i], var[i])
+        divergence = divergence + partials[i]
+    return divergence

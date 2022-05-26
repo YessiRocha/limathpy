@@ -46,7 +46,7 @@ def rungekutta2_fg(f, g, t0, x0, y0, h, samples):
         xi = xi + (1/2)*(K1x+K2x)
         yi = yi + (1/2)*(K1y+K2y)
         table[i] = [ti, xi, yi]
-    table = np.array(table)}
+    table = np.array(table)
     return table
         
     

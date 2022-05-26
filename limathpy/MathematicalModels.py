@@ -59,7 +59,7 @@ def diagram(par, x0, it):
     >>> from matplotlib import pyplot as plt
     >>> import numpy as np
     >>> from limathpy import diagram
-    >>> diagrama(f, 0.1, 100)"""
+    >>> diagram(f, 0.1, 100)"""
     def f(x):
         return par*x*(1-x)
     fig, ax = plt.subplots()

@@ -61,38 +61,38 @@ def rungekutta2_fg(f,g,t0,x0,y0,h,samples):
     
     
     def diagram(par, x0, it):
-    """ A function that, returns a spiderweb diagram of some function.
-    Args:
-        par: is a simple structured text parser project
-        x0: initial condition
-        it: number of steps
+        """ A function that, returns a spiderweb diagram of some function.
+        Args:
+            par: is a simple structured text parser project
+            x0: initial condition
+            it: number of steps
 
-    Example:
-    >>> from matplotlib import pyplot as plt
-    >>> from celluloid import Camera
-    >>> from IPython.display import HTML
-    >>> import numpy as np
-    >>> from limathpy import diagram
-    >>> anim = diagram(3.8, 0.1, 200)
-    >>> HTML(anim.to_html5_video())"""
-    def f(x):
-        return par*x*(1-x)
-    fig, ax = plt.subplots()
-    camera = Camera(fig)
-    x = [x0]
-    y = [x0]
-    s = np.arange(0, 1, 0.01)
+        Example:
+        >>> from matplotlib import pyplot as plt
+        >>> from celluloid import Camera
+        >>> from IPython.display import HTML
+        >>> import numpy as np
+        >>> from limathpy import diagram
+        >>> anim = diagram(3.8, 0.1, 200)
+        >>> HTML(anim.to_html5_video())"""
+        def f(x):
+            return par*x*(1-x)
+        fig, ax = plt.subplots()
+        camera = Camera(fig)
+        x = [x0]
+        y = [x0]
+        s = np.arange(0, 1, 0.01)
 
-    for i in range(it):
-        ax.plot(s, f(s), color='blue')
-        ax.plot(s, s, color='black')
-        x.append(x[2*i])
-        x.append(f(x[2*i]))
-        y.append(f(y[2*i]))
-        y.append(f(y[2*i]))
-        ax.plot(x, y, color='red')
-        camera.snap()
-    return camera.animate()    
+        for i in range(it):
+            ax.plot(s, f(s), color='blue')
+            ax.plot(s, s, color='black')
+            x.append(x[2*i])
+            x.append(f(x[2*i]))
+            y.append(f(y[2*i]))
+            y.append(f(y[2*i]))
+            ax.plot(x, y, color='red')
+            camera.snap()
+        return camera.animate()    
 
 
 def fibonacci(n):

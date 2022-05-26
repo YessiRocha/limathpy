@@ -150,3 +150,35 @@ def divergence(expr, var):
         partials[i] = sp.diff(expr[i], var[i])
         divergence = divergence + partials[i]
     return divergence
+
+
+def laplacian(expr, var):
+    """Function that returns the Laplacian of a function of several
+       variables.
+    
+    Args:
+        expr: Any sympy function.
+        var: List of variables in order.
+        
+    Returns:
+        list: with the reverse of the function.
+        
+    Example:
+        >>> from sympy import symbols
+        >>> x = symbols('x')
+        >>> y = symbols('y')
+        >>> z = symbols('z')
+        >>> laplacian(2*x*y + y**3 - sp.cos(z), [x, y, z])
+        8*y + cos(z)"""
+    x = sp.symbols('x')
+    y = sp.symbols('y')
+    z = sp.symbols('z')
+    n = len(var)
+    partial1 = [0]*n
+    partial2 = [0]*n
+    laplacian = 0
+    for i in range(n):
+        partial1[i] = sp.diff(expr, var[i])
+        partial2[i] = sp.diff(partial1[i], var[i])
+        laplacian = laplacian + partial2[i]
+    return laplacian

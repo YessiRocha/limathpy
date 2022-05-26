@@ -69,6 +69,8 @@ def rungekutta2_fg(f,g,t0,x0,y0,h,samples):
 
     Example:
     >>> from matplotlib import pyplot as plt
+    >>> from celluloid import Camera
+    >>> from IPython.display import HTML
     >>> import numpy as np
     >>> from limathpy import diagram
     >>> diagram(f, 0.1, 100)"""

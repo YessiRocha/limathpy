@@ -73,7 +73,7 @@ def rungekutta2_fg(f,g,t0,x0,y0,h,samples):
     >>> from IPython.display import HTML
     >>> import numpy as np
     >>> from limathpy import diagram
-    >>> anim = diagrama(3.8, 0.1, 200)
+    >>> anim = diagram(3.8, 0.1, 200)
     >>> HTML(anim.to_html5_video())"""
     def f(x):
         return par*x*(1-x)

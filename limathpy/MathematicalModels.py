@@ -83,8 +83,8 @@ def diagram(par, x0, it):
     s = np.arange(0, 1, 0.01)
 
     for i in range(it):
-        ax.plot(s, f(s), color = 'blue')
-        ax.plot(s, s, color = 'black')
+        ax.plot(s, f(s), color='blue')
+        ax.plot(s, s, color='black')
         x.append(x[2*i])
         x.append(f(x[2*i]))
         y.append(f(y[2*i]))

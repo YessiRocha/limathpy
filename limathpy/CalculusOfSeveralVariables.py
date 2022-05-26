@@ -73,8 +73,8 @@ def jacobian(function , var):
         >>> z = symbols('z')
         >>> jacobian([x*y*z, x**2 + y**2, sp.sin(x*y*z)], [x, y, z])
         Matrix([
-        [y*x, x*z, x*y],
-        [2*x, 2*y, 0],
+        [y*x,                       x*z,            x*y],
+        [2*x,                       2*y,              0],
         [y*z*cos(x*y*z), x*z*cos(x*y*z), x*y*cos(x*y*z)]])
     """
     x = sp.symbols('x')
@@ -169,7 +169,7 @@ def laplacian(expr, var):
         >>> y = symbols('y')
         >>> z = symbols('z')
         >>> laplacian(2*x*y + y**3 - sp.cos(z), [x, y, z])
-        8*y + cos(z)"""
+        6*y + cos(z)"""
     x = sp.symbols('x')
     y = sp.symbols('y')
     z = sp.symbols('z')

@@ -59,53 +59,55 @@ def rungekutta2_fg(f,g,t0,x0,y0,h,samples):
     return(table)
     
     
-    def diagram(par, x0, it):
-        """ A function that, returns a spiderweb diagram of some function.
-        Args:
-            par: is a simple structured text parser project
-            x0: initial condition
-            it: number of steps
+def diagram(par, x0, it):
+    """A function that, returns a spiderweb diagram of some function.
 
-        Example:
-        >>> from matplotlib import pyplot as plt
-        >>> from celluloid import Camera
-        >>> from IPython.display import HTML
-        >>> import numpy as np
-        >>> from limathpy import diagram
-        >>> anim = diagram(3.8, 0.1, 200)
-        >>> HTML(anim.to_html5_video())"""
-        def f(x):
-            return par*x*(1-x)
-        fig, ax = plt.subplots()
-        camera = Camera(fig)
-        x = [x0]
-        y = [x0]
-        s = np.arange(0, 1, 0.01)
+    Args:
+        par: is a simple structured text parser project
+        x0: initial condition
+        it: number of steps
 
-        for i in range(it):
-            ax.plot(s, f(s), color='blue')
-            ax.plot(s, s, color='black')
-            x.append(x[2*i])
-            x.append(f(x[2*i]))
-            y.append(f(y[2*i]))
-            y.append(f(y[2*i]))
-            ax.plot(x, y, color='red')
-            camera.snap()
-        return camera.animate()    
+    Example:
+    >>> from matplotlib import pyplot as plt
+    >>> from celluloid import Camera
+    >>> from IPython.display import HTML
+    >>> import numpy as np
+    >>> from limathpy import diagram
+    >>> anim = diagram(3.8, 0.1, 200)
+    >>> HTML(anim.to_html5_video())"""
+    def f(x):
+        return par*x*(1-x)
+    fig, ax = plt.subplots()
+    camera = Camera(fig)
+    x = [x0]
+    y = [x0]
+    s = np.arange(0, 1, 0.01)
+
+    for i in range(it):
+        ax.plot(s, f(s), color='blue')
+        ax.plot(s, s, color='black')
+        x.append(x[2*i])
+        x.append(f(x[2*i]))
+        y.append(f(y[2*i]))
+        y.append(f(y[2*i]))
+        ax.plot(x, y, color='red')
+        camera.snap()
+    return camera.animate()
 
 
 def fibonacci(n):
     """A function that, returns the n-th Fibonacci number
+
     Args:
-        n (int): the integer number 
+        n (int): the integer number
+
     Example:
-        >>> from limathpy import fibonacci
-        >>> [fibonacci(n) for n in range(1, 20)]
-        [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584]"""
+    >>> from limathpy import fibonacci
+    >>> [fibonacci(n) for n in range(1, 20)]
+    [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584]"""
     if n == 1:
         return 0
     elif n == 2:
         return 1
     else:
         return fibonacci(n-1) + fibonacci(n-2)
-

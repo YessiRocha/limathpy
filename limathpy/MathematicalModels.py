@@ -4,7 +4,6 @@ from matplotlib import pyplot as plt
 from celluloid import Camera
 from IPython.display import HTML
 import numpy as np
-import scipy.integrate as spi
 import pylab as pl
 
 def sistem(matriz):
@@ -94,42 +93,3 @@ def fibonacci(n):
     else:
         return fibonacci(n-1) + fibonacci(n-2)
 
-
-
-
-
-
-def diff_eqs(INP,t): 
-    # population size
-    N=1
-    beta=1.4247
-    gamma=0.14286
-    #time step
-    S=1.0 
-    ND=70.0
-    S0=1-1e-6
-    I0=1e-6
-    NPUT = (S0, I0, 0.0)
-    Y=np.zeros((3))
-    V = INP
-    """A function that returns the solution of Mathematical model SIR.
-    Args:
-        INP:
-        t: """
-    Y[0] = - beta * V[0] * V[1]
-    Y[1] = beta * V[0] * V[1] - gamma * V[1]
-    Y[2] = gamma * V[1]
-    return Y   # For odeint
-
-#t_start = 0.0; t_end = ND; t_inc = TS
-#t_range = np.arange(t_start, t_end+t_inc, t_inc)
-#RES = spi.odeint(diff_eqs,INPUT,t_range)
-
-#Grafic
-#pl.plot(RES[:,0]*N, '-g', label='Susceptible')
-#pl.plot(RES[:,2]*N, '-k', label='Rerecovered')
-#pl.plot(RES[:,1]*N, '-r', label='Infected')
-#pl.legend(loc=0)
-#pl.title('Basic Model SIR')
-#pl.xlabel('Time')
-#pl.savefig('sirpy')

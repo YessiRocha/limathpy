@@ -16,7 +16,7 @@ def sistem(matriz):
     >>> from matplotlib import pyplot as plt
     >>> import numpy as np
     >>> from limathpy import diagram
-    >>> diagrama(f, 0.1, 100)""""""
+    >>> diagrama(f, 0.1, 100)"""
     t = symbols('t')
     x, y = symbols('x y', cls=Function)
     eq1 = Eq(Derivative(x(t), t), matriz[0][0]*x(t) + matriz[0][1]*y(t))

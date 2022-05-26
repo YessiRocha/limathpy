@@ -26,7 +26,7 @@ def sistem(matriz):
     
 
 def linear_system(matriz, cond_inic):
-    """Given a system of differential equations, the linear system returns to :math:`t=0"""
+    """Given a system of differential equations, the linear system returns to :math:`t=0`"""
     t = symbols('t')
     x, y = symbols('x y', cls=Function)
     sols = sistem(matriz)

@@ -16,16 +16,17 @@ def sistem(matriz):
     >>> from matplotlib import pyplot as plt
     >>> import numpy as np
     >>> from limathpy import diagram
-    >>> diagrama(f, 0.1, 100)""""""
+    >>> diagrama(f, 0.1, 100)""""
     t = symbols('t')
     x, y = symbols('x y', cls=Function)
     eq1 = Eq(Derivative(x(t), t), matriz[0][0]*x(t) + matriz[0][1]*y(t))
     eq2 = Eq(Derivative(y(t), t), matriz[1][0]*x(t) + matriz[1][1]*y(t))
     sols = dsolve((eq1, eq2))
     return sols[0].rhs, sols[1].rhs
+    
 
 def linear_system(matriz, cond_inic):
-    """Given a system of differential equations, the linear system returns to t=0."""
+    """Given a system of differential equations, the linear system returns to :math:`t=0"""
     t = symbols('t')
     x, y = symbols('x y', cls=Function)
     sols = sistem(matriz)

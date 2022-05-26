@@ -6,49 +6,61 @@ from IPython.display import HTML
 import numpy as np
 import pylab as pl
 
-def sistem(matriz):
-    """Given a list of lists, a system of differential equations returns.
+#Lotka-Volterra predator-prey model
+
+def rungekutta2_fg(f,g,t0,x0,y0,h,samples):
+    """ A function that, returns a system of ordinary differential equations with 2nd Order Runge Kutta.
     Args:
-        matriz: is a simple structured text parser project
+        f: first differential equation
+        g: second differential equation
+        t0: initial condition of the observation time
+        x0: initial condition of the number of dams
+        y0: initial condition of the number of predators
+        h: algorithm parameter
+        samples (int):total number of samples
 
     Example:
-    >>> from matplotlib import pyplot as plt
     >>> import numpy as np
-    >>> from limathpy import diagram
-    >>> diagrama(f, 0.1, 100)"""
-    t = symbols('t')
-    x, y = symbols('x y', cls=Function)
-    eq1 = Eq(Derivative(x(t), t), matriz[0][0]*x(t) + matriz[0][1]*y(t))
-    eq2 = Eq(Derivative(y(t), t), matriz[1][0]*x(t) + matriz[1][1]*y(t))
-    sols = dsolve((eq1, eq2))
-    return sols[0].rhs, sols[1].rhs
-
-
-def linear_system(matriz, cond_inic):
-    """Given a system of differential equations, the linear system returns to t=0."""
-    t = symbols('t')
-    x, y = symbols('x y', cls=Function)
-    sols = sistem(matriz)
-
-    lineal1 = Eq(sols[0].subs({t:0}), cond_inic[0])
-    lineal2 = Eq(sols[1].subs({t:0}), cond_inic[1])
-    return lineal1, lineal2
-
-
-def sistema_ed(matriz, cond_inic):
-    """Given a matrix and initial conditions, the solution of the differential equation system returns."""
-    t = symbols('t')
-    x, y = symbols('x y', cls=Function)
-    C1, C2 = symbols('C1 C2')
-    sis_ed = sistem(matriz)
-    sis_lin = linear_system(matriz, cond_inic)
-    dict_sols = solve(sis_lin)
-    expr1 = sis_ed[0].subs(dict_sols)
-    expr2 = sis_ed[1].subs(dict_sols)
-    return expr1, expr2
+    >>> from limathpy import rungekutta2_fg
+    >>> print(' [ ti, xi, yi]')
+    >>> print(table)"""
+    size = samples +1
+    table = np.zeros(shape=(size,3),dtype=float)
+    table[0] = [t0,x0,y0]
+    ti = t0
+    xi = x0
+    yi = y0
+    for i in range(1,size,1):
+        K1x = h * f(ti,xi,yi)
+        K1y = h * g(ti,xi,yi)
+        K2x = h * f(ti+h, xi + K1x, yi+K1y)
+        K2y = h * g(ti+h, xi + K1x, yi+K1y)
+        xi = xi + (1/2)*(K1x+K2x)
+        yi = yi + (1/2)*(K1y+K2y)
+        ti = ti + h
+        table[i] = [ti,xi,yi]
+        table = np.array(table)
+        #Parameters of the equations
+        a = 0.5
+        b = 0.7
+        c = 0.35
+        d = 0.35
+        f = lambda t,x,y : a*x -b*x*y
+        g = lambda t,x,y : -c*y + d*x*y
+        t0 = 0
+        x0 = 2
+        y0 = 1
+        h = 0.5
+        samples = 101
+        table = rungekutta2_fg(f,g,t0,x0,y0,h,samples)
+        ti = table[:,0]
+        xi = table[:,1]
+        yi = table[:,2]
+    np.set_printoptions(precision=6)
+    return(table)
     
     
-def diagram(par, x0, it):
+    def diagram(par, x0, it):
     """ A function that, returns a spiderweb diagram of some function.
     Args:
         par: is a simple structured text parser project

@@ -23,6 +23,7 @@ def sistem(matriz):
     sols = dsolve((eq1, eq2))
     return sols[0].rhs, sols[1].rhs
 
+
 def linear_system(matriz, cond_inic):
     """Given a system of differential equations, the linear system returns to t=0."""
     t = symbols('t')
@@ -32,6 +33,7 @@ def linear_system(matriz, cond_inic):
     lineal1 = Eq(sols[0].subs({t:0}), cond_inic[0])
     lineal2 = Eq(sols[1].subs({t:0}), cond_inic[1])
     return lineal1, lineal2
+
 
 def sistema_ed(matriz, cond_inic):
     """Given a matrix and initial conditions, the solution of the differential equation system returns."""

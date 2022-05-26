@@ -1,13 +1,12 @@
 #File to MathematicalModels
-from sympy import plot, symbols, Function, Eq, Derivative, dsolve, solve
 from matplotlib import pyplot as plt
 from celluloid import Camera
-from IPython.display import HTML
 import numpy as np
 
 #Lotka-Volterra predator-prey model
 
-def rungekutta2_fg(f,g,t0,x0,y0,h,samples):
+
+def rungekutta2_fg(f, g, t0, x0, y0, h, samples):
     """ A function that, returns a system of ordinary differential equations with 2nd Order Runge Kutta.
     Args:
         f: first differential equation
@@ -24,34 +23,34 @@ def rungekutta2_fg(f,g,t0,x0,y0,h,samples):
     >>> print(' [ ti, xi, yi]')
     >>> print(table)"""
     size = samples +1
-    table = np.zeros(shape=(size,3),dtype=float)
-    table[0] = [t0,x0,y0]
+    table = np.zeros(shape = (size,3), dtype = float)
+    table[0] = [t0, x0, y0]
     ti = t0
     xi = x0
     yi = y0
-    for i in range(1,size,1):
-        K1x = h * f(ti,xi,yi)
-        K1y = h * g(ti,xi,yi)
+    for i in range(1, size, 1):
+        K1x = h * f(ti, xi, yi)
+        K1y = h * g(ti, xi, yi)
         K2x = h * f(ti+h, xi + K1x, yi+K1y)
         K2y = h * g(ti+h, xi + K1x, yi+K1y)
         xi = xi + (1/2)*(K1x+K2x)
         yi = yi + (1/2)*(K1y+K2y)
         ti = ti + h
-        table[i] = [ti,xi,yi]
+        table[i] = [ti, xi, yi]
         table = np.array(table)
         #Parameters of the equations
         a = 0.5
         b = 0.7
         c = 0.35
         d = 0.35
-        f = lambda t,x,y : a*x -b*x*y
-        g = lambda t,x,y : -c*y + d*x*y
+        f = lambda t, x, y : a*x -b*x*y
+        g = lambda t, x, y : -c*y + d*x*y
         t0 = 0
         x0 = 2
         y0 = 1
         h = 0.5
         samples = 101
-        table = rungekutta2_fg(f,g,t0,x0,y0,h,samples)
+        table = rungekutta2_fg(f, g, t0, x0, y0, h, samples)
         ti = table[:,0]
         xi = table[:,1]
         yi = table[:,2]
@@ -84,8 +83,8 @@ def diagram(par, x0, it):
     s = np.arange(0, 1, 0.01)
 
     for i in range(it):
-        ax.plot(s, f(s), color='blue')
-        ax.plot(s, s, color='black')
+        ax.plot(s, f(s), color = 'blue')
+        ax.plot(s, s, color = 'black')
         x.append(x[2*i])
         x.append(f(x[2*i]))
         y.append(f(y[2*i]))

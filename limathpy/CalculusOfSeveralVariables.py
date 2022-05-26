@@ -51,11 +51,11 @@ def gradient(expr, var):
     z = sp.symbols('z')
     gradient = [expr]
     for i in range(len(var)):
-        gradient.append(sp.diff(gradient [0], var[i]))
+        gradient.append(sp.diff(gradient[0], var[i]))
     return gradient
 
 
-def jacobian(function , var):
+def jacobian(function, var):
     """Function that returns a matrix that represents the Jacobian
        matrix of the given coordinate functions.
        

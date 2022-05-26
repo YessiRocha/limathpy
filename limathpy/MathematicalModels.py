@@ -55,7 +55,7 @@ def rungekutta2_fg(f, g, t0, x0, y0, h, samples):
         xi = table[:,1]
         yi = table[:,2]
     np.set_printoptions(precision=6)
-    return(table)
+    return table
     
     
 def diagram(par, x0, it):

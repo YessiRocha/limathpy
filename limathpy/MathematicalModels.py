@@ -20,9 +20,19 @@ def rungekutta2_fg(f, g, t0, x0, y0, h, samples):
     Example:
     >>> import numpy as np
     >>> from limathpy import rungekutta2_fg
-    >>> print(' [ ti, xi, yi]')
-    >>> print table
-    [ ti, xi, yi]"""
+    >>> a = 0.5
+    >>> b = 0.7
+    >>> c = 0.35
+    >>> d = 0.35
+    >>> f = lambda t, x, y: a*x - b*x*y
+    >>> g = lambda t, x, y: - c*y + d*x*y
+    >>> t0 = 0
+    >>> x0 = 2
+    >>> y0 = 1
+    >>> h = 0.5
+    >>> samples = 101
+    table = rungekutta2_fg(f, g, t0, x0, y0, h, samples)
+    return table"""
     size = samples + 1
     table = np.zeros(shape=(size, 3), dtype=float)
     table[0] = [t0, x0, y0]
@@ -36,28 +46,10 @@ def rungekutta2_fg(f, g, t0, x0, y0, h, samples):
         K2y = h * g(ti+h, xi + K1x, yi+K1y)
         xi = xi + (1/2)*(K1x+K2x)
         yi = yi + (1/2)*(K1y+K2y)
-        ti = ti + h
-        table = np.array(table)
         table[i] = [ti, xi, yi]
-        #Parameters of the equations
-        a = 0.5
-        b = 0.7
-        c = 0.35
-        d = 0.35
-        f = lambda t, x, y: a*x - b*x*y
-        g = lambda t, x, y: - c*y + d*x*y
-        t0 = 0
-        x0 = 2
-        y0 = 1
-        h = 0.5
-        samples = 101
-        table = rungekutta2_fg(f, g, t0, x0, y0, h, samples)
-        ti = table[:, 0]
-        xi = table[:, 1]
-        yi = table[:, 2]
-    np.set_printoptions(precision=6)
+    table = np.array(table)}
     return table
-    
+        
     
 def diagram(par, x0, it):
     """A function that, returns a spiderweb diagram of some function.

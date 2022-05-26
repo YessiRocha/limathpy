@@ -73,8 +73,8 @@ def jacobian(function , var):
         >>> z = symbols('z')
         >>> jacobian([x*y*z, x**2 + y**2, sp.sin(x*y*z)], [x, y, z])
         Matrix([
-        [y*x,                       x*z,            x*y],
-        [2*x,                       2*y,              0],
+        [           y*z,            x*z,            x*y],
+        [           2*x,            2*y,              0],
         [y*z*cos(x*y*z), x*z*cos(x*y*z), x*y*cos(x*y*z)]])
     """
     x = sp.symbols('x')

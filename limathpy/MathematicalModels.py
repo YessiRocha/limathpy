@@ -16,17 +16,16 @@ def sistem(matriz):
     >>> from matplotlib import pyplot as plt
     >>> import numpy as np
     >>> from limathpy import diagram
-    >>> diagrama(f, 0.1, 100)""""
+    >>> diagrama(f, 0.1, 100)""""""
     t = symbols('t')
     x, y = symbols('x y', cls=Function)
     eq1 = Eq(Derivative(x(t), t), matriz[0][0]*x(t) + matriz[0][1]*y(t))
     eq2 = Eq(Derivative(y(t), t), matriz[1][0]*x(t) + matriz[1][1]*y(t))
     sols = dsolve((eq1, eq2))
     return sols[0].rhs, sols[1].rhs
-    
 
 def linear_system(matriz, cond_inic):
-    """Given a system of differential equations, the linear system returns to :math:`t=0`"""
+    """Given a system of differential equations, the linear system returns to t=0."""
     t = symbols('t')
     x, y = symbols('x y', cls=Function)
     sols = sistem(matriz)
@@ -97,22 +96,26 @@ def fibonacci(n):
 
 
 
-# population size
-#N=1
-#beta=1.4247
-#gamma=0.14286
-# time step
-#TS=1.0 
-#ND=70.0
-#S0=1-1e-6
-#I0=1e-6
-#INPUT = (S0, I0, 0.0)
 
 
-def diff_eqs(INP,t):  
+
+def diff_eqs(INP,t): 
+    # population size
+    N=1
+    beta=1.4247
+    gamma=0.14286
+    #time step
+    S=1.0 
+    ND=70.0
+    S0=1-1e-6
+    I0=1e-6
+    NPUT = (S0, I0, 0.0)
     Y=np.zeros((3))
     V = INP
-    """Diferential equations"""
+    """A function that returns the solution of Mathematical model SIR.
+    Args:
+        INP:
+        t: """
     Y[0] = - beta * V[0] * V[1]
     Y[1] = beta * V[0] * V[1] - gamma * V[1]
     Y[2] = gamma * V[1]

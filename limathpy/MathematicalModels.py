@@ -4,7 +4,6 @@ from matplotlib import pyplot as plt
 from celluloid import Camera
 from IPython.display import HTML
 import numpy as np
-import pylab as pl
 
 #Lotka-Volterra predator-prey model
 

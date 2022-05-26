@@ -32,7 +32,6 @@ def rungekutta2_fg(f, g, t0, x0, y0, h, samples):
     >>> h = 0.5
     >>> samples = 101
     >>> table = rungekutta2_fg(f, g, t0, x0, y0, h, samples)
-     [ ti, xi, yi]
 [[ 0.        2.        1.      ]
  [ 0.5       1.754875  1.16975 ]
  [ 1.        1.457533  1.302069]
@@ -117,6 +116,7 @@ def rungekutta2_fg(f, g, t0, x0, y0, h, samples):
         K2y = h * g(ti+h, xi + K1x, yi+K1y)
         xi = xi + (1/2)*(K1x+K2x)
         yi = yi + (1/2)*(K1y+K2y)
+        ti = ti + h
         table[i] = [ti, xi, yi]
     table = np.array(table)
     return table

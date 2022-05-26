@@ -89,7 +89,7 @@ def jacobian(function , var):
     return mat
 
 
-def hessian(funcion, var):
+def hessian(function, var):
     """Function that returns a matrix that represents the Hessian
        matrix of the given coordinate functions.
        
@@ -114,12 +114,12 @@ def hessian(funcion, var):
     x = sp.symbols('x')
     y = sp.symbols('y')
     z = sp.symbols('z')
-    m = len(funcion)
+    m = len(function)
     n = len(var)
     mat = sp.zeros(m, n)
     for i in range(m):
         for j in range(n):
-            jacb = sp.diff(funcion[i], var[j])
+            jacb = sp.diff(function[i], var[j])
             mat[i, j] = sp.diff(jacb, var[j])
     return mat
 

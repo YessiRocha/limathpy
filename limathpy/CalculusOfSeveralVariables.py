@@ -44,8 +44,8 @@ def gradient(expr, var):
         >>> y = symbols('y')
         >>> z = symbols('z')
         >>> gradient(x*sp.cos(3*z)**2 + sp.sin(y), [x, y, z])
-        [x*cos(3*z)**2 + sin(y), cos(3*z)**2, cos(y),
-        -6*x*sin(3*z)*cos(3*z)]"""
+        [x*cos(3*z)**2 + sin(y), cos(3*z)**2, cos(y), -6*x*sin(3*z)*cos(3*z)]
+        """
     x = sp.symbols('x')
     y = sp.symbols('y')
     z = sp.symbols('z')
@@ -107,9 +107,9 @@ def hessian(funcion, var):
         >>> z = symbols('z')
         >>> hessian([x*y*z, x*sp.cos(y) -z, x*y*sp.sin(z)], [x, y, z])
         Matrix([
-        [0, 0, 0],
-        [0, -x*cos(y), 0],
-        [0, 0, -x*y*sin(z)]])
+        [0,         0,           0],
+        [0, -x*cos(y),           0],
+        [0,         0, -x*y*sin(z)]])
     """
     x = sp.symbols('x')
     y = sp.symbols('y')

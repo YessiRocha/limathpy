@@ -31,8 +31,7 @@ def rungekutta2_fg(f, g, t0, x0, y0, h, samples):
     >>> y0 = 1
     >>> h = 0.5
     >>> samples = 101
-    table = rungekutta2_fg(f, g, t0, x0, y0, h, samples)
-    return table"""
+    table = rungekutta2_fg(f, g, t0, x0, y0, h, samples)"""
     size = samples + 1
     table = np.zeros(shape=(size, 3), dtype=float)
     table[0] = [t0, x0, y0]

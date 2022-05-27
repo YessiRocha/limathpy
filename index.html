@@ -34,7 +34,9 @@
             
   <section id="welcome-to-limathpy-s-documentation">
 <h1>Welcome to limathpy’s documentation!<a class="headerlink" href="#welcome-to-limathpy-s-documentation" title="Permalink to this headline">¶</a></h1>
-<p>This is a module of students of LiMA for students of LiMA of the Autonomous University of the state of Hidalgo</p>
+<p>This is a LiMA student package for LiMA students of the Autonomous University of the
+State of Hidalgo, with the purpose of providing a computational solution to the
+calculation of problems in different areas of interest for undergraduate students.</p>
 <div class="toctree-wrapper compound">
 </div>
 <section id="submodules">
@@ -45,14 +47,18 @@
 <span class="target" id="module-limathpy.ODE"></span><dl class="py function">
 <dt class="sig sig-object py" id="limathpy.ODE.first_ode">
 <span class="sig-prename descclassname"><span class="pre">limathpy.ODE.</span></span><span class="sig-name descname"><span class="pre">first_ode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vector</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#limathpy.ODE.first_ode" title="Permalink to this definition">¶</a></dt>
-<dd><dl>
-<dt>A function that returns the general solution of a first order differential equation of the form p(t)y’(t) + q(t)y(t) = g(t);</dt><dd><p>p, q and g are functions which depend on t.</p>
-</dd>
+<dd><p>A function that returns the general solution of a first order 
+differential equation of the form p(t)y’(t) + q(t)y(t) = g(t); 
+p, q and g are functions which depend on t.</p>
+<dl>
 <dt>Args: </dt><dd><p>vector (list): a list of the form [p(t), q(t), g(t)].</p>
 </dd>
-<dt>Returns:</dt><dd><p>Eq: the general solution of the equation, C1 is a constant which depends on some initial condition.</p>
+<dt>Returns:</dt><dd><p>Eq: the general solution of the equation, C1 is a constant 
+which depends on some initial condition.</p>
 </dd>
-<dt>Example: </dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">limathpy</span> <span class="kn">import</span> <span class="n">first_ode</span>
+<dt>Example: </dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="n">symbols</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">limathpy</span> <span class="kn">import</span> <span class="n">first_ode</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;t&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">first_ode</span><span class="p">([</span><span class="n">t</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">t</span><span class="p">])</span>
 <span class="go">Eq(y(t), C1/t**2 + t/3 + 1)</span>
 </pre></div>
@@ -64,17 +70,19 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="limathpy.ODE.lin_system">
 <span class="sig-prename descclassname"><span class="pre">limathpy.ODE.</span></span><span class="sig-name descname"><span class="pre">lin_system</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">init_cond</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[[1,</span> <span class="pre">1],</span> <span class="pre">[0,</span> <span class="pre">1]]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#limathpy.ODE.lin_system" title="Permalink to this definition">¶</a></dt>
-<dd><p>A function that, given an ordinary differential equations system, returns the linear system for some given initial conditions. 
-Args:</p>
-<blockquote>
-<div><dl class="simple">
-<dt>matrix (list of two lists): a list of two lists of the form [[t1, t2], [t3, t3]], </dt><dd><p>where you obtain the following system x’(t) = t1*x(t) + t2*y(t); y’(t) = t3*x(t) + t4*y(t).</p>
-</dd>
-</dl>
-<p>init_cond (list of two lists): a matrix of the form [[t1, t2], [x(t1), y(t2)]], for some t1, t2. Defaults to x(t1 = 1) = 0 and x(t2 = 1) = 1.</p>
-</div></blockquote>
+<dd><p>A function that, given an ordinary differential equations system,
+returns the linear system for some given initial conditions.</p>
 <dl class="simple">
-<dt>Returns:</dt><dd><p>tuple: a tuple of the form (Eq_1, Eq_2), with Eq_1 and Eq_2 equations (Eq) with C1 and C2 as variables that are to be found using the initial conditions.</p>
+<dt>Args: </dt><dd><p>matrix (list of two lists): a list of two lists of the form
+[[t1, t2], [t3, t3]], where you obtain the following system 
+x’(t) = t1*x(t) + t2*y(t); y’(t) = t3*x(t) + t4*y(t). 
+init_cond (list of two lists): a matrix of the form 
+[[t1, t2], [x(t1), y(t2)]], for some t1, t2. Defaults to 
+x(t1 = 1) = 0 and x(t2 = 1) = 1.</p>
+</dd>
+<dt>Returns:</dt><dd><p>tuple: a tuple of the form (Eq_1, Eq_2), with Eq_1 and Eq_2 equations
+(Eq) with C1 and C2 as variables that are to be found using the 
+initial conditions.</p>
 </dd>
 </dl>
 <p>Example:
@@ -86,40 +94,39 @@ Args:</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="limathpy.ODE.phase_portrait">
 <span class="sig-prename descclassname"><span class="pre">limathpy.ODE.</span></span><span class="sig-name descname"><span class="pre">phase_portrait</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lim_init_cond</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#limathpy.ODE.phase_portrait" title="Permalink to this definition">¶</a></dt>
-<dd><p>A function that, given a 2x2 matrix (list of two lists), returns the phase_portrait of the associated ordinary differential equations system 
-for some given initial conditions between 0 and the given limit initial condition.
-Args:</p>
-<blockquote>
-<div><dl class="simple">
-<dt>matrix (list of two lists): a list of two lists of the form [[t1, t2], [t3, t3]], </dt><dd><p>where you obtain the following system x’(t) = t1*x(t) + t2*y(t); y’(t) = t3*x(t) + t4*y(t).</p>
+<dd><p>A function that, given a 2x2 matrix (list of two lists), returns the
+phase portrait of the associated ordinary differential equations system
+for some given initial conditions between 0 and the given limit initial 
+condition.</p>
+<dl class="simple">
+<dt>Args: </dt><dd><p>matrix (list of two lists): a list of two lists of the form 
+[[t1, t2], [t3, t3]], where you obtain the following system 
+x’(t) = t1*x(t) + t2*y(t); y’(t) = t3*x(t) + t4*y(t). 
+lim_init_cond (int): a number that will be the limit for the initial 
+confitions.</p>
 </dd>
 </dl>
-<p>lim_init_cond (int): a number that will be the limit for the initial confitions.</p>
-</div></blockquote>
 <p>Example:
 &gt;&gt;&gt; from limathpy import phase_portrait
-&gt;&gt;&gt; phase_portrait([[0, 1], [-1, 0]], 4)
-.. image:: phase_portrait.png</p>
-<blockquote>
-<div><dl class="field-list simple">
-<dt class="field-odd">align</dt>
-<dd class="field-odd"><p>center</p>
-</dd>
-</dl>
-</div></blockquote>
+&gt;&gt;&gt; phase_portrait([[0, 1], [-1, 0]], 4)</p>
+<img alt="phase_portrait.png" class="align-center" src="phase_portrait.png" />
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="limathpy.ODE.second_ode_const">
 <span class="sig-prename descclassname"><span class="pre">limathpy.ODE.</span></span><span class="sig-name descname"><span class="pre">second_ode_const</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vector</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#limathpy.ODE.second_ode_const" title="Permalink to this definition">¶</a></dt>
-<dd><dl>
-<dt>A function that returns the solution of a second order differential equation of the form r(t)y’’(t) + p(t)y’(t) + q(t)y(t) = g(t); </dt><dd><p>r, p, q and g are functions which depend on t.</p>
-</dd>
+<dd><p>A function that returns the solution of a second order differential
+equation of the form r(t)y’’(t) + p(t)y’(t) + q(t)y(t) = g(t); r, p, q and g
+are functions which depend on t.</p>
+<dl>
 <dt>Args: </dt><dd><p>vector (list): a list of the form [r(t), p(t), q(t), g(t)].</p>
 </dd>
-<dt>Returns:</dt><dd><p>Eq: the general solution of the equation, C1 and C2 are constants which depend on some initial conditions.</p>
+<dt>Returns:</dt><dd><p>Eq: the general solution of the equation, C1 and C2 are constants
+which depend on some initial conditions.</p>
 </dd>
 <dt>Example: </dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">limathpy</span> <span class="kn">import</span> <span class="n">second_ode_const</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="n">symbols</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;t&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">second_ode_const</span><span class="p">([</span><span class="n">t</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">t</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
 <span class="go">Eq(y(t), C1 + C2/t + log(t))</span>
 </pre></div>
@@ -129,17 +136,43 @@ Args:</p>
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="limathpy.ODE.slope_field">
+<span class="sig-prename descclassname"><span class="pre">limathpy.ODE.</span></span><span class="sig-name descname"><span class="pre">slope_field</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">function</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#limathpy.ODE.slope_field" title="Permalink to this definition">¶</a></dt>
+<dd><p>A function that, given a string, turns it into a function f and
+returns the slope field of the associated solutions of the differential equation
+dy/dx = f(x,y).</p>
+<dl class="simple">
+<dt>Args: </dt><dd><p>function (string): a string that represents a function f, such as
+dy/dx = f(x,y).                                  
+N (int): number of slopes to graph.
+xi = left and lower limit in the axis.
+xf = right and upper limit in the axis.</p>
+</dd>
+</dl>
+<p>Example:
+&gt;&gt;&gt; from limathpy import slope_field
+&gt;&gt;&gt; slope_field(‘2*y/x’, 20, -10, 10)</p>
+<img alt="slope_field.png" class="align-center" src="slope_field.png" />
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="limathpy.ODE.solve_2nd_ode">
 <span class="sig-prename descclassname"><span class="pre">limathpy.ODE.</span></span><span class="sig-name descname"><span class="pre">solve_2nd_ode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">init_cond</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[[1,</span> <span class="pre">2],</span> <span class="pre">[0,</span> <span class="pre">1]]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#limathpy.ODE.solve_2nd_ode" title="Permalink to this definition">¶</a></dt>
-<dd><dl>
-<dt>A function that returns the solution of a second order differential equation of the form r(t)y’’(t) + p(t)y’(t) + q(t)y(t) = g(t) </dt><dd><p>for some given initial conditions; r, p, q and g are functions which depend on t.</p>
-</dd>
+<dd><p>A function that returns the solution of a second order differential
+equation of the form r(t)y’’(t) + p(t)y’(t) + q(t)y(t) = g(t) for some given
+initial conditions; r, p, q and g are functions which depend on t.</p>
+<dl>
 <dt>Args: </dt><dd><p>vector (list): a list of the form [r(t), p(t), q(t), g(t)].
-init_cond (list of two lists): a matrix of the form [[t1, t2], [y(t1), y(t2)]], for some t1, t2. Defaults to y(t1 = 1) = 0 and y(t2 = 2) = 1.</p>
+init_cond (list of two lists): a matrix of the form 
+[[t1, t2], [y(t1), y(t2)]], for some t1, t2. Defaults to 
+y(t1 = 1) = 0 and y(t2 = 2) = 1.</p>
 </dd>
-<dt>Returns:</dt><dd><p>Eq: the general solution of the equation, C1 and C2 are constants which depend on some initial conditions.</p>
+<dt>Returns:</dt><dd><p>Eq: the general solution of the equation, C1 and C2 are constants
+which depend on some initial conditions.</p>
 </dd>
 <dt>Example: </dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">limathpy</span> <span class="kn">import</span> <span class="n">solve_2nd_ode</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="n">symbols</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;t&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">solve_2nd_ode</span><span class="p">([</span><span class="n">t</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">t</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
 <span class="go">Eq(y(t), log(t) - 2*log(2) + 2*log(2)/t)</span>
 </pre></div>
@@ -151,15 +184,19 @@ init_cond (list of two lists): a matrix of the form [[t1, t2], [y(t1), y(t2)]], 
 <dl class="py function">
 <dt class="sig sig-object py" id="limathpy.ODE.solve_first_ode">
 <span class="sig-prename descclassname"><span class="pre">limathpy.ODE.</span></span><span class="sig-name descname"><span class="pre">solve_first_ode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">init_cond</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[1,</span> <span class="pre">0]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#limathpy.ODE.solve_first_ode" title="Permalink to this definition">¶</a></dt>
-<dd><dl>
-<dt>A function that returns the solution of a first order differential equation of the form p(t)y’(t) + q(t)y(t) = g(t) </dt><dd><p>for some given initial conditions; p, q and g are functions which depend on t.</p>
-</dd>
+<dd><p>A function that returns the solution of a first order differential 
+equation of the form p(t)y’(t) + q(t)y(t) = g(t) for some given initial 
+conditions; p, q and g are functions which depend on t.</p>
+<dl>
 <dt>Args: </dt><dd><p>vector (list): a list of the form [p(t), q(t), g(t)].
-init_cond (list): a list of the form [t1, y(t1)], for some t1. Defaults to y(t1 = 1) = 0.</p>
+init_cond (list): a list of the form [t1, y(t1)], for some t1.
+Defaults to y(t1 = 1) = 0.</p>
 </dd>
 <dt>Returns:</dt><dd><p>Eq: the solution of the equation depending on the initial condition.</p>
 </dd>
 <dt>Example: </dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">limathpy</span> <span class="kn">import</span> <span class="n">solve_first_ode</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="n">symbols</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;t&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">solve_first_ode</span><span class="p">([</span><span class="n">t</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">t</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
 <span class="go">Eq(y(t), t/3 + 1 - 4/(3*t**2))</span>
 </pre></div>
@@ -171,18 +208,20 @@ init_cond (list): a list of the form [t1, y(t1)], for some t1. Defaults to y(t1 
 <dl class="py function">
 <dt class="sig sig-object py" id="limathpy.ODE.solve_system_ode">
 <span class="sig-prename descclassname"><span class="pre">limathpy.ODE.</span></span><span class="sig-name descname"><span class="pre">solve_system_ode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">init_cond</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[[1,</span> <span class="pre">1],</span> <span class="pre">[0,</span> <span class="pre">1]]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#limathpy.ODE.solve_system_ode" title="Permalink to this definition">¶</a></dt>
-<dd><p>A function that, given a 2x2 matrix (list of two lists), returns the sotutions of the associated ordinary differential equations system 
-for some given initial conditions.
-Args:</p>
-<blockquote>
-<div><dl class="simple">
-<dt>matrix (list of two lists): a list of two lists of the form [[t1, t2], [t3, t3]], </dt><dd><p>where you obtain the following system x’(t) = t1*x(t) + t2*y(t); y’(t) = t3*x(t) + t4*y(t).</p>
-</dd>
-</dl>
-<p>init_cond (list of two lists): a matrix of the form [[t1, t2], [y(t1), y(t2)]], for some t1, t2. Defaults to y(t1 = 1) = 0 and y(t2 = 2) = 1.</p>
-</div></blockquote>
+<dd><p>A function that, given a 2x2 matrix (list of two lists), returns the
+sotutions of the associated ordinary differential equations system for 
+some given initial conditions.</p>
 <dl class="simple">
-<dt>Returns:</dt><dd><p>tuple: a tuple of the form (x(t), y(t)), with x(t) and y(t) the general solutions of the system. C1 and C2 are constants that depend on some initial conditions.</p>
+<dt>Args: </dt><dd><p>matrix (list of two lists): a list of two lists of the form 
+[[t1, t2], [t3, t3]], where you obtain the following system 
+x’(t) = t1*x(t) + t2*y(t); y’(t) = t3*x(t) + t4*y(t). 
+init_cond (list of two lists): a matrix of the form 
+[[t1, t2], [y(t1), y(t2)]], for some t1, t2. Defaults to 
+y(t1 = 1) = 0 and y(t2 = 2) = 1.</p>
+</dd>
+<dt>Returns:</dt><dd><p>tuple: a tuple of the form (x(t), y(t)), with x(t) and y(t) the
+general solutions of the system. C1 and C2 are constants that depend
+on some initial conditions.</p>
 </dd>
 </dl>
 <p>Example:
@@ -194,16 +233,16 @@ Args:</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="limathpy.ODE.system_ode">
 <span class="sig-prename descclassname"><span class="pre">limathpy.ODE.</span></span><span class="sig-name descname"><span class="pre">system_ode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrix</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#limathpy.ODE.system_ode" title="Permalink to this definition">¶</a></dt>
-<dd><p>A function that, given a 2x2 matrix (list of two lists), returns the general sotutions of the associated ordinary differential equations system.
-Args:</p>
-<blockquote>
-<div><dl class="simple">
-<dt>matrix (list of two lists): a list of two lists of the form [[t1, t2], [t3, t3]], </dt><dd><p>where you obtain the following system x’(t) = t1*x(t) + t2*y(t); y’(t) = t3*x(t) + t4*y(t).</p>
-</dd>
-</dl>
-</div></blockquote>
+<dd><p>A function that, given a 2x2 matrix (list of two lists), returns the general
+sotutions of the associated ordinary differential equations system.</p>
 <dl class="simple">
-<dt>Returns:</dt><dd><p>tuple: a tuple of the form (x(t), y(t)), with x(t) and y(t) the general solutions of the system. C1 and C2 are constants that depend on some initial conditions.</p>
+<dt>Args: </dt><dd><p>matrix (list of two lists): a list of two lists of the form
+[[t1, t2], [t3, t3]], where you obtain the following system 
+x’(t) = t1*x(t) + t2*y(t); y’(t) = t3*x(t) + t4*y(t).</p>
+</dd>
+<dt>Returns:</dt><dd><p>tuple: a tuple of the form (x(t), y(t)), with x(t) and y(t) the 
+general solutions of the system. C1 and C2 are constants that depend on some 
+initial conditions.</p>
 </dd>
 </dl>
 <p>Example:
@@ -212,44 +251,41 @@ Args:</p>
 (C1*exp(t), C2*exp(-3*t))</p>
 </dd></dl>
 
-<dl class="py class">
-<dt class="sig sig-object py" id="limathpy.ODE.x">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">limathpy.ODE.</span></span><span class="sig-name descname"><span class="pre">x</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#limathpy.ODE.x" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="limathpy.ODE.y">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">limathpy.ODE.</span></span><span class="sig-name descname"><span class="pre">y</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#limathpy.ODE.y" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 </section>
 <section id="calculus">
 <h3>Calculus<a class="headerlink" href="#calculus" title="Permalink to this headline">¶</a></h3>
-<p>Here there are functions to solve calculus problems</p>
-<span class="target" id="module-limathpy.Calculus"></span><dl class="py function">
+<p>Here there are functions to solve calculus problems in one variable</p>
+<span class="target" id="module-limathpy.Calculus"></span><p>This module contains functions to solve some calculus problems in one variable.</p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="limathpy.Calculus.TestLimitDiverges">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">limathpy.Calculus.</span></span><span class="sig-name descname"><span class="pre">TestLimitDiverges</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'The</span> <span class="pre">quotient</span> <span class="pre">limit</span> <span class="pre">for</span> <span class="pre">this</span> <span class="pre">test</span> <span class="pre">does</span> <span class="pre">not</span> <span class="pre">converge.'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#limathpy.Calculus.TestLimitDiverges" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="limathpy.Calculus.graph_fyd">
 <span class="sig-prename descclassname"><span class="pre">limathpy.Calculus.</span></span><span class="sig-name descname"><span class="pre">graph_fyd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expression</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#limathpy.Calculus.graph_fyd" title="Permalink to this definition">¶</a></dt>
-<dd><p>Function that graphs an expression given as a string and its derivative on the same plane.</p>
-<p>This function produces images such as:</p>
-<img alt="graph_fyd.png" class="align-center" src="graph_fyd.png" />
+<dd><p>Function that graphs an expression given as a string and its derivative
+on the same plane.</p>
 <dl>
 <dt>Args: </dt><dd><p>expression (str): Expression of a function.</p>
 </dd>
-<dt>Example:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">graph_fyd</span><span class="p">(</span><span class="s2">&quot;x**2&quot;</span><span class="p">)</span>
+<dt>Example:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">graph_fyd</span><span class="p">(</span><span class="s2">&quot;x**2&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd>
 </dl>
+<img alt="graph_fyd.png" class="align-center" src="graph_fyd.png" />
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="limathpy.Calculus.n_derivatives">
 <span class="sig-prename descclassname"><span class="pre">limathpy.Calculus.</span></span><span class="sig-name descname"><span class="pre">n_derivatives</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#limathpy.Calculus.n_derivatives" title="Permalink to this definition">¶</a></dt>
-<dd><p>Function that returns a list with the n derivates of an expression, with n given.</p>
+<dd><p>Function that returns a list with the n derivates of an expression,
+with n given.</p>
 <dl>
 <dt>Args: </dt><dd><p>expr: Any sympy function
-n (int, optional): The number of derivatives required. Defaults to one.</p>
+n (int, optional): The number of derivatives required.
+Defaults to one.</p>
 </dd>
 <dt>Returns:</dt><dd><p>list: the funtion and the indicated derivatives.</p>
 </dd>
@@ -264,15 +300,59 @@ n (int, optional): The number of derivatives required. Defaults to one.</p>
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="limathpy.Calculus.reverse_func">
+<span class="sig-prename descclassname"><span class="pre">limathpy.Calculus.</span></span><span class="sig-name descname"><span class="pre">reverse_func</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expression</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#limathpy.Calculus.reverse_func" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function that returns the inverse of a given expression.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>expression: A sympy function.</p>
+</dd>
+<dt>Returns:</dt><dd><p>list: with the reverse of the function.
+it can have length greater than 1 due to the domain in which the
+function is injective.</p>
+</dd>
+</dl>
+<p>Example:
+&gt;&gt;&gt; from sympy import symbols
+&gt;&gt;&gt; x = symbols(‘x’)
+&gt;&gt;&gt; reverse_func(x**2)
+[-sqrt(y), sqrt(y)]</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="limathpy.Calculus.revolution_area">
+<span class="sig-prename descclassname"><span class="pre">limathpy.Calculus.</span></span><span class="sig-name descname"><span class="pre">revolution_area</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expression</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lower_bound</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upper_bound</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#limathpy.Calculus.revolution_area" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function that calculates the area, over an interval, of a surface of
+revolution whose axis of rotation is the x or y-axis.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>expression: A sympy function that generate the surface of revolution.
+lower_bound: The lower bound of the interval over which the surface
+of revolution is defined.
+upper_bound: The upper bound of the interval over which the surface
+of revolution is defined.</p>
+</dd>
+<dt>Returns:</dt><dd><p>A numerical sympy expression of the area of the surface of revolution
+on the given interval.</p>
+</dd>
+</dl>
+<p>Example:
+&gt;&gt;&gt; from sympy import symbols
+&gt;&gt;&gt; x = symbols(‘x’)
+&gt;&gt;&gt; revolution_area(x**2, 0, 2)
+pi*(-asinh(4) + 132*sqrt(17))/32</p>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="limathpy.Calculus.root_f">
 <span class="sig-prename descclassname"><span class="pre">limathpy.Calculus.</span></span><span class="sig-name descname"><span class="pre">root_f</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expression</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#limathpy.Calculus.root_f" title="Permalink to this definition">¶</a></dt>
-<dd><p>Function that returns if an expression evaluated to a given number n, is zero.</p>
+<dd><p>Function that returns if an expression evaluated to a given number n,
+is zero.</p>
 <dl>
 <dt>Args:</dt><dd><p>expression (str): Expression of a function.
 number (optional): The real number at which the function is evaluated.
 Defaults to zero.</p>
 </dd>
-<dt>Returns:</dt><dd><p>bool: True if the given number is the root of the function, False otherwise.</p>
+<dt>Returns:</dt><dd><p>bool: True if the given number is the root of the function,
+False otherwise.</p>
 </dd>
 <dt>Example:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">root_f</span><span class="p">(</span><span class="s2">&quot;x**2&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 <span class="go">True</span>
@@ -283,17 +363,60 @@ Defaults to zero.</p>
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="limathpy.Calculus.seq_converg">
+<span class="sig-prename descclassname"><span class="pre">limathpy.Calculus.</span></span><span class="sig-name descname"><span class="pre">seq_converg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expression</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#limathpy.Calculus.seq_converg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function that determines whether a sequence converges to zero or diverges
+using the quotient limit test.</p>
+<p>The limit of <span class="math notranslate nohighlight">\(a_{n+1}/a_n\)</span> is considered, for a sequence
+<span class="math notranslate nohighlight">\((a_n)_{n \in \mathbb{N}}\)</span> of positive real numbers.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>expression: A sympy function in terms of n.</p>
+</dd>
+<dt>Returns:</dt><dd><p>Message: Indicates if the sequence converges to zero, diverges
+or nothing can be said about it.</p>
+</dd>
+</dl>
+<p>Example:
+&gt;&gt;&gt; from sympy import symbols
+&gt;&gt;&gt; n = symbols(‘n’)
+&gt;&gt;&gt; seq_converg(1/2**n)
+‘The sequence 2**(-n) converges to zero.’</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="limathpy.Calculus.seri_converg">
+<span class="sig-prename descclassname"><span class="pre">limathpy.Calculus.</span></span><span class="sig-name descname"><span class="pre">seri_converg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expression</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#limathpy.Calculus.seri_converg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function that determines whether a serie from 1 to infinity converges
+or diverges using the quotient limit test.</p>
+<p>The limit of <span class="math notranslate nohighlight">\(a_{n+1}/a_n\)</span> is considered, for a sequence
+<span class="math notranslate nohighlight">\((a_n)_{n \in \mathbb{N}}\)</span>.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>expression: A sympy function in terms of n.</p>
+</dd>
+<dt>Returns:</dt><dd><p>Message: Indicates if the serie from 1 to infinity converges,
+diverges or nothing can be said about it.</p>
+</dd>
+</dl>
+<p>Example:
+&gt;&gt;&gt; from sympy import symbols
+&gt;&gt;&gt; n = symbols(‘n’)
+&gt;&gt;&gt; seri_converg(1/2**n)
+‘The infinite series of the sequence 2**(-n) converges.’</p>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="limathpy.Calculus.tangent_line">
 <span class="sig-prename descclassname"><span class="pre">limathpy.Calculus.</span></span><span class="sig-name descname"><span class="pre">tangent_line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expression</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#limathpy.Calculus.tangent_line" title="Permalink to this definition">¶</a></dt>
-<dd><p>Function that gives the equation of a tangent line to a function about a given point.</p>
+<dd><p>Function that gives the equation of a tangent line to a function about
+a given point.</p>
 <dl>
 <dt>Args:</dt><dd><p>expression (str): Expression of a function.
 x_0: Value of the x coordinate for the point of tangency of the line.</p>
 </dd>
-<dt>Returns:</dt><dd><p>A sympy equation of the tangent line to the function through the given point.</p>
+<dt>Returns:</dt><dd><p>A sympy equation of the tangent line to the function through
+the given point.</p>
 </dd>
-<dt>Example:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="n">diff</span><span class="p">,</span> <span class="n">symbols</span><span class="p">,</span> <span class="n">Eq</span><span class="p">,</span> <span class="n">sympify</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tangent_line</span><span class="p">(</span><span class="s2">&quot;x**2&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<dt>Example:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tangent_line</span><span class="p">(</span><span class="s2">&quot;x**2&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="go">Eq(y, 2*x - 1)</span>
 </pre></div>
 </div>
@@ -305,7 +428,14 @@ x_0: Value of the x coordinate for the point of tangency of the line.</p>
 <section id="linearalgebra">
 <h3>LinearAlgebra<a class="headerlink" href="#linearalgebra" title="Permalink to this headline">¶</a></h3>
 <p>Here there are functions to solve linear algebra problems</p>
-<span class="target" id="module-limathpy.LinearAlgebra"></span><dl class="py function">
+<span class="target" id="module-limathpy.LinearAlgebra"></span><p>This is the Linear Algebra module. He we have some useful functions.</p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="limathpy.LinearAlgebra.NoInvertible">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">limathpy.LinearAlgebra.</span></span><span class="sig-name descname"><span class="pre">NoInvertible</span></span><a class="headerlink" href="#limathpy.LinearAlgebra.NoInvertible" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exception to raise when argument funtion is not a invertible square Sympy Matrix.</p>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="limathpy.LinearAlgebra.change_basis">
 <span class="sig-prename descclassname"><span class="pre">limathpy.LinearAlgebra.</span></span><span class="sig-name descname"><span class="pre">change_basis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#limathpy.LinearAlgebra.change_basis" title="Permalink to this definition">¶</a></dt>
 <dd><p>Change of basis matrix, a matrix that translates vector
@@ -317,21 +447,44 @@ base2 (matriz): Sympy matrix as a representation of a base.</p>
 </dd>
 <dt>Returns:</dt><dd><p>matrix: Change of basis matrix from base1 to base2</p>
 </dd>
-<dt>Example:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># If we want the base change matrix from B1={(3,1),(2,-1)} to B2={(2,4),(-5,3)}</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># we use the matrix representations of each base as in this example </span>
+<dt>Example:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># If we want the base change matrix from B1={(3, 1), (2, -1)} </span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># to B2={(2, 4), (-5, 3)} we use the matrix representations  </span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># of each base as in this example</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">B1</span><span class="o">=</span><span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">B2</span><span class="o">=</span><span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">5</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">]])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">B1</span><span class="p">,</span> <span class="n">B2</span><span class="p">,</span> <span class="n">change_basis</span><span class="p">(</span><span class="n">B1</span><span class="p">,</span><span class="n">B2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">B1</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">B2</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">B1</span><span class="p">,</span> <span class="n">B2</span><span class="p">,</span> <span class="n">change_basis</span><span class="p">(</span><span class="n">B1</span><span class="p">,</span> <span class="n">B2</span><span class="p">)</span>
 <span class="go">(Matrix([</span>
 <span class="go">[3,  2],</span>
-<span class="go">[1, -1]]),</span>
-<span class="go">Matrix([</span>
+<span class="go">[1, -1]]), Matrix([</span>
 <span class="go">[2, -5],</span>
-<span class="go">[4,  3]]),</span>
-<span class="go">Matrix([</span>
+<span class="go">[4,  3]]), Matrix([</span>
 <span class="go">[ 7/13,  1/26],</span>
-<span class="go">[-5/13, -5/13]])) </span>
+<span class="go">[-5/13, -5/13]]))</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="limathpy.LinearAlgebra.descomposition_AyS">
+<span class="sig-prename descclassname"><span class="pre">limathpy.LinearAlgebra.</span></span><span class="sig-name descname"><span class="pre">descomposition_AyS</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrix</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#limathpy.LinearAlgebra.descomposition_AyS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decomposition of a matrix as the sum of a symmetric matrix and an antisymmetric matrix.</p>
+<dl>
+<dt>Args:</dt><dd><p>matrix (Matriz): square sympy Matrix.</p>
+</dd>
+<dt>Returns:</dt><dd><p>tuple: two sympy matrices such that when added they result in the given matrix.</p>
+</dd>
+<dt>Example:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">descomposition_AyS</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]))</span>
+<span class="go">The matrix Matrix([[1, 5], [-3, 2]]) is the sum of the following </span>
+<span class="go">symmetric and antisymmetric matrices:</span>
+<span class="go">(Matrix([</span>
+<span class="go">[1.0, 1.0],</span>
+<span class="go">[1.0, 2.0]]), Matrix([</span>
+<span class="go">[   0, 4.0],</span>
+<span class="go">[-4.0,   0]]))</span>
 </pre></div>
 </div>
 </dd>
@@ -340,20 +493,25 @@ base2 (matriz): Sympy matrix as a representation of a base.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="limathpy.LinearAlgebra.graph_solution">
-<span class="sig-prename descclassname"><span class="pre">limathpy.LinearAlgebra.</span></span><span class="sig-name descname"><span class="pre">graph_solution</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expr1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expr2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#limathpy.LinearAlgebra.graph_solution" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">limathpy.LinearAlgebra.</span></span><span class="sig-name descname"><span class="pre">graph_solution</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expr1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expr2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'blue'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'green'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#limathpy.LinearAlgebra.graph_solution" title="Permalink to this definition">¶</a></dt>
 <dd><p>Graphical Solution to a 2 x 2 System of Equations.</p>
+<p>This function produces images such as:</p>
+<img alt="graph_solution.png" class="align-center" src="graph_solution.png" />
 <dl>
 <dt>Args: </dt><dd><p>expr1 (expression): equation expressed in terms of <span class="math notranslate nohighlight">\(x\)</span>
-expr2 (expression): equation expressed in terms of <span class="math notranslate nohighlight">\(x\)</span>.</p>
+expr2 (expression): equation expressed in terms of <span class="math notranslate nohighlight">\(x\)</span>
+color1 (string): The color of the line that represents the first equation
+The default value is ‘blue’.
+color2 (string): The color of the line that represents the first equation
+The default value is ‘blue’.</p>
 </dd>
 <dt>Example:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span> 
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x y&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">expr1</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="mi">2</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">expr2</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span>  <span class="o">+</span><span class="mi">3</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">graph_solution</span><span class="p">(</span><span class="n">expr1</span><span class="p">,</span><span class="n">expr2</span><span class="p">)</span>
-<span class="go">.. image:: graph_solution.png</span>
-<span class="go">  :align: center</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">graph_solution</span><span class="p">(</span><span class="n">expr1</span><span class="p">,</span> <span class="n">expr2</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd>
@@ -371,9 +529,9 @@ vector1 (matrix): Sympy matrix 2x1.</p>
 <dt>Returns:</dt><dd><p>(float): usual inner product in <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span></p>
 </dd>
 <dt>Example:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">v1</span><span class="o">=</span><span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">v2</span><span class="o">=</span><span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">inner_product</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span><span class="n">v2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v1</span><span class="o">=</span><span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v2</span><span class="o">=</span><span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">inner_product</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">)</span>
 <span class="go">2.0</span>
 </pre></div>
 </div>
@@ -393,7 +551,7 @@ vector1 (matrix): Sympy matrix 2x1.</p>
 ‘The matrix has not all its integer eigenvalues.’</p>
 </dd>
 <dt>Examples:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">int_eigenvalues</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">]]))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">int_eigenvalues</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]))</span>
 <span class="go">The Matrix([[1, 2], [1, 3]]) has not all its integer eigenvalues</span>
 </pre></div>
 </div>
@@ -404,11 +562,11 @@ vector1 (matrix): Sympy matrix 2x1.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="limathpy.LinearAlgebra.int_eigvals_n">
 <span class="sig-prename descclassname"><span class="pre">limathpy.LinearAlgebra.</span></span><span class="sig-name descname"><span class="pre">int_eigvals_n</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#limathpy.LinearAlgebra.int_eigvals_n" title="Permalink to this definition">¶</a></dt>
-<dd><p>Values of n for which [[1,n],[1,1]] has integer eigenvalues.</p>
+<dd><p>Values of n for which [[1, n], [1, 1]] has integer eigenvalues.</p>
 <dl>
-<dt>Args:</dt><dd><p>n (int): the element (1,2) of the matrix.</p>
+<dt>Args:</dt><dd><p>n (int): the element (1, 2) of the matrix.</p>
 </dd>
-<dt>Returns:</dt><dd><p>list: A list with the values between 0 and n for which [[1,n],[1,1]] has 
+<dt>Returns:</dt><dd><p>list: A list with the values between 0 and n for which [[1, n], [1, 1]] has 
 positive eigenvalues.</p>
 </dd>
 <dt>Examples: </dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
@@ -430,7 +588,7 @@ positive eigenvalues.</p>
 <dt>Returns:</dt><dd><p>string: ‘True’ if all values in the given list are integers or 
 ‘False’ in other case.</p>
 </dd>
-<dt>Examples:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">integers_list</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mf">0.5</span><span class="p">])</span>
+<dt>Examples:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">integers_list</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">])</span>
 <span class="go">False</span>
 </pre></div>
 </div>
@@ -449,7 +607,7 @@ n (int): the power.</p>
 <dt>Returns:</dt><dd><p>list: List of n powers of a given matrix.</p>
 </dd>
 <dt>Examples:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">matrix_n</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]]),</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">matrix_n</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]),</span> <span class="mi">2</span><span class="p">)</span>
 <span class="go">[Matrix([</span>
 <span class="go">[1, 2],</span>
 <span class="go">[3, 4]]), Matrix([</span>
@@ -461,14 +619,370 @@ n (int): the power.</p>
 </dl>
 </dd></dl>
 
+<dl class="py function">
+<dt class="sig sig-object py" id="limathpy.LinearAlgebra.orthogonal">
+<span class="sig-prename descclassname"><span class="pre">limathpy.LinearAlgebra.</span></span><span class="sig-name descname"><span class="pre">orthogonal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrix</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#limathpy.LinearAlgebra.orthogonal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Orthogonality of a square matrix, by definition it should be invertible</p>
+<dl>
+<dt>Args:</dt><dd><p>matrix (Matrix): A square Sympy matrix.</p>
+</dd>
+<dt>Returns: </dt><dd><p>string: ‘{matrix} is a orthogonal matrix’ or ‘{matrix} is not a orthogonal matrix’
+according to the case.</p>
+</dd>
+<dt>Raises:</dt><dd><p>KeyError: singular matrix.</p>
+</dd>
+<dt>Example:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">orthogonal</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]))</span>
+<span class="go">Matrix([[0, 1], [-1, 0]]) is a orthogonal matrix</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="limathpy.LinearAlgebra.plane_3points">
+<span class="sig-prename descclassname"><span class="pre">limathpy.LinearAlgebra.</span></span><span class="sig-name descname"><span class="pre">plane_3points</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p3</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#limathpy.LinearAlgebra.plane_3points" title="Permalink to this definition">¶</a></dt>
+<dd><p>Equation of a plane passing through 3 points.</p>
+<dl>
+<dt>Args:</dt><dd><p>p1 (list): point in form a list
+p2 (list): point in form a list.
+p3 (list): point in form a list.</p>
+</dd>
+<dt>Returns:</dt><dd><p>A sympy equation of the plane passing through its 3 points.</p>
+</dd>
+<dt>Example:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p3</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plane_3points</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="n">p3</span><span class="p">)</span>  
+<span class="go">Eq(18*x - 6*y - 3*z - 15, 0)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 <section id="mathematicalmodels">
 <h3>MathematicalModels<a class="headerlink" href="#mathematicalmodels" title="Permalink to this headline">¶</a></h3>
 <p>Here there are functions to solve mathematical models problems</p>
-<span class="target" id="module-limathpy.MathematicalModels"></span><dl class="field-list simple">
-<dt class="field-odd">members</dt>
-<dd class="field-odd"><p></p></dd>
+<span class="target" id="module-limathpy.MathematicalModels"></span><dl class="py function">
+<dt class="sig sig-object py" id="limathpy.MathematicalModels.diagram">
+<span class="sig-prename descclassname"><span class="pre">limathpy.MathematicalModels.</span></span><span class="sig-name descname"><span class="pre">diagram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">par</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">it</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#limathpy.MathematicalModels.diagram" title="Permalink to this definition">¶</a></dt>
+<dd><p>A function that, returns a spiderweb diagram of some function.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>par: is a simple structured text parser project
+x0: initial condition
+it: number of steps</p>
+</dd>
 </dl>
+<p>Example:
+&gt;&gt;&gt; from matplotlib import pyplot as plt
+&gt;&gt;&gt; from celluloid import Camera
+&gt;&gt;&gt; from IPython.display import HTML
+&gt;&gt;&gt; import numpy as np
+&gt;&gt;&gt; from limathpy import diagram
+&gt;&gt;&gt; anim = diagram(3.8, 0.1, 200)
+&gt;&gt;&gt; HTML(anim.to_html5_video())</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="limathpy.MathematicalModels.fibonacci">
+<span class="sig-prename descclassname"><span class="pre">limathpy.MathematicalModels.</span></span><span class="sig-name descname"><span class="pre">fibonacci</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#limathpy.MathematicalModels.fibonacci" title="Permalink to this definition">¶</a></dt>
+<dd><p>A function that, returns the n-th Fibonacci number</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>n (int): the integer number</p>
+</dd>
+</dl>
+<p>Example:
+&gt;&gt;&gt; from limathpy import fibonacci
+&gt;&gt;&gt; [fibonacci(n) for n in range(1, 20)]
+[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584]</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="limathpy.MathematicalModels.rungekutta2_fg">
+<span class="sig-prename descclassname"><span class="pre">limathpy.MathematicalModels.</span></span><span class="sig-name descname"><span class="pre">rungekutta2_fg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">g</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">samples</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#limathpy.MathematicalModels.rungekutta2_fg" title="Permalink to this definition">¶</a></dt>
+<dd><dl>
+<dt>A function that, returns a system of ordinary differential equations with 2nd Order Runge Kutta.</dt><dd><dl class="simple">
+<dt>Args:</dt><dd><p>f: first differential equation
+g: second differential equation
+t0: initial condition of the observation time
+x0: initial condition of the number of dams
+y0: initial condition of the number of predators
+h: algorithm parameter
+samples (int):total number of samples</p>
+</dd>
+</dl>
+<p>Example:
+&gt;&gt;&gt; import numpy as np
+&gt;&gt;&gt; from limathpy import rungekutta2_fg
+&gt;&gt;&gt; a = 0.5
+&gt;&gt;&gt; b = 0.7
+&gt;&gt;&gt; c = 0.35
+&gt;&gt;&gt; d = 0.35
+&gt;&gt;&gt; f = lambda t, x, y: a*x - b*x*y
+&gt;&gt;&gt; g = lambda t, x, y: - c*y + d*x*y
+&gt;&gt;&gt; t0 = 0
+&gt;&gt;&gt; x0 = 2
+&gt;&gt;&gt; y0 = 1
+&gt;&gt;&gt; h = 0.5
+&gt;&gt;&gt; samples = 101
+&gt;&gt;&gt; rungekutta2_fg(f, g, t0, x0, y0, h, samples)
+[ ti, xi, yi]</p>
+</dd>
+<dt>array([[ 0.      ,  2.      ,  1.      ],</dt><dd><p>[ 0.5     ,  1.754875,  1.16975 ],
+[ 1.      ,  1.457533,  1.302069],
+[ 1.5     ,  1.167405,  1.373599],
+[ 2.      ,  0.922773,  1.381103],
+[ 2.5     ,  0.734853,  1.33689 ],
+[ 3.      ,  0.598406,  1.258434],
+[ 3.5     ,  0.502789,  1.161433],
+[ 4.      ,  0.43776 ,  1.05747 ],
+[ 4.5     ,  0.39535 ,  0.954156],
+[ 5.      ,  0.36995 ,  0.856056],
+[ 5.5     ,  0.357857,  0.765649],
+[ 6.      ,  0.356772,  0.684061],
+[ 6.5     ,  0.365425,  0.611594],
+[ 7.      ,  0.383295,  0.548072],
+[ 7.5     ,  0.41044 ,  0.493068],
+[ 8.      ,  0.447386,  0.446051],
+[ 8.5     ,  0.495053,  0.406481],
+[ 9.      ,  0.554706,  0.373878],
+[ 9.5     ,  0.627897,  0.347872],
+[10.      ,  0.716394,  0.328248],
+[10.5     ,  0.822045,  0.315003],
+[11.      ,  0.946561,  0.308414],
+[11.5     ,  1.091121,  0.309138],
+[12.      ,  1.255739,  0.318359],
+[12.5     ,  1.438245,  0.33799 ],
+[13.      ,  1.632757,  0.370937],
+[13.5     ,  1.827612,  0.421359],
+[14.      ,  2.003072,  0.494714],
+[14.5     ,  2.130143,  0.59701 ],
+[15.      ,  2.173551,  0.73223 ],
+[15.5     ,  2.103102,  0.896997],
+[16.      ,  1.913257,  1.074276],
+[16.5     ,  1.637137,  1.233405],
+[17.      ,  1.334464,  1.342914],
+[17.5     ,  1.058838,  1.387297],
+[18.      ,  0.836776,  1.371067],
+[18.5     ,  0.670949,  1.310046],
+[19.      ,  0.552642,  1.221667],
+[19.5     ,  0.470823,  1.1201  ],
+[20.      ,  0.416031,  1.015227],
+[20.5     ,  0.381277,  0.913283],
+[21.      ,  0.361785,  0.817857],
+[21.5     ,  0.354481,  0.73078 ],
+[22.      ,  0.357532,  0.652774],
+[22.5     ,  0.370003,  0.583897],
+[23.      ,  0.391633,  0.523839],
+[23.5     ,  0.422684,  0.472107],
+[24.      ,  0.463858,  0.42815 ],
+[24.5     ,  0.516226,  0.39144 ],
+[25.      ,  0.581185,  0.361532],
+[25.5     ,  0.660398,  0.338109],
+[26.      ,  0.755699,  0.321032],
+[26.5     ,  0.868935,  0.310397],
+[27.      ,  1.001686,  0.306619],
+[27.5     ,  1.154789,  0.310545],
+[28.      ,  1.32756 ,  0.323625],
+[28.5     ,  1.51659 ,  0.348143],
+[29.      ,  1.71397 ,  0.387494],
+[29.5     ,  1.905037,  0.446412],
+[30.      ,  2.066237,  0.530796],
+[30.5     ,  2.165082,  0.646391],
+[31.      ,  2.166022,  0.795122],
+[31.5     ,  2.045845,  0.96879 ],
+[32.      ,  1.813899,  1.144051],
+[32.5     ,  1.517631,  1.287402],
+[33.      ,  1.218981,  1.371905],
+[33.5     ,  0.962067,  1.390516],
+[34.      ,  0.762497,  1.353795],
+[34.5     ,  0.616756,  1.27932 ],
+[35.      ,  0.514275,  1.183658],
+[35.5     ,  0.444297,  1.079315],
+[36.      ,  0.398278,  0.974618],
+[36.5     ,  0.370143,  0.874624],
+[37.      ,  0.355848,  0.782117],
+[37.5     ,  0.35286 ,  0.698408],
+[38.      ,  0.359738,  0.623899],
+[38.5     ,  0.375838,  0.558461],
+[39.      ,  0.401126,  0.501685],
+[39.5     ,  0.43605 ,  0.453035],
+[40.      ,  0.481468,  0.411955],
+[40.5     ,  0.538593,  0.377939],
+[41.      ,  0.608944,  0.350582],
+[41.5     ,  0.694276,  0.329626],
+[42.      ,  0.79647 ,  0.315014],
+[42.5     ,  0.917333,  0.306952],
+[43.      ,  1.058251,  0.306005],
+[43.5     ,  1.219617,  0.313231],
+[44.      ,  1.399899,  0.330373],
+[44.5     ,  1.594216,  0.36012 ],
+[45.      ,  1.792337,  0.40639 ],
+[45.5     ,  1.976313,  0.474467],
+[46.      ,  2.11877 ,  0.570521],
+[46.5     ,  2.184563,  0.699518],
+[47.      ,  2.14016 ,  0.860392],
+[47.5     ,  1.972509,  1.039308],
+[48.      ,  1.706772,  1.20736 ],
+[48.5     ,  1.400735,  1.330961],
+[49.      ,  1.11309 ,  1.389894],
+[49.5     ,  0.876914,  1.38503 ],
+[50.      ,  0.698717,  1.331107],
+[50.5     ,  0.570884,  1.246132]])</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="calculusofseveralvariables">
+<h3>CalculusOfSeveralVariables<a class="headerlink" href="#calculusofseveralvariables" title="Permalink to this headline">¶</a></h3>
+<p>Here there are functions to solve calculus of several variables problems</p>
+<span class="target" id="module-limathpy.CalculusOfSeveralVariables"></span><dl class="py function">
+<dt class="sig sig-object py" id="limathpy.CalculusOfSeveralVariables.divergence">
+<span class="sig-prename descclassname"><span class="pre">limathpy.CalculusOfSeveralVariables.</span></span><span class="sig-name descname"><span class="pre">divergence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#limathpy.CalculusOfSeveralVariables.divergence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function that returns the Divergence of a given vector field.</p>
+<dl>
+<dt>Args:</dt><dd><p>expr: Any list of sympy functions.
+var: List of variables in order.</p>
+</dd>
+<dt>Returns:</dt><dd><p>list: with the reverse of the function.</p>
+</dd>
+<dt>Example:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="n">symbols</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">divergence</span><span class="p">([</span><span class="n">sp</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">y</span><span class="o">**</span><span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">])</span>
+<span class="go">8*y**3 - 2*sin(2*x)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="limathpy.CalculusOfSeveralVariables.gradient">
+<span class="sig-prename descclassname"><span class="pre">limathpy.CalculusOfSeveralVariables.</span></span><span class="sig-name descname"><span class="pre">gradient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#limathpy.CalculusOfSeveralVariables.gradient" title="Permalink to this definition">¶</a></dt>
+<dd><dl>
+<dt>Function that returns a list representing the function and</dt><dd><p>the gradient of the given function.</p>
+</dd>
+<dt>Args:</dt><dd><p>expr: Any sympy function.
+var: List of variables in order.</p>
+</dd>
+<dt>Returns:</dt><dd><p>list: with the reverse of the function.</p>
+</dd>
+<dt>Example:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="n">symbols</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">z</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gradient</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">sp</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">z</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">sp</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">])</span>
+<span class="go">[x*cos(3*z)**2 + sin(y), cos(3*z)**2, cos(y), -6*x*sin(3*z)*cos(3*z)]</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="limathpy.CalculusOfSeveralVariables.hessian">
+<span class="sig-prename descclassname"><span class="pre">limathpy.CalculusOfSeveralVariables.</span></span><span class="sig-name descname"><span class="pre">hessian</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">function</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#limathpy.CalculusOfSeveralVariables.hessian" title="Permalink to this definition">¶</a></dt>
+<dd><dl>
+<dt>Function that returns a matrix that represents the Hessian</dt><dd><p>matrix of the given coordinate functions.</p>
+</dd>
+<dt>Args:</dt><dd><p>function: Any list of sympy functions.
+var: List of variables in order.</p>
+</dd>
+<dt>Returns:</dt><dd><p>list: with the reverse of the function.</p>
+</dd>
+<dt>Example:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="n">symbols</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">z</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hessian</span><span class="p">([</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="o">*</span><span class="n">z</span><span class="p">,</span> <span class="n">x</span><span class="o">*</span><span class="n">sp</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">-</span><span class="n">z</span><span class="p">,</span> <span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="o">*</span><span class="n">sp</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">z</span><span class="p">)],</span> <span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">])</span>
+<span class="go">Matrix([</span>
+<span class="go">[0,         0,           0],</span>
+<span class="go">[0, -x*cos(y),           0],</span>
+<span class="go">[0,         0, -x*y*sin(z)]])</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="limathpy.CalculusOfSeveralVariables.jacobian">
+<span class="sig-prename descclassname"><span class="pre">limathpy.CalculusOfSeveralVariables.</span></span><span class="sig-name descname"><span class="pre">jacobian</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">function</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#limathpy.CalculusOfSeveralVariables.jacobian" title="Permalink to this definition">¶</a></dt>
+<dd><dl>
+<dt>Function that returns a matrix that represents the Jacobian</dt><dd><p>matrix of the given coordinate functions.</p>
+</dd>
+<dt>Args:</dt><dd><p>function: Any list of sympy functions.
+var: List of variables in order.</p>
+</dd>
+<dt>Returns:</dt><dd><p>list: with the reverse of the function.</p>
+</dd>
+<dt>Example:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="n">symbols</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">z</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">jacobian</span><span class="p">([</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="o">*</span><span class="n">z</span><span class="p">,</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">y</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">sp</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="o">*</span><span class="n">z</span><span class="p">)],</span> <span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">])</span>
+<span class="go">Matrix([</span>
+<span class="go">[           y*z,            x*z,            x*y],</span>
+<span class="go">[           2*x,            2*y,              0],</span>
+<span class="go">[y*z*cos(x*y*z), x*z*cos(x*y*z), x*y*cos(x*y*z)]])</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="limathpy.CalculusOfSeveralVariables.laplacian">
+<span class="sig-prename descclassname"><span class="pre">limathpy.CalculusOfSeveralVariables.</span></span><span class="sig-name descname"><span class="pre">laplacian</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#limathpy.CalculusOfSeveralVariables.laplacian" title="Permalink to this definition">¶</a></dt>
+<dd><dl>
+<dt>Function that returns the Laplacian of a function of several</dt><dd><p>variables.</p>
+</dd>
+<dt>Args:</dt><dd><p>expr: Any sympy function.
+var: List of variables in order.</p>
+</dd>
+<dt>Returns:</dt><dd><p>list: with the reverse of the function.</p>
+</dd>
+<dt>Example:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="n">symbols</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">z</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">laplacian</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">y</span> <span class="o">+</span> <span class="n">y</span><span class="o">**</span><span class="mi">3</span> <span class="o">-</span> <span class="n">sp</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">z</span><span class="p">),</span> <span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">])</span>
+<span class="go">6*y + cos(z)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="limathpy.CalculusOfSeveralVariables.partial_derivate">
+<span class="sig-prename descclassname"><span class="pre">limathpy.CalculusOfSeveralVariables.</span></span><span class="sig-name descname"><span class="pre">partial_derivate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#limathpy.CalculusOfSeveralVariables.partial_derivate" title="Permalink to this definition">¶</a></dt>
+<dd><dl>
+<dt>Function that returns a sympy expression that represents the</dt><dd><p>partial derivative of the given function.</p>
+</dd>
+<dt>Args:</dt><dd><p>expr: Any sympy function.
+var: Variable with respect to whict it is derived.</p>
+</dd>
+<dt>Returns:</dt><dd><p>list: with the reverse of the function.</p>
+</dd>
+<dt>Example:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="n">symbols</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">z</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">partial_derivate</span><span class="p">(</span><span class="mi">5</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">y</span> <span class="o">-</span> <span class="n">x</span><span class="o">*</span><span class="n">sp</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">+</span> <span class="n">z</span><span class="o">**</span><span class="mi">8</span><span class="o">*</span><span class="n">y</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="go">5*x + z**8</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 </section>
 </section>

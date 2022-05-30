@@ -239,7 +239,7 @@ def phase_portrait(matrix, lim_init_cond=2):
         [[t1, t2], [t3, t3]], where you obtain the following system 
         x'(t) = t1*x(t) + t2*y(t); y'(t) = t3*x(t) + t4*y(t). 
         lim_init_cond (int): a number that will be the limit for the initial 
-        confitions.
+        conditions.
 
     Example:
     >>> from limathpy import phase_portrait
